@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import ChatButton from "./chatbutton";
 
 export default function Hero() {
   return (
@@ -8,13 +8,13 @@ export default function Hero() {
         <div className="mb-6" data-aos="fade-down">
           <div className="relative inline-flex before:absolute before:inset-0">
             <Link
-              href="https://www.smartbio.me/clupcmsmq0001p4vkq68r0pyp"
-              className="group inline-flex w-full items-center justify-center rounded-full border border-slate-100/40 px-3 py-1 text-sm font-medium text-zinc-300 transition duration-150 ease-in-out hover:text-white"
+              href="https://x.com/omznchat"
+              className="group inline-flex w-full items-center justify-center rounded-full border border-light_card_border px-3 py-1 text-sm font-medium text-light_text_secondary transition duration-150 ease-in-out dark:border-card_border dark:text-text-secondary dark:hover:text-white"
               target="_blank"
             >
               <span className="relative inline-flex items-center">
                 Our Socials
-                <span className="text-primary-500 ml-1 tracking-normal transition-transform duration-150 ease-in-out group-hover:-translate-x-0.5">
+                <span className="ml-1 tracking-normal transition-transform duration-150 ease-in-out group-hover:-translate-x-0.5">
                   -&gt;
                 </span>
               </span>
@@ -22,41 +22,42 @@ export default function Hero() {
           </div>
         </div>
         <h1
-          className="w-full bg-gradient-to-r from-cyan-400 via-blue-600 to-cyan-500 bg-clip-text pb-4 text-center text-7xl font-extrabold tracking-tight text-transparent lg:text-left"
+          className="w-full pb-4 text-center text-6xl font-extrabold tracking-tight text-light_text_primary dark:text-text-primary md:text-7xl lg:text-left"
           data-aos="fade-down"
         >
-          Connect. Chat. Create.
+          Smarter{" "}
+          <span className="bg-gradient-to-r from-sky-500 via-blue-500 to-indigo-500 bg-clip-text text-transparent">
+            Chat.
+          </span>
+          <br /> AI built in.
         </h1>
 
         <p
-          className="mb-8 text-center text-lg font-medium text-zinc-300/40 lg:text-left"
+          className="mb-8 text-center text-base font-medium text-light_text_secondary dark:text-text-secondary md:text-lg lg:text-left"
           data-aos="fade-down"
           data-aos-delay="200"
         >
-          A smarter way to engage with conversations, powered by AI.
+          OMZN transforms how you message — turning ordinary chats into
+          intelligent, adaptive conversations. Get instant insights, smarter
+          replies, and a chat experience that grows with you.
         </p>
 
-        <Link
-          href="/chat"
-          className="group flex w-56 items-center justify-center rounded bg-gradient-to-r from-white/80 via-white to-white/80 py-1.5 font-medium text-zinc-900 transition duration-150 ease-in-out hover:bg-white"
-          data-aos="fade-down"
-          data-aos-delay="400"
-        >
-          Get Started{" "}
-          <ArrowRight className="text-primary-500 ml-1 h-3 w-3 tracking-normal transition-transform duration-150 ease-in-out group-hover:-translate-x-0.5" />
-        </Link>
+        <ChatButton />
       </div>
-      <div className="mx-14 flex justify-center">
+      <div className="mx-0 flex justify-center overflow-hidden">
         <div
           className="mockup-phone mx-20 min-w-fit"
-          data-aos="fade-left"
+          data-aos="fade-top"
           data-aos-once="true"
-          data-aos-delay="500"
+          data-aos-delay="1000"
+          data-aos-offset="0"
         >
           <div className="camera"></div>
           <div className="display">
-            <div className="artboard artboard-demo phone-1">
-              <h3 className="text-2xl">Demo coming 🔜</h3>
+            <div className="artboard artboard-demo phone-1 bg-light_background dark:bg-background">
+              <h3 className="text-2xl font-medium text-light_text_primary dark:text-text-primary">
+                Demo coming 🔜
+              </h3>
             </div>
           </div>
         </div>

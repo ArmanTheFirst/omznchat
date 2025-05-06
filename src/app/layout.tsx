@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import "./globals.css";
-import { ClerkProvider } from "@clerk/nextjs";
 import Navbar from "@/components/nav";
+import { ThemeProvider } from "next-themes";
+import ClerkThemeWrapper from "./(root)/(routes)/(auth)/_components/ClerkThemeWrapper";
+import { Toaster } from "react-hot-toast";
 
 const outfit = Outfit({ subsets: ["latin"] });
 
@@ -17,13 +19,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
-      <html lang="en">
-        <body className={outfit.className}>
-          <Navbar />
-          <main>{children}</main>
-        </body>
-      </html>
-    </ClerkProvider>
+    <html lang="en" className="light" suppressHydrationWarning>
+      <body className={outfit.className}>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          <ClerkThemeWrapper>
+            <Navbar />
+            <main className="pt-20">{children}</main>
+            <Toaster />
+          </ClerkThemeWrapper>
+        </ThemeProvider>
+      </body>
+    </html>
   );
 }

@@ -4,84 +4,98 @@ import Link from "next/link";
 
 export default function Contact() {
   return (
-    <div className="pt-20 text-center">
-      <div className="space-y-3 px-5 text-left md:px-80">
-        <div className="tracking-wide">
-          <h1 className="py-1 text-4xl font-bold">Get in Touch</h1>
-          <h2 className="text-2xl font-semibold text-text-secondary">
+    <div className="min-h-screen bg-gradient-to-b from-white to-blue-50 pt-20 dark:from-gray-900 dark:to-gray-950">
+      <div className="mx-auto max-w-3xl px-4 py-16">
+        <div className="mb-12 text-center">
+          <h1 className="relative mb-4 inline-block text-4xl font-extrabold tracking-tight md:text-5xl">
+            Contact Us
+            <span className="absolute -bottom-2 left-1/2 block h-1 w-2/3 -translate-x-1/2 rounded-full bg-blue-500/60" />
+          </h1>
+          <h2 className="mb-2 text-xl font-medium text-gray-600 dark:text-gray-300">
             Have questions? Feedback? Just want to say hi? We&apos;d{" "}
-            <span className="text-text-secondary underline decoration-accent decoration-wavy underline-offset-4">
+            <span className="font-semibold text-blue-600 dark:text-blue-400">
               love
             </span>{" "}
             to hear from you!
           </h2>
         </div>
-        <div className="flex flex-col gap-y-7 py-10">
-          <div>
-            <h3 className="s py-2 text-3xl font-semibold">Reach Out to Us</h3>
-            <p className="text-lg text-text-secondary">
+        <div className="space-y-8">
+          <section className="rounded-2xl bg-white p-6 shadow-md dark:bg-gray-900">
+            <h3 className="mb-2 text-2xl font-bold text-blue-600 dark:text-blue-400">
+              Reach Out to Us
+            </h3>
+            <p className="mb-4 text-base text-gray-600 dark:text-gray-300">
               Whether you have a question, suggestion, or just want to chat, our
               team is here to help. Drop us a message, and we&apos;ll get back
               to you as soon as possible!
             </p>
-            <p className="text-lg">
+            <p className="text-base text-gray-600 dark:text-gray-300">
               📩 <span className="font-medium">Email</span>:{" "}
               <Link
                 href={`mailto:${process.env.OMZN_MAIL}`}
-                className="underline-offset-2 hover:underline"
+                className="text-blue-600 underline-offset-2 hover:underline dark:text-blue-400"
               >
                 {process.env.OMZN_MAIL}
-                {/* support@omznchat.com */}
-              </Link>{" "}
-              <br /> 💬 <span className="font-medium">Live Chat</span>:
-              Available inside OMZN Chat for instant support <br /> 🐦{" "}
-              <span className="font-medium">Twitter/X</span>: @OMZNChat <br />{" "}
+              </Link>
+              <br />
+              💬 <span className="font-medium">Live Chat</span>: Available
+              inside OMZN Chat for instant support
+              <br />
+              🐦 <span className="font-medium">Twitter/X</span>: @OMZNChat
+              <br />
               📢 <span className="font-medium">Feedback & Suggestions</span>: We
               love hearing from our users! Share your ideas with us.
             </p>
-          </div>
-          <div>
-            <h3 className="s py-2 text-3xl font-semibold">
+          </section>
+          <section className="rounded-2xl bg-white p-6 shadow-md dark:bg-gray-900">
+            <h3 className="mb-2 text-2xl font-bold text-blue-600 dark:text-blue-400">
               Frequently Asked Questions (FAQ)
             </h3>
-            <p className="text-lg text-text-secondary">
+            <p className="mb-2 text-base text-gray-600 dark:text-gray-300">
               Before reaching out, check our FAQ section—your answer might be
               waiting there!
             </p>
             <Link
               href="/faq"
-              className="text-lg transition duration-200 hover:underline"
+              className="text-base font-medium text-blue-600 underline-offset-2 hover:underline dark:text-blue-400"
             >
               🔍 Visit the FAQ
             </Link>
-          </div>
-          <div>
-            <h3 className="s py-2 text-3xl font-semibold">
+          </section>
+          <section className="rounded-2xl bg-white p-6 shadow-md dark:bg-gray-900">
+            <h3 className="mb-2 text-2xl font-bold text-blue-600 dark:text-blue-400">
               Business & Partnerships
             </h3>
-            <p className="text-lg text-text-secondary">
+            <p className="mb-4 text-base text-gray-600 dark:text-gray-300">
               Interested in working with us? We&apos;re open to collaborations,
               integrations, and business inquiries. Let&apos;s build something
               great together!
             </p>
-            <p className="text-lg">
+            <p className="text-base text-gray-600 dark:text-gray-300">
               📧 <span className="font-medium">Business Inquiries</span>:{" "}
               <Link
                 href={`mailto:${process.env.OMZN_MAIL}`}
-                className="underline-offset-2 hover:underline"
+                className="text-blue-600 underline-offset-2 hover:underline dark:text-blue-400"
               >
                 {process.env.OMZN_MAIL}
-                {/* partnerships@omznchat.com */}
               </Link>
             </p>
-          </div>
+          </section>
+          <section
+            className="rounded-2xl bg-white p-6 shadow-md dark:bg-gray-900"
+            id="contact-form"
+          >
+            <h3 className="mb-2 text-2xl font-bold text-blue-600 dark:text-blue-400">
+              Contact Form
+            </h3>
+            <ContactForm />
+          </section>
         </div>
-        <ContactForm />
+        <p className="mt-12 text-center text-lg text-gray-600 dark:text-gray-300">
+          We&apos;re here to make your chat experience better. Let&apos;s talk!
+          🚀
+        </p>
       </div>
-
-      <p className="text-lg text-text-secondary">
-        We&apos;re here to make your chat experience better. Let&apos;s talk! 🚀
-      </p>
       <Footer />
     </div>
   );

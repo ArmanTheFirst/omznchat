@@ -1,6 +1,41 @@
 import type { Config } from "tailwindcss";
 import daisyui from "daisyui";
 
+const colors = {
+  // Core colors
+  primary: "#1D4ED8", // Main brand color (buttons, links, icons)
+  background: "#0F172A", // App background (charcoal blue)
+  surface: "#1E293B", // Card/containers (steel blue)
+  card_border: "#334155", // (grayish blue)
+  accent: "#22D3EE", // Hover states, highlights, interactions
+  "text-primary": "#F8FAFC", // Main text color (near white)
+  "text-secondary": "#94A3B8", // Subtitles, timestamps (cool gray)
+
+  // Feedback colors
+  error: "#EF4444", // Errors or alerts
+  success: "#22C55E", // Success messages (optional)
+  warning: "#FBBF24", // Warnings (optional)
+
+  // Background differentiation
+  navbar: "#1E293B", // Navbar color to slightly contrast background
+  footer: "#1E293B", // Footer base color
+
+  // Light mode colors
+
+  light_background: "#FAFAFA",
+  light_surface: "#F2F2F2",
+  light_accent: "#2563EB",
+  light_text_primary: "#101010",
+  light_text_secondary: "#4D4D4D",
+  light_error: "#DC2626",
+  light_success: "#16A34A",
+  light_warning: "#EAB308",
+  light_navbar: "#EDEDED",
+  light_footer: "#EDEDED",
+  light_primary: "#2563EBA",
+  light_card_border: "#D1D5DB", // (soft gray),
+};
+
 export default {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -9,24 +44,7 @@ export default {
   ],
   theme: {
     extend: {
-      colors: {
-        // Core colors
-        primary: "#1D4ED8", // Main brand color (buttons, links, icons)
-        background: "#0F172A", // App background (charcoal blue)
-        surface: "#1E293B", // Card/containers (steel blue)
-        accent: "#22D3EE", // Hover states, highlights, interactions
-        "text-primary": "#F8FAFC", // Main text color (near white)
-        "text-secondary": "#94A3B8", // Subtitles, timestamps (cool gray)
-
-        // Feedback colors
-        error: "#EF4444", // Errors or alerts
-        success: "#22C55E", // Success messages (optional)
-        warning: "#FBBF24", // Warnings (optional)
-
-        // Background differentiation
-        navbar: "#1E293B", // Navbar color to slightly contrast background
-        footer: "#1E293B", // Footer base color
-      },
+      colors,
       backgroundColor: {
         app: "var(--background)", // Syncing the main background with CSS variables
       },
@@ -41,20 +59,11 @@ export default {
     themes: [
       {
         omzn: {
-          primary: "#1D4ED8",
-          secondary: "#22D3EE",
-          accent: "#22D3EE",
-          neutral: "#1E293B",
-          "base-100": "#0F172A",
-          info: "#22D3EE",
-          success: "#14B8A6",
-          warning: "#F59E0B",
-          error: "#EF4444",
-          surface: "#1E293B",
-          "text-primary": "#F8FAFC",
-          "text-secondary": "#94A3B8",
-          navbar: "#1E293B",
-          footer: "#1E293B",
+          ...colors,
+          secondary: colors.accent,
+          neutral: colors.surface,
+          "base-100": colors.background,
+          info: colors.accent,
         },
       },
     ],

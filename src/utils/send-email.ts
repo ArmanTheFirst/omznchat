@@ -12,15 +12,22 @@ export async function sendEmail(data: FormData) {
       body: JSON.stringify(data),
     });
 
+    const responseData = await res.json();
+
     if (!res.ok) {
-      throw new Error("Failed to send email");
+      if (responseData.details) {
+        // Handle validation errors
+        const validationErrors = responseData.details
+          .map((error: { message: string }) => error.message)
+          .join(", ");
+        throw new Error(validationErrors);
+      }
+      throw new Error(responseData.error || "Failed to send email");
     }
   } catch (err) {
-    // Type guard to check if err is an instance of Error
     if (err instanceof Error) {
-      alert(err.message); // Safely access the message property
-    } else {
-      alert("An unknown error occurred"); // Handle other cases
+      throw new Error(err.message);
     }
+    throw new Error("An unknown error occurred");
   }
 }
