@@ -126,10 +126,10 @@ const features: Feature[] = [
     demo: (
       <div className="flex -space-x-2">
         {[
-          "https://randomuser.me/api/portraits/women/2.jpg",
-          "https://randomuser.me/api/portraits/men/5.jpg",
-          "https://randomuser.me/api/portraits/women/45.jpg",
-          "https://randomuser.me/api/portraits/men/21.jpg",
+          "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=120&h=120&fit=crop&crop=faces",
+          "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=120&h=120&fit=crop&crop=faces",
+          "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&h=120&fit=crop&crop=faces",
+          "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=120&h=120&fit=crop&crop=faces",
         ].map((avatar, i) => (
           <motion.div
             key={i}

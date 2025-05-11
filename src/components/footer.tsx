@@ -99,7 +99,7 @@ export default function Footer() {
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           {/* Brand Section */}
           <div className="space-y-4">
-            <Link href="/" className="inline-block">
+            <Link href="/" className="inline-block" prefetch={true}>
               <div className="group relative">
                 <Image
                   src={logo}
@@ -133,6 +133,7 @@ export default function Footer() {
                       <Link
                         href={link.href!}
                         className="text-sm text-gray-600 transition-colors hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
+                        prefetch={true}
                       >
                         {link.name}
                       </Link>
@@ -150,7 +151,7 @@ export default function Footer() {
             </h3>
             <div className="flex gap-4">
               {socialLinks.map((social, index) => (
-                <a
+                <Link
                   key={index}
                   href={social.href}
                   target="_blank"
@@ -158,7 +159,7 @@ export default function Footer() {
                   className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-100 text-gray-600 transition-all duration-300 hover:scale-110 hover:bg-blue-100 hover:text-blue-600 active:scale-95 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-blue-900/50 dark:hover:text-blue-400"
                 >
                   {social.icon}
-                </a>
+                </Link>
               ))}
             </div>
           </div>
@@ -169,6 +170,7 @@ export default function Footer() {
               href="/contact#contact-form"
               className="inline-flex items-center gap-2 rounded-full bg-red-500 px-5 py-2 text-sm font-semibold text-white shadow-md transition-all hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-offset-2 dark:bg-red-600 dark:hover:bg-red-700"
               aria-label="Report a bug or issue"
+              prefetch={true}
             >
               <Siren className="h-5 w-5" />
               <span>Report a Bug</span>

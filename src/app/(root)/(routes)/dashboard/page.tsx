@@ -19,6 +19,7 @@ import Link from "next/link";
 import Highlights from "./_components/highlights";
 import { pluralize } from "@/utils/utils";
 import ThemeToggle from "./_components/ThemeToggle";
+import LanguageSelector from "./_components/LanguageSelector";
 
 export default async function Dashboard() {
   const user = await currentUser();
@@ -121,21 +122,25 @@ function QuickData({
         description={`${pluralize(activeChats, "Contact")} you are actively chatting with`}
       >
         <div className="mt-4 flex -space-x-4">
-          {Array.from({ length: activeChats < 3 ? activeChats : 3 }).map(
-            (_, index) => (
+          {[
+            "https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=120&h=120&fit=crop&crop=faces",
+            "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=120&h=120&fit=crop&crop=faces",
+            "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&h=120&fit=crop&crop=faces",
+          ]
+            .slice(0, activeChats < 3 ? activeChats : 3)
+            .map((avatar, index) => (
               <div
                 className="relative h-12 w-12 overflow-hidden rounded-full border-2 border-white dark:border-gray-800"
                 key={index}
               >
                 <Image
-                  src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                  src={avatar}
                   alt="Profile picture"
                   className="object-cover"
                   fill
                 />
               </div>
-            ),
-          )}
+            ))}
           {activeChats > 3 && (
             <div className="flex h-12 w-12 items-center justify-center rounded-full border-2 border-white bg-gray-100 text-sm font-medium text-gray-600 dark:border-gray-800 dark:bg-gray-800 dark:text-gray-300">
               +{activeChats - 3}
@@ -191,24 +196,11 @@ function Profile({
               Languages
             </h3>
           </div>
-          <div className="flex items-center justify-between">
+          <div className="flex cursor-pointer flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <p className="text-sm text-gray-600 dark:text-gray-300">
               Select your desired language
             </p>
-            <div className="dropdown dropdown-end">
-              <button className="rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700">
-                English
-              </button>
-              <ul className="dropdown-content z-10 mt-2 max-h-60 w-52 overflow-auto rounded-lg border border-gray-200 bg-white p-2 shadow-lg dark:border-gray-700 dark:bg-gray-800">
-                {languages.map((language) => (
-                  <li key={language}>
-                    <button className="w-full rounded-md px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">
-                      {language}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <LanguageSelector languages={languages} />
           </div>
         </div>
 

@@ -9,13 +9,12 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
-        hostname: "img.daisyui.com",
-      },
-      {
-        protocol: "https",
-        hostname: "randomuser.me",
+        hostname: "images.unsplash.com",
       },
     ],
+    dangerouslyAllowSVG: true,
+    contentDispositionType: "attachment",
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
 };
 

@@ -2,11 +2,12 @@
 
 import { useForm } from "react-hook-form";
 import { sendEmail } from "@/utils/send-email";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import toast from "react-hot-toast";
 import { Send } from "lucide-react";
 import ReCAPTCHA from "react-google-recaptcha";
 import sanitizeHtml from "sanitize-html";
+import { useTheme } from "next-themes";
 
 export type FormData = {
   name: string;
@@ -45,6 +46,20 @@ export default function ContactForm() {
   });
   const [isLoading, setIsLoading] = useState(false);
   const recaptchaRef = useRef<ReCAPTCHA>(null);
+  const [recaptchaReady, setRecaptchaReady] = useState(false);
+  const { theme } = useTheme();
+  const recaptchaTheme = theme === "dark" ? "dark" : "light";
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      // Look for the iframe that Google reCAPTCHA injects
+      if (document.querySelector('iframe[src*="recaptcha"]')) {
+        setRecaptchaReady(true);
+        clearInterval(interval);
+      }
+    }, 100);
+    return () => clearInterval(interval);
+  }, []);
 
   async function onSubmit(data: FormData) {
     if (!data.recaptchaToken) {
@@ -203,7 +218,7 @@ export default function ContactForm() {
           )}
         </div>
 
-        <div className="flex justify-center">
+        {/* <div className="flex justify-center">
           <ReCAPTCHA
             ref={recaptchaRef}
             sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
@@ -211,6 +226,28 @@ export default function ContactForm() {
               setValue("recaptchaToken", token || "", { shouldValidate: true });
             }}
           />
+        </div> */}
+
+        <div className="flex min-h-[80px] justify-center">
+          {!recaptchaReady && (
+            <div className="flex items-center justify-center">
+              <span className="mr-2 animate-spin">🔄</span>
+              <span>reCAPTCHA is being loaded...</span>
+            </div>
+          )}
+          <div style={{ display: recaptchaReady ? "block" : "none" }}>
+            <ReCAPTCHA
+              ref={recaptchaRef}
+              sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
+              onChange={(token) => {
+                setValue("recaptchaToken", token || "", {
+                  shouldValidate: true,
+                });
+              }}
+              theme={recaptchaTheme}
+              hl="en"
+            />
+          </div>
         </div>
 
         <button
