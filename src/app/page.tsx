@@ -8,11 +8,6 @@ export default function Home() {
   const description =
     "OMZN Chat is a next-generation AI chat SaaS for smarter, seamless, and secure conversations. Try OMZN Chat for free.";
   const ogImage = siteUrl + "/android-chrome-512x512.png";
-  const lastUpdated = new Date().toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
 
   return (
     <>
