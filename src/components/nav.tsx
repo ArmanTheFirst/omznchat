@@ -49,14 +49,18 @@ export default function Navbar() {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 z-50 w-full transition-all duration-300 ${
-        scrolled
-          ? "bg-white/90 shadow-lg backdrop-blur-md dark:bg-gray-900/90"
-          : "bg-white dark:bg-gray-900"
-      }`}
+      className="fixed top-0 z-50 flex w-full justify-center bg-transparent transition-all duration-300"
     >
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="flex h-20 items-center justify-between">
+      <div
+        className={`mx-auto mt-3 w-[95vw] max-w-4xl rounded-2xl border border-[#64748bcc] bg-white/50 px-6 shadow-xl backdrop-blur-lg transition-all duration-300 dark:border-t dark:border-t-white/30 dark:bg-gray-900/60 ${
+          scrolled ? "ring-1 ring-blue-200/40" : ""
+        }`}
+        style={{
+          boxShadow:
+            "0 8px 32px 0 rgba(31, 38, 135, 0.15), 0 1.5px 4px 0 rgba(0,0,0,0.04)",
+        }}
+      >
+        <div className="flex h-16 items-center justify-between">
           <Link href="/" className="group flex items-center gap-3">
             <motion.div
               whileHover={{ rotate: -12 }}
@@ -86,6 +90,9 @@ export default function Navbar() {
                 AI-Powered Chat
               </span>
             </div>
+            <span className="ml-3 rounded-full border border-yellow-200 bg-yellow-100 px-2 py-0.5 align-middle text-xs font-semibold text-yellow-800 dark:border-yellow-700 dark:bg-yellow-900 dark:text-yellow-200">
+              Dev Mode
+            </span>
           </Link>
 
           <div className="flex items-center gap-8">
