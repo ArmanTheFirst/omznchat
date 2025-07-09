@@ -2,6 +2,36 @@ import ChatButton from "@/components/chatbutton";
 import Footer from "@/components/footer";
 import Head from "next/head";
 
+export const metadata = {
+  title: "About OMZN Chat – AI-Powered Chat Platform",
+  description:
+    "Learn about OMZN Chat, the AI-powered chat SaaS platform revolutionizing digital conversations with smart, secure, and seamless messaging.",
+  openGraph: {
+    title: "About OMZN Chat – AI-Powered Chat Platform",
+    description:
+      "Learn about OMZN Chat, the AI-powered chat SaaS platform revolutionizing digital conversations with smart, secure, and seamless messaging.",
+    url: "https://omznchat.vercel.app/about",
+    siteName: "OMZN Chat",
+    images: [
+      {
+        url: "https://omznchat.vercel.app/android-chrome-512x512.png",
+        width: 512,
+        height: 512,
+        alt: "OMZN Chat Logo",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About OMZN Chat – AI-Powered Chat Platform",
+    description:
+      "Learn about OMZN Chat, the AI-powered chat SaaS platform revolutionizing digital conversations with smart, secure, and seamless messaging.",
+    images: ["https://omznchat.vercel.app/android-chrome-512x512.png"],
+  },
+};
+
 export default function About() {
   const siteUrl = "https://omznchat.vercel.app/about";
   const title = "About OMZN Chat – AI-Powered Chat Platform";

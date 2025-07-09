@@ -2,6 +2,36 @@ import Footer from "@/components/footer";
 import Link from "next/link";
 import Head from "next/head";
 
+export const metadata = {
+  title: "FAQ – OMZN Chat",
+  description:
+    "Frequently asked questions about OMZN Chat, the AI-powered chat platform for smarter, secure, and seamless conversations.",
+  openGraph: {
+    title: "FAQ – OMZN Chat",
+    description:
+      "Frequently asked questions about OMZN Chat, the AI-powered chat platform for smarter, secure, and seamless conversations.",
+    url: "https://omznchat.vercel.app/faq",
+    siteName: "OMZN Chat",
+    images: [
+      {
+        url: "https://omznchat.vercel.app/android-chrome-512x512.png",
+        width: 512,
+        height: 512,
+        alt: "OMZN Chat Logo",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "FAQ – OMZN Chat",
+    description:
+      "Frequently asked questions about OMZN Chat, the AI-powered chat platform for smarter, secure, and seamless conversations.",
+    images: ["https://omznchat.vercel.app/android-chrome-512x512.png"],
+  },
+};
+
 export default function FAQ() {
   const siteUrl = "https://omznchat.vercel.app/faq";
   const title = "FAQ – OMZN Chat";

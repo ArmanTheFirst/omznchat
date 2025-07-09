@@ -3,6 +3,36 @@ import Footer from "@/components/footer";
 import Link from "next/link";
 import Head from "next/head";
 
+export const metadata = {
+  title: "Contact OMZN Chat – AI Chat SaaS Support",
+  description:
+    "Contact OMZN Chat for support, feedback, business inquiries, or questions about our AI-powered chat platform.",
+  openGraph: {
+    title: "Contact OMZN Chat – AI Chat SaaS Support",
+    description:
+      "Contact OMZN Chat for support, feedback, business inquiries, or questions about our AI-powered chat platform.",
+    url: "https://omznchat.vercel.app/contact",
+    siteName: "OMZN Chat",
+    images: [
+      {
+        url: "https://omznchat.vercel.app/android-chrome-512x512.png",
+        width: 512,
+        height: 512,
+        alt: "OMZN Chat Logo",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact OMZN Chat – AI Chat SaaS Support",
+    description:
+      "Contact OMZN Chat for support, feedback, business inquiries, or questions about our AI-powered chat platform.",
+    images: ["https://omznchat.vercel.app/android-chrome-512x512.png"],
+  },
+};
+
 export default function Contact() {
   const siteUrl = "https://omznchat.vercel.app/contact";
   const title = "Contact OMZN Chat – AI Chat SaaS Support";
