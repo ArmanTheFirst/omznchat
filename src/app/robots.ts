@@ -1,9 +1,7 @@
 export default function robots() {
-  return [
-    {
-      userAgent: "*",
-      allow: "/",
-      sitemap: "https://omznchat.vercel.app/sitemap.xml",
-    },
-  ];
+  return `
+User-agent: *
+Allow: /
+Sitemap: https://omznchat.vercel.app/sitemap.xml
+`.trim();
 }
