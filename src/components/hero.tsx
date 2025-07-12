@@ -1,4 +1,3 @@
-import Link from "next/link";
 import ChatButton from "./chatbutton";
 import { motion, useAnimation, useInView } from "framer-motion";
 import { useEffect, useRef } from "react";

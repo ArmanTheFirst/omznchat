@@ -14,7 +14,6 @@ import { useRef } from "react";
 export default function Navbar() {
   const { isSignedIn, user, isLoaded } = useUser();
   const { signOut } = useClerk();
-  const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("");
   const pathname = usePathname();
@@ -29,7 +28,6 @@ export default function Navbar() {
 
   useEffect(() => {
     function onScroll() {
-      setScrolled(window.scrollY > 10);
       if (pathname !== "/") return;
       let found = "";
       for (let i = sectionLinks.length - 1; i >= 0; i--) {
@@ -49,7 +47,7 @@ export default function Navbar() {
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
-  }, [pathname]);
+  }, [pathname, sectionLinks]);
 
   // Trap focus in drawer when open and prevent background scroll
   useEffect(() => {

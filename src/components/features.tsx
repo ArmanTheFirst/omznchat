@@ -38,7 +38,9 @@ const features: Feature[] = [
           <div className="absolute -bottom-1 left-4 h-2 w-2 rotate-45 bg-blue-50 dark:bg-blue-900/40"></div>
           <div className="flex items-center gap-1 text-xs">
             <span>🤖</span>
-            <span>"This chat covers project launch and next steps."</span>
+            <span>
+              &quot;This chat covers project launch and next steps.&quot;
+            </span>
           </div>
         </motion.div>
       </div>
