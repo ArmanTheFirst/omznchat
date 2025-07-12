@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/nav";
+import ConditionalNavbar from "@/components/conditional-navbar";
 import { ThemeProvider } from "next-themes";
 import ClerkThemeWrapper from "./(root)/(routes)/(auth)/_components/ClerkThemeWrapper";
 import { Toaster } from "react-hot-toast";
@@ -82,8 +82,8 @@ export default function RootLayout({
       <body className={outfit.className}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <ClerkThemeWrapper>
-            <Navbar />
-            <main className="pt-20">{children}</main>
+            <ConditionalNavbar />
+            <main>{children}</main>
             <Toaster />
           </ClerkThemeWrapper>
         </ThemeProvider>

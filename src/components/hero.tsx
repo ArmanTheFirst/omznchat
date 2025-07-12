@@ -1,73 +1,148 @@
 import Link from "next/link";
 import ChatButton from "./chatbutton";
-import { motion } from "framer-motion";
+import { motion, useAnimation, useInView } from "framer-motion";
+import { useEffect, useRef } from "react";
+import { Sparkles, Users, MessageSquare, Zap } from "lucide-react";
 
 export default function Hero() {
+  // For entrance animation on text content
+  const textRef = useRef(null);
+  const textInView = useInView(textRef, { once: true, margin: "-100px" });
+  const textControls = useAnimation();
+  useEffect(
+    function handleTextInView() {
+      if (textInView) {
+        textControls.start("visible");
+      }
+    },
+    [textInView, textControls],
+  );
+
+  // Variants for staggered text entrance
+  const textVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: (i = 1) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: 0.1 * i,
+        type: "spring",
+        stiffness: 60,
+        damping: 18,
+      },
+    }),
+  };
+
+  // Abstract floating icons animation
+  const iconVariants = {
+    animate: (delay = 0) => ({
+      y: [0, -10, 0, 10, 0],
+      x: [0, 10, 0, -10, 0],
+      transition: {
+        duration: 16,
+        repeat: Infinity,
+        ease: "easeInOut",
+        delay,
+      },
+    }),
+  };
+
   return (
-    <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-0">
-      <div className="flex flex-col items-center justify-center px-2 lg:items-start">
+    <section className="relative flex flex-col items-center justify-center bg-gradient-to-b from-white via-blue-50/40 to-blue-100/10 px-4 pb-12 pt-6 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 md:pb-24 md:pt-8 lg:pb-32 lg:pt-16">
+      {/* Abstract floating icons background */}
+      <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center overflow-hidden">
         <motion.div
-          className="mb-6"
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
+          custom={0}
+          animate={iconVariants.animate(0)}
+          className="absolute left-1/4 top-12 hidden h-16 w-16 rounded-full bg-blue-100/60 dark:bg-blue-900/30 md:block"
         >
-          <div className="relative inline-flex before:absolute before:inset-0">
-            <Link
-              href="https://x.com/omznchat"
-              className="group inline-flex w-full items-center justify-center rounded-full border border-light_card_border px-3 py-1 text-sm font-medium text-light_text_secondary transition duration-150 ease-in-out dark:border-card_border dark:text-text-secondary dark:hover:text-white"
-              target="_blank"
-            >
-              <span className="relative inline-flex items-center">
-                Our Socials
-                <span className="ml-1 tracking-normal transition-transform duration-150 ease-in-out group-hover:-translate-x-0.5">
-                  -&gt;
-                </span>
-              </span>
-            </Link>
-          </div>
+          <Sparkles className="m-4 h-8 w-8 text-blue-400 dark:text-blue-300" />
         </motion.div>
-        <motion.h1
-          className="w-full pb-4 text-center text-6xl font-extrabold tracking-tight text-light_text_primary dark:text-text-primary md:text-7xl lg:text-left"
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
+        <motion.div
+          custom={1}
+          animate={iconVariants.animate(2)}
+          className="absolute bottom-16 right-1/4 hidden h-14 w-14 rounded-full bg-indigo-100/60 dark:bg-indigo-900/30 md:block"
         >
-          Smarter{" "}
+          <Zap className="m-3 h-7 w-7 text-indigo-400 dark:text-indigo-300" />
+        </motion.div>
+        <motion.div
+          custom={2}
+          animate={iconVariants.animate(4)}
+          className="absolute bottom-8 left-8 hidden h-12 w-12 rounded-full bg-sky-100/60 dark:bg-sky-900/30 md:block"
+        >
+          <Users className="m-2 h-6 w-6 text-sky-400 dark:text-sky-300" />
+        </motion.div>
+        <motion.div
+          custom={3}
+          animate={iconVariants.animate(6)}
+          className="absolute right-8 top-8 hidden h-10 w-10 rounded-full bg-purple-100/60 dark:bg-purple-900/30 md:block"
+        >
+          <MessageSquare className="m-1 h-5 w-5 text-purple-400 dark:text-purple-300" />
+        </motion.div>
+      </div>
+      {/* Textual content */}
+      <div
+        ref={textRef}
+        className="relative z-10 flex max-w-2xl flex-1 flex-col items-center text-center"
+      >
+        <motion.span
+          custom={1}
+          initial="hidden"
+          animate={textControls}
+          variants={textVariants}
+          className="mb-4 mt-8 inline-flex items-center gap-2 rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700 dark:bg-blue-900/30 dark:text-blue-300 md:mt-12"
+        >
+          <Sparkles className="h-4 w-4" /> AI Chat SaaS
+        </motion.span>
+        <motion.h1
+          custom={2}
+          initial="hidden"
+          animate={textControls}
+          variants={textVariants}
+          className="mb-3 text-4xl font-extrabold tracking-tight text-light_text_primary dark:text-text-primary sm:text-5xl md:text-6xl"
+        >
+          Smarter Conversations.{" "}
           <span className="bg-gradient-to-r from-sky-500 via-blue-500 to-indigo-500 bg-clip-text text-transparent">
-            Chat.
+            AI-Powered. Free Forever.
           </span>
-          <br /> AI built in.
         </motion.h1>
         <motion.p
-          className="mb-8 text-center text-base font-medium text-light_text_secondary dark:text-text-secondary md:text-lg lg:text-left"
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
+          custom={3}
+          initial="hidden"
+          animate={textControls}
+          variants={textVariants}
+          className="mb-6 max-w-xl text-base font-medium text-light_text_secondary dark:text-text-secondary sm:text-lg"
         >
-          OMZN transforms how you message — turning ordinary chats into
-          intelligent, adaptive conversations. Get instant insights, smarter
-          replies, and a chat experience that grows with you.
+          OMZN Chat is the modern AI chat platform for teams, creators, and
+          businesses. Enjoy real-time messaging, smart replies, and secure
+          collaboration—no paywalls, no nonsense.
         </motion.p>
-        <ChatButton />
-      </div>
-      <div className="mx-0 flex justify-center overflow-hidden">
-        <motion.div
-          className="mockup-phone mx-20 min-w-fit"
-          initial={{ opacity: 0, y: -40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}
+        <motion.ul
+          custom={4}
+          initial="hidden"
+          animate={textControls}
+          variants={textVariants}
+          className="mb-8 flex flex-wrap items-center justify-center gap-2 md:gap-3"
         >
-          <div className="camera"></div>
-          <div className="display">
-            <div className="artboard artboard-demo phone-1 bg-light_background dark:bg-background">
-              <h3 className="text-2xl font-medium text-light_text_primary dark:text-text-primary">
-                Demo coming 🔜
-              </h3>
-            </div>
-          </div>
+          <li className="flex items-center gap-2 rounded-full bg-white/80 px-3 py-1 text-xs font-medium text-blue-700 shadow-sm ring-1 ring-blue-100 dark:bg-gray-900/80 dark:text-blue-300 dark:ring-blue-900/30">
+            <MessageSquare className="h-4 w-4" /> Smart AI Chat
+          </li>
+          <li className="flex items-center gap-2 rounded-full bg-white/80 px-3 py-1 text-xs font-medium text-indigo-700 shadow-sm ring-1 ring-indigo-100 dark:bg-gray-900/80 dark:text-indigo-300 dark:ring-indigo-900/30">
+            <Zap className="h-4 w-4" /> Real-Time Messaging
+          </li>
+          <li className="flex items-center gap-2 rounded-full bg-white/80 px-3 py-1 text-xs font-medium text-sky-700 shadow-sm ring-1 ring-sky-100 dark:bg-gray-900/80 dark:text-sky-300 dark:ring-sky-900/30">
+            <Users className="h-4 w-4" /> Built for Teams
+          </li>
+        </motion.ul>
+        <motion.div
+          custom={5}
+          initial="hidden"
+          animate={textControls}
+          variants={textVariants}
+        >
+          <ChatButton label="Start Free – No Card Needed" />
         </motion.div>
       </div>
-    </div>
+    </section>
   );
 }

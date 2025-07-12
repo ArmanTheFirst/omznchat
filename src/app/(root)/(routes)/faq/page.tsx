@@ -133,144 +133,134 @@ export default function FAQ() {
         />
       </Head>
       <div className="min-h-screen bg-gradient-to-b from-white to-blue-50 pt-20 dark:from-gray-900 dark:to-gray-950">
-        <div className="mx-auto max-w-3xl px-4 py-16">
-          <div className="mb-12 text-center">
-            <h1 className="relative mb-4 inline-block text-4xl font-extrabold tracking-tight md:text-5xl">
-              FAQ (Frequently Asked Questions)
+        <div className="mx-auto max-w-3xl px-3 py-12 sm:px-4 md:py-16">
+          <div className="mb-10 text-center">
+            <h1 className="relative mb-3 inline-block text-3xl font-extrabold tracking-tight sm:text-4xl md:text-5xl">
+              OMZN Chat FAQ: AI Chat Platform Questions Answered
               <span className="absolute -bottom-2 left-1/2 block h-1 w-2/3 -translate-x-1/2 rounded-full bg-blue-500/60" />
             </h1>
+            <p className="mx-auto max-w-xl text-base text-gray-600 dark:text-gray-300">
+              Find answers to common questions about OMZN Chat—your AI-powered
+              chat platform for teams, creators, and secure, real-time
+              messaging.
+            </p>
           </div>
-          <div className="space-y-8">
-            <section className="rounded-2xl bg-white p-6 shadow-md dark:bg-gray-900">
-              <h2 className="mb-4 text-2xl font-bold text-blue-600 dark:text-blue-400">
+          <div className="space-y-7">
+            <section className="rounded-2xl bg-white p-5 shadow-md dark:bg-gray-900 sm:p-6">
+              <h2 className="mb-3 text-xl font-bold text-blue-600 dark:text-blue-400">
                 General
               </h2>
-              <div className="space-y-6">
+              <div className="space-y-5">
                 <div>
                   <h3 className="mb-1 text-lg font-semibold">
                     What is OMZN Chat?
                   </h3>
-                  <p className="text-base text-gray-600 dark:text-gray-300">
-                    OMZN Chat is an AI-powered chat platform designed to enhance
-                    conversations with smart features, seamless messaging, and
-                    intuitive interactions.
+                  <p className="text-sm text-gray-600 dark:text-gray-300 sm:text-base">
+                    OMZN Chat is an AI-powered chat platform for smarter,
+                    faster, and more secure conversations.
                   </p>
                 </div>
                 <div>
                   <h3 className="mb-1 text-lg font-semibold">
                     Is OMZN Chat free to use?
                   </h3>
-                  <p className="text-base text-gray-600 dark:text-gray-300">
-                    Yes! OMZN Chat offers a free version with essential
-                    features. However, we may introduce premium features in the
-                    future.
+                  <p className="text-sm text-gray-600 dark:text-gray-300 sm:text-base">
+                    Yes! OMZN Chat is free forever. No paywalls, no hidden fees.
                   </p>
                 </div>
                 <div>
                   <h3 className="mb-1 text-lg font-semibold">
                     Do I need an account to use OMZN Chat?
                   </h3>
-                  <p className="text-base text-gray-600 dark:text-gray-300">
-                    Yes, you&apos;ll need an account to access full
-                    functionality, including saved conversations and
-                    personalized settings.
+                  <p className="text-sm text-gray-600 dark:text-gray-300 sm:text-base">
+                    Yes, you’ll need an account to access all features and save
+                    your conversations.
                   </p>
                 </div>
               </div>
             </section>
-            <section className="rounded-2xl bg-white p-6 shadow-md dark:bg-gray-900">
-              <h2 className="mb-4 text-2xl font-bold text-blue-600 dark:text-blue-400">
+            <section className="rounded-2xl bg-white p-5 shadow-md dark:bg-gray-900 sm:p-6">
+              <h2 className="mb-3 text-xl font-bold text-blue-600 dark:text-blue-400">
                 Features & Functionality
               </h2>
-              <div className="space-y-6">
+              <div className="space-y-5">
                 <div>
                   <h3 className="mb-1 text-lg font-semibold">
-                    How does OMZN Chat&apos;s AI work?
+                    How does OMZN Chat’s AI work?
                   </h3>
-                  <p className="text-base text-gray-600 dark:text-gray-300">
-                    Our AI enhances conversations by analyzing chat context and
-                    providing smart replies, suggestions, and interactive
-                    experiences.
+                  <p className="text-sm text-gray-600 dark:text-gray-300 sm:text-base">
+                    Our AI analyzes chat context to provide smart replies,
+                    suggestions, and productivity tools.
                   </p>
                 </div>
                 <div>
                   <h3 className="mb-1 text-lg font-semibold">
                     Can I delete my chat history?
                   </h3>
-                  <p className="text-base text-gray-600 dark:text-gray-300">
+                  <p className="text-sm text-gray-600 dark:text-gray-300 sm:text-base">
                     Yes! You can delete your messages and chat history anytime
-                    in the settings.
+                    in your settings.
                   </p>
                 </div>
                 <div>
                   <h3 className="mb-1 text-lg font-semibold">
                     Is OMZN Chat available on mobile?
                   </h3>
-                  <p className="text-base text-gray-600 dark:text-gray-300">
-                    Currently, you can access OMZN Chat via the web. A mobile
-                    app is in the works!
+                  <p className="text-sm text-gray-600 dark:text-gray-300 sm:text-base">
+                    You can use OMZN Chat on the web. A mobile app is coming
+                    soon!
                   </p>
                 </div>
               </div>
             </section>
-            <section className="rounded-2xl bg-white p-6 shadow-md dark:bg-gray-900">
-              <h2 className="mb-4 text-2xl font-bold text-blue-600 dark:text-blue-400">
-                Privacy & Security
+            <section className="rounded-2xl bg-white p-5 shadow-md dark:bg-gray-900 sm:p-6">
+              <h2 className="mb-3 text-xl font-bold text-blue-600 dark:text-blue-400">
+                Security & Privacy
               </h2>
-              <div className="space-y-6">
+              <div className="space-y-5">
                 <div>
                   <h3 className="mb-1 text-lg font-semibold">
                     Is my data safe?
                   </h3>
-                  <p className="text-base text-gray-600 dark:text-gray-300">
-                    Absolutely! We prioritize security and do not sell your
-                    data. Read our{" "}
-                    <Link
-                      href="/privacy"
-                      className="text-blue-600 underline-offset-2 hover:underline dark:text-blue-400"
-                    >
-                      Privacy Policy
-                    </Link>{" "}
-                    for full details.
+                  <p className="text-sm text-gray-600 dark:text-gray-300 sm:text-base">
+                    Absolutely! We prioritize security and never sell your data.
+                    See our Privacy Policy for details.
                   </p>
                 </div>
                 <div>
                   <h3 className="mb-1 text-lg font-semibold">
                     Can I delete my account?
                   </h3>
-                  <p className="text-base text-gray-600 dark:text-gray-300">
-                    Yes, you can delete your account permanently in your
-                    settings. This removes all associated data.
+                  <p className="text-sm text-gray-600 dark:text-gray-300 sm:text-base">
+                    Yes, you can permanently delete your account and all data in
+                    your settings.
                   </p>
                 </div>
+              </div>
+            </section>
+            <section className="rounded-2xl bg-white p-5 shadow-md dark:bg-gray-900 sm:p-6">
+              <h2 className="mb-3 text-xl font-bold text-blue-600 dark:text-blue-400">
+                Support
+              </h2>
+              <div className="space-y-5">
                 <div>
                   <h3 className="mb-1 text-lg font-semibold">
                     How do I report a bug or issue?
                   </h3>
-                  <p className="text-base text-gray-600 dark:text-gray-300">
+                  <p className="text-sm text-gray-600 dark:text-gray-300 sm:text-base">
                     Contact us at{" "}
-                    <Link
-                      href={`mailto:${process.env.OMZN_MAIL}`}
-                      className="text-blue-600 underline-offset-2 hover:underline dark:text-blue-400"
+                    <a
+                      href="mailto:support@omznchat.com"
+                      className="text-blue-600 underline dark:text-blue-400"
                     >
-                      {process.env.OMZN_MAIL}
-                    </Link>
-                    , and we&apos;ll look into it!
+                      support@omznchat.com
+                    </a>{" "}
+                    and we’ll help you out!
                   </p>
                 </div>
               </div>
             </section>
           </div>
-          <p className="mt-12 text-center text-lg text-gray-600 dark:text-gray-300">
-            Still have questions?{" "}
-            <Link
-              href="/contact"
-              className="text-blue-600 underline-offset-2 hover:underline dark:text-blue-400"
-            >
-              Contact us
-            </Link>{" "}
-            and we&apos;ll be happy to help!
-          </p>
         </div>
         <Footer />
       </div>

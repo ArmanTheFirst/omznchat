@@ -9,6 +9,8 @@ import {
   Palette,
   Sparkles,
   UserRoundCheck,
+  ArrowRight,
+  Home,
 } from "lucide-react";
 import {
   DashboardCard,
@@ -20,6 +22,8 @@ import Highlights from "./_components/highlights";
 import { pluralize } from "@/utils/utils";
 import ThemeToggle from "./_components/ThemeToggle";
 import LanguageSelector from "./_components/LanguageSelector";
+import ChatButton from "@/components/chatbutton";
+import DashboardWrapper from "./_components/dashboard-wrapper";
 
 export default async function Dashboard() {
   const user = await currentUser();
@@ -52,41 +56,56 @@ export default async function Dashboard() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-blue-50/30 px-4 py-8 dark:from-gray-900 dark:to-gray-950">
-      <div className="mx-auto max-w-7xl">
-        <Header username={user!.username as string} />
-        <div className="mt-8 space-y-8">
-          <QuickData
-            unreadMessages={unreadMessages}
-            activeChats={activeChats}
-            lastSeenDays={lastSeenDays}
-          />
-          <div className="flex flex-col gap-8 xl:flex-row">
-            <div className="xl:w-[60%]">
-              <Profile languages={languages} notifications={notifications} />
-            </div>
-            <div className="xl:w-[40%]">
-              <Features />
+    <DashboardWrapper>
+      <div className="min-h-screen bg-gradient-to-b from-white to-blue-50/30 px-4 py-8 dark:from-gray-900 dark:to-gray-950">
+        <div className="mx-auto max-w-7xl">
+          <Header username={user!.username as string} />
+          <div className="mt-8 space-y-8">
+            <QuickData
+              unreadMessages={unreadMessages}
+              activeChats={activeChats}
+              lastSeenDays={lastSeenDays}
+            />
+            <div className="flex flex-col gap-8 xl:flex-row">
+              <div className="xl:w-[60%]">
+                <Profile languages={languages} notifications={notifications} />
+              </div>
+              <div className="xl:w-[40%]">
+                <Features />
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </DashboardWrapper>
   );
 }
 
 function Header({ username }: { username: string }) {
   return (
-    <div className="flex flex-col gap-2 text-center">
+    <div className="flex flex-col gap-4 text-center">
+      <div className="flex items-center justify-between">
+        <Link
+          href="/"
+          className="flex items-center gap-2 text-sm text-gray-600 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+        >
+          <Home className="h-4 w-4" />
+          <span className="underline">Back to Landing</span>
+        </Link>
+        <ThemeToggle />
+      </div>
       <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white">
         Welcome back, {username} 👋
       </h1>
       <p className="text-xl font-medium text-gray-600 dark:text-gray-300">
         Here&apos;s what&apos;s happening in your chats today.
       </p>
-      <span className="mt-2 inline-flex items-center justify-center rounded-full bg-yellow-50 px-3 py-1 text-sm font-medium text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-200">
-        ⚠️ This page features dummy data for development
-      </span>
+      <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+        <span className="inline-flex items-center justify-center rounded-full bg-yellow-50 px-3 py-1 text-sm font-medium text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-200">
+          ⚠️ This page features dummy data for development
+        </span>
+        <ChatButton label="To the Chat" disableAnimations />
+      </div>
     </div>
   );
 }
@@ -108,12 +127,15 @@ function QuickData({
         amount={unreadMessages}
         description={`${pluralize(unreadMessages, "Message")} waiting for you`}
       >
-        <Link
-          className="mt-4 inline-flex w-full items-center justify-center rounded-lg bg-blue-500 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700"
-          href="/chat"
-        >
-          View Messages
-        </Link>
+        <div className="relative z-10">
+          <Link
+            className="mt-4 inline-flex w-full items-center justify-center rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600"
+            href="/chat"
+          >
+            View Messages
+            <ArrowRight className="ml-2 h-3 w-3" />
+          </Link>
+        </div>
       </DashboardCard>
       <DashboardCard
         label="Active Conversations"
@@ -146,6 +168,15 @@ function QuickData({
               +{activeChats - 3}
             </div>
           )}
+        </div>
+        <div className="relative z-10">
+          <Link
+            href="/chat"
+            className="mt-3 inline-flex items-center text-sm text-blue-600 underline transition-colors hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
+          >
+            View all conversations
+            <ArrowRight className="ml-1 h-3 w-3" />
+          </Link>
         </div>
       </DashboardCard>
       <DashboardCard

@@ -11,11 +11,11 @@ import Link from "next/link";
 
 export default function Highlights() {
   return (
-    <div className="flex h-full flex-col gap-6 rounded-xl bg-white p-6 shadow-sm dark:bg-gray-900">
-      <p className="text-sm tracking-wide text-gray-600 dark:text-gray-300">
-        OMZN Chat always has a bunch ambitions in order to improve the user
-        experience on their platform, which is why we&apos;ve displayed the
-        upcoming Highlights and AI plans. Got an idea?{" "}
+    <div className="flex h-full flex-col gap-6 rounded-xl bg-white p-4 shadow-sm dark:bg-gray-900 sm:p-6">
+      <p className="mb-2 text-sm tracking-wide text-gray-600 dark:text-gray-300">
+        Discover OMZN Chat’s latest AI dashboard features—built for teams,
+        creators, and anyone who wants smarter, faster, and more secure
+        messaging. Got an idea?{" "}
         <Link
           href="/contact#contact-form"
           className="font-semibold text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300"
@@ -27,38 +27,38 @@ export default function Highlights() {
       <div className="grid flex-1 gap-4">
         <FeatureCard
           Icon={MessageCircleQuestion}
-          name="Q&A"
-          description="Chatbot answering questions about any chat"
+          name="AI Q&A"
+          description="Get instant answers to chat questions with AI."
         />
         <FeatureCard
           Icon={ScanText}
-          name="Summaries"
-          description="Know what a particular time span of the chat was about"
+          name="Smart Summaries"
+          description="See what your team discussed—at a glance."
         />
         <FeatureCard
           Icon={NotebookPen}
-          name="Writing Help"
-          description="AI-Assistance in composing or replying to messages"
+          name="Writing Assistant"
+          description="AI helps you compose and reply with clarity."
         />
         <FeatureCard
           Icon={FileChartColumn}
-          name="Facts & Feedback"
-          description="Conversation insights and suggested adjustments"
+          name="Insights & Feedback"
+          description="Unlock conversation trends and actionable tips."
         />
         <FeatureCard
           Icon={MessageSquareReply}
-          name="Responses & Schedules"
-          description="Automatic pre-configured messages for unavailability"
+          name="Auto-Responses"
+          description="Set up smart replies for when you’re away."
         />
         <FeatureCard
           Icon={Contact}
-          name="Third Member"
-          description="Let an AI play the role of an additional chat member"
+          name="AI Chat Member"
+          description="Add an AI as a helpful participant in any chat."
         />
         <FeatureCard
           Icon={ShieldBan}
-          name="Privacy"
-          description="Control over AI-involvement in your conversations"
+          name="Privacy Controls"
+          description="Decide how and when AI is involved in your chats."
         />
       </div>
     </div>

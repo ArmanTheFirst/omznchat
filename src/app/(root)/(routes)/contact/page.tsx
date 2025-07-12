@@ -52,38 +52,35 @@ export default function Contact() {
         <link rel="canonical" href={siteUrl} />
       </Head>
       <div className="min-h-screen bg-gradient-to-b from-white to-blue-50 pt-20 dark:from-gray-900 dark:to-gray-950">
-        <div className="mx-auto max-w-3xl px-4 py-16">
-          <div className="mb-12 text-center">
-            <h1 className="relative mb-4 inline-block text-4xl font-extrabold tracking-tight md:text-5xl">
-              Contact Us
+        <div className="mx-auto max-w-3xl px-3 py-12 sm:px-4 md:py-16">
+          <div className="mb-10 text-center">
+            <h1 className="relative mb-3 inline-block text-3xl font-extrabold tracking-tight sm:text-4xl md:text-5xl">
+              Contact OMZN Chat: AI Chat Platform Support & Inquiries
               <span className="absolute -bottom-2 left-1/2 block h-1 w-2/3 -translate-x-1/2 rounded-full bg-blue-500/60" />
             </h1>
-            <h2 className="mb-2 text-xl font-medium text-gray-600 dark:text-gray-300">
-              Have questions? Feedback? Just want to say hi? We&apos;d{" "}
-              <span className="font-semibold text-blue-600 dark:text-blue-400">
-                love
-              </span>{" "}
-              to hear from you!
-            </h2>
+            <p className="mx-auto max-w-xl text-base text-gray-600 dark:text-gray-300">
+              Reach out to OMZN Chat for support, feedback, or business
+              inquiries. We’re here to help you get the most from your
+              AI-powered chat experience.
+            </p>
           </div>
-          <div className="space-y-8">
-            <section className="rounded-2xl bg-white p-6 shadow-md dark:bg-gray-900">
-              <h3 className="mb-2 text-2xl font-bold text-blue-600 dark:text-blue-400">
+          <div className="space-y-7">
+            <section className="rounded-2xl bg-white p-5 shadow-md dark:bg-gray-900 sm:p-6">
+              <h2 className="mb-1 text-xl font-bold text-blue-600 dark:text-blue-400">
                 Reach Out to Us
-              </h3>
-              <p className="mb-4 text-base text-gray-600 dark:text-gray-300">
-                Whether you have a question, suggestion, or just want to chat,
-                our team is here to help. Drop us a message, and we&apos;ll get
-                back to you as soon as possible!
+              </h2>
+              <p className="mb-3 text-sm text-gray-600 dark:text-gray-300 sm:text-base">
+                Have a question, suggestion, or need support? Our team is here
+                for you. Drop us a message and we’ll get back to you fast.
               </p>
-              <p className="text-base text-gray-600 dark:text-gray-300">
+              <p className="text-sm text-gray-600 dark:text-gray-300 sm:text-base">
                 📩 <span className="font-medium">Email</span>:{" "}
-                <Link
-                  href={`mailto:${process.env.OMZN_MAIL}`}
-                  className="text-blue-600 underline-offset-2 hover:underline dark:text-blue-400"
+                <a
+                  href="mailto:support@omznchat.com"
+                  className="text-blue-600 underline dark:text-blue-400"
                 >
-                  {process.env.OMZN_MAIL}
-                </Link>
+                  support@omznchat.com
+                </a>
                 <br />
                 💬 <span className="font-medium">Live Chat</span>: Available
                 inside OMZN Chat for instant support
@@ -91,14 +88,14 @@ export default function Contact() {
                 🐦 <span className="font-medium">Twitter/X</span>: @OMZNChat
                 <br />
                 📢 <span className="font-medium">Feedback & Suggestions</span>:
-                We love hearing from our users! Share your ideas with us.
+                We love hearing from our users!
               </p>
             </section>
-            <section className="rounded-2xl bg-white p-6 shadow-md dark:bg-gray-900">
-              <h3 className="mb-2 text-2xl font-bold text-blue-600 dark:text-blue-400">
+            <section className="rounded-2xl bg-white p-5 shadow-md dark:bg-gray-900 sm:p-6">
+              <h2 className="mb-1 text-xl font-bold text-blue-600 dark:text-blue-400">
                 Frequently Asked Questions (FAQ)
-              </h3>
-              <p className="mb-2 text-base text-gray-600 dark:text-gray-300">
+              </h2>
+              <p className="mb-2 text-sm text-gray-600 dark:text-gray-300 sm:text-base">
                 Before reaching out, check our FAQ section—your answer might be
                 waiting there!
               </p>
@@ -109,38 +106,37 @@ export default function Contact() {
                 🔍 Visit the FAQ
               </Link>
             </section>
-            <section className="rounded-2xl bg-white p-6 shadow-md dark:bg-gray-900">
-              <h3 className="mb-2 text-2xl font-bold text-blue-600 dark:text-blue-400">
+            <section className="rounded-2xl bg-white p-5 shadow-md dark:bg-gray-900 sm:p-6">
+              <h2 className="mb-1 text-xl font-bold text-blue-600 dark:text-blue-400">
                 Business & Partnerships
-              </h3>
-              <p className="mb-4 text-base text-gray-600 dark:text-gray-300">
-                Interested in working with us? We&apos;re open to
-                collaborations, integrations, and business inquiries. Let&apos;s
-                build something great together!
+              </h2>
+              <p className="mb-3 text-sm text-gray-600 dark:text-gray-300 sm:text-base">
+                Interested in working with us? We’re open to collaborations,
+                integrations, and business inquiries. Let’s build something
+                great together!
               </p>
-              <p className="text-base text-gray-600 dark:text-gray-300">
+              <p className="text-sm text-gray-600 dark:text-gray-300 sm:text-base">
                 📧 <span className="font-medium">Business Inquiries</span>:{" "}
-                <Link
-                  href={`mailto:${process.env.OMZN_MAIL}`}
-                  className="text-blue-600 underline-offset-2 hover:underline dark:text-blue-400"
+                <a
+                  href="mailto:support@omznchat.com"
+                  className="text-blue-600 underline dark:text-blue-400"
                 >
-                  {process.env.OMZN_MAIL}
-                </Link>
+                  support@omznchat.com
+                </a>
               </p>
             </section>
             <section
-              className="rounded-2xl bg-white p-6 shadow-md dark:bg-gray-900"
+              className="rounded-2xl bg-white p-5 shadow-md dark:bg-gray-900 sm:p-6"
               id="contact-form"
             >
-              <h3 className="mb-2 text-2xl font-bold text-blue-600 dark:text-blue-400">
+              <h2 className="mb-1 text-xl font-bold text-blue-600 dark:text-blue-400">
                 Contact Form
-              </h3>
+              </h2>
               <ContactForm />
             </section>
           </div>
-          <p className="mt-12 text-center text-lg text-gray-600 dark:text-gray-300">
-            We&apos;re here to make your chat experience better. Let&apos;s
-            talk! 🚀
+          <p className="mt-10 text-center text-base text-gray-600 dark:text-gray-300">
+            We’re here to make your chat experience better. Let’s talk! 🚀
           </p>
         </div>
         <Footer />

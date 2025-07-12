@@ -6,6 +6,7 @@ html,
 body {
   scroll-behavior: smooth;
   overflow-x: hidden;
+  overscroll-behavior-y: none;
 }
 
 body {
@@ -14,6 +15,10 @@ body {
 
 .cl-internal-h1ijb9 {
   width: revert;
+}
+
+.cl-internal-ve57xi {
+  width: unset;
 }
 
 .cl-internal-phfxlr {

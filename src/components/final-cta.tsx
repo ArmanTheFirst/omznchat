@@ -3,25 +3,26 @@ import { motion } from "framer-motion";
 
 export default function FinalCTA() {
   return (
-    <section className="py-20 sm:py-32">
-      <div className="container mx-auto px-4">
-        <div className="mx-auto max-w-5xl rounded-2xl bg-blue-50 px-6 py-16 text-center dark:bg-blue-900/20 sm:px-16">
+    <section className="px-2 py-14 sm:px-4 md:px-0 md:py-24">
+      <div className="container mx-auto px-2 sm:px-4">
+        <div className="mx-auto max-w-3xl rounded-2xl bg-blue-50 px-4 py-12 text-center dark:bg-blue-900/20 sm:px-10 md:px-16 md:py-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <span className="mb-4 inline-block rounded-full bg-blue-100 px-4 py-1 text-sm font-medium text-blue-800 dark:bg-blue-800/30 dark:text-blue-300">
-              Ready to transform your communication?
+            <span className="mb-4 inline-block rounded-full bg-blue-100 px-4 py-1 text-xs font-semibold text-blue-800 dark:bg-blue-800/30 dark:text-blue-300 sm:text-sm">
+              Ready to experience AI-powered messaging?
             </span>
 
-            <h2 className="mb-6 text-3xl font-bold leading-tight md:text-4xl lg:text-5xl">
-              Stop Missing Out – Experience the Future of Chat Today
+            <h2 className="mb-5 text-2xl font-bold leading-tight sm:text-3xl md:text-4xl lg:text-5xl">
+              Start Your AI Chat Journey – Free Forever
             </h2>
 
-            <p className="mx-auto mb-10 max-w-2xl text-lg text-gray-600 dark:text-gray-300">
-              AI-enhanced conversations, seamless interactions, and next-level
-              engagement—all in one place.
+            <p className="mx-auto mb-8 max-w-xl text-base text-gray-600 dark:text-gray-300 sm:text-lg">
+              Join OMZN Chat for unlimited AI messaging, real-time team chat,
+              and smart features—no paywalls, no nonsense. Get started in
+              seconds and boost your productivity today.
             </p>
 
             <motion.div
@@ -30,7 +31,10 @@ export default function FinalCTA() {
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
             >
-              <ChatButton label="Enter the Chat" className="m-auto" />
+              <ChatButton
+                label="Start Free – No Card Needed"
+                className="m-auto"
+              />
             </motion.div>
           </motion.div>
         </div>
