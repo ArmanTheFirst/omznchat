@@ -128,11 +128,11 @@ export default function Navbar() {
             <span className="text-xl font-bold tracking-tight text-gray-900 dark:text-white md:text-xl">
               OMZN
             </span>
-            {process.env.NODE_ENV === "development" && (
-              <span className="ml-2 rounded border border-yellow-100 bg-yellow-50 px-2 py-0.5 align-middle text-[10px] font-semibold text-yellow-700 opacity-80 dark:border-yellow-800/40 dark:bg-yellow-900/40 dark:text-yellow-200">
-                Dev
+            <span className="hidden md:inline-flex items-center">
+              <span className="ml-3 rounded-full bg-yellow-400 px-2 py-0.5 text-xs font-semibold text-black shadow-sm ring-1 ring-yellow-300 dark:text-gray-900">
+                Dev Mode
               </span>
-            )}
+            </span>
           </Link>
           {/* Desktop Nav Links */}
           <div className="hidden items-center gap-2 md:flex lg:gap-4">
@@ -149,6 +149,11 @@ export default function Navbar() {
           </div>
           {/* Right: CTA or User + Mobile menu button */}
           <div className="flex items-center gap-1 md:gap-2">
+            <span className="inline-flex md:hidden items-center">
+              <span className="ml-2 rounded-full bg-yellow-400 px-2 py-0.5 text-xs font-semibold text-black shadow-sm ring-1 ring-yellow-300 dark:text-gray-900">
+                Dev Mode
+              </span>
+            </span>
             {isLoaded &&
               (isSignedIn ? (
                 <div className="flex items-center gap-2">
@@ -229,11 +234,9 @@ export default function Navbar() {
                     <span className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
                       OMZN
                     </span>
-                    {process.env.NODE_ENV === "development" && (
-                      <span className="ml-1 rounded border border-yellow-100 bg-yellow-50 px-1.5 py-0.5 align-middle text-[9px] font-semibold text-yellow-700 opacity-80 dark:border-yellow-800/40 dark:bg-yellow-900/40 dark:text-yellow-200">
-                        Dev
-                      </span>
-                    )}
+                    <span className="ml-1 rounded border border-yellow-100 bg-yellow-50 px-1.5 py-0.5 align-middle text-[9px] font-semibold text-yellow-700 opacity-80 dark:border-yellow-800/40 dark:bg-yellow-900/40 dark:text-yellow-200">
+                      Dev
+                    </span>
                   </Link>
                   <button
                     onClick={() => setMobileOpen(false)}
