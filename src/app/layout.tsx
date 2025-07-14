@@ -5,6 +5,7 @@ import ConditionalNavbar from "@/components/conditional-navbar";
 import { ThemeProvider } from "next-themes";
 import ClerkThemeWrapper from "./(root)/(routes)/(auth)/_components/ClerkThemeWrapper";
 import { Toaster } from "react-hot-toast";
+import MaintenanceBanner from "@/components/maintenance-banner";
 
 const outfit = Outfit({ subsets: ["latin"] });
 
@@ -83,6 +84,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <ClerkThemeWrapper>
             <ConditionalNavbar />
+            <MaintenanceBanner />
             <main>{children}</main>
             <Toaster />
           </ClerkThemeWrapper>

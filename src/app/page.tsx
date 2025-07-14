@@ -1,7 +1,6 @@
 import Footer from "@/components/footer";
 import Landing from "@/components/landing";
 import Head from "next/head";
-import MaintenanceBanner from "@/components/maintenance-banner";
 
 export default function Home() {
   const siteUrl = "https://omznchat.vercel.app";
@@ -23,7 +22,6 @@ export default function Home() {
       </Head>
       <div>
         <main>
-          <MaintenanceBanner />
           <Landing />
         </main>
         <Footer />
