@@ -63,7 +63,7 @@ export async function POST(req: Request) {
               }),
               {
                 vapidDetails: {
-                  subject: "mailto:arman@flowchat.com",
+                  subject: "mailto:omznchat@protonmail.com",
                   publicKey: env.NEXT_PUBLIC_WEB_PUSH_PUBLIC_KEY,
                   privateKey: env.WEB_PUSH_PRIVATE_KEY,
                 },
