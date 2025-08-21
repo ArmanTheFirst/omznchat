@@ -17,3 +17,5 @@ export function capitalize(str: string) {
   if (!str) return "Unknown";
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
+
+export const isServer = () => typeof window === "undefined";

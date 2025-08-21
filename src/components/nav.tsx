@@ -92,9 +92,11 @@ export default function Navbar() {
   }, [mobileOpen]);
 
   // Navigation links config
-  const navLinks = [{ label: "Home", href: "/" }, ...sectionLinks];
+  let navLinks = [{ label: "Home", href: "/" }, ...sectionLinks];
   if (isSignedIn) {
     navLinks.push({ label: "Chat", href: "/chat" });
+    navLinks.push({ label: "Dashboard", href: "/dashboard" });
+    navLinks = navLinks.filter((link) => link.label !== "How it Works");
   }
 
   function isActive(link: { label: string; href: string; id?: string }) {
