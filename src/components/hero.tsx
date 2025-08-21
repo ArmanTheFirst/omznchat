@@ -1,5 +1,5 @@
 import ChatButton from "./chatbutton";
-import { motion, useAnimation, useInView } from "framer-motion";
+import { motion, useAnimation, useInView, Variants, Transition } from "framer-motion";
 import { useEffect, useRef } from "react";
 import { Sparkles, Users, MessageSquare, Zap } from "lucide-react";
 
@@ -18,14 +18,14 @@ export default function Hero() {
   );
 
   // Variants for staggered text entrance
-  const textVariants = {
+  const textVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: (i = 1) => ({
       opacity: 1,
       y: 0,
       transition: {
         delay: 0.1 * i,
-        type: "spring",
+        type: "spring" as const,
         stiffness: 60,
         damping: 18,
       },
@@ -33,21 +33,26 @@ export default function Hero() {
   };
 
   // Abstract floating icons animation
+  const iconTransition: Transition = {
+    duration: 16,
+    repeat: Infinity,
+    ease: "easeInOut",
+    repeatType: "loop" as const,
+  };
+
   const iconVariants = {
     animate: (delay = 0) => ({
       y: [0, -10, 0, 10, 0],
       x: [0, 10, 0, -10, 0],
       transition: {
-        duration: 16,
-        repeat: Infinity,
-        ease: "easeInOut",
+        ...iconTransition,
         delay,
       },
     }),
   };
 
   return (
-    <section className="relative flex flex-col items-center justify-center bg-gradient-to-b from-white via-blue-50/40 to-blue-100/10 px-4 pb-12 pt-6 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 md:pb-24 md:pt-8 lg:pb-32 lg:pt-16">
+    <section className="relative flex flex-col items-center justify-center md:pb-24 md:pt-8 lg:pb-32 lg:pt-16">
       {/* Abstract floating icons background */}
       <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center overflow-hidden">
         <motion.div
