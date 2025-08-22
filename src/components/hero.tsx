@@ -2,6 +2,7 @@ import ChatButton from "./chatbutton";
 import { motion, useAnimation, useInView, Variants, Transition } from "framer-motion";
 import { useEffect, useRef } from "react";
 import { Sparkles, Users, MessageSquare, Zap } from "lucide-react";
+import { BackgroundBeams } from "./ui/background-beams";
 
 export default function Hero() {
   // For entrance animation on text content
@@ -32,59 +33,10 @@ export default function Hero() {
     }),
   };
 
-  // Abstract floating icons animation
-  const iconTransition: Transition = {
-    duration: 16,
-    repeat: Infinity,
-    ease: "easeInOut",
-    repeatType: "loop" as const,
-  };
-
-  const iconVariants = {
-    animate: (delay = 0) => ({
-      y: [0, -10, 0, 10, 0],
-      x: [0, 10, 0, -10, 0],
-      transition: {
-        ...iconTransition,
-        delay,
-      },
-    }),
-  };
 
   return (
-    <section className="relative flex flex-col items-center justify-center md:pb-24 md:pt-8 lg:pb-32 lg:pt-16">
-      {/* Abstract floating icons background */}
-      <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center overflow-hidden">
-        <motion.div
-          custom={0}
-          animate={iconVariants.animate(0)}
-          className="absolute left-1/4 top-12 hidden h-16 w-16 rounded-full bg-blue-100/60 dark:bg-blue-900/30 md:block"
-        >
-          <Sparkles className="m-4 h-8 w-8 text-blue-400 dark:text-blue-300" />
-        </motion.div>
-        <motion.div
-          custom={1}
-          animate={iconVariants.animate(2)}
-          className="absolute bottom-16 right-1/4 hidden h-14 w-14 rounded-full bg-indigo-100/60 dark:bg-indigo-900/30 md:block"
-        >
-          <Zap className="m-3 h-7 w-7 text-indigo-400 dark:text-indigo-300" />
-        </motion.div>
-        <motion.div
-          custom={2}
-          animate={iconVariants.animate(4)}
-          className="absolute bottom-8 left-8 hidden h-12 w-12 rounded-full bg-sky-100/60 dark:bg-sky-900/30 md:block"
-        >
-          <Users className="m-2 h-6 w-6 text-sky-400 dark:text-sky-300" />
-        </motion.div>
-        <motion.div
-          custom={3}
-          animate={iconVariants.animate(6)}
-          className="absolute right-8 top-8 hidden h-10 w-10 rounded-full bg-purple-100/60 dark:bg-purple-900/30 md:block"
-        >
-          <MessageSquare className="m-1 h-5 w-5 text-purple-400 dark:text-purple-300" />
-        </motion.div>
-      </div>
-      {/* Textual content */}
+    <section className="relative flex flex-col items-center justify-center md:pb-24 md:pt-8 lg:pb-32 lg:pt-16 ">
+      <BackgroundBeams />
       <div
         ref={textRef}
         className="relative z-10 flex max-w-2xl flex-1 flex-col items-center text-center"
@@ -103,7 +55,7 @@ export default function Hero() {
           initial="hidden"
           animate={textControls}
           variants={textVariants}
-          className="mb-3 text-4xl font-extrabold tracking-tight text-light_text_primary dark:text-text-primary sm:text-5xl md:text-6xl"
+          className="mb-3 text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl md:text-6xl"
         >
           Smarter Conversations.{" "}
           <span className="bg-gradient-to-r from-sky-500 via-blue-500 to-indigo-500 bg-clip-text text-transparent">
@@ -115,7 +67,7 @@ export default function Hero() {
           initial="hidden"
           animate={textControls}
           variants={textVariants}
-          className="mb-6 max-w-xl text-base font-medium text-light_text_secondary dark:text-text-secondary sm:text-lg"
+          className="mb-6 max-w-xl text-base font-medium text-muted-foreground sm:text-lg"
         >
           OMZN Chat is the modern AI chat platform for teams, creators, and
           businesses. Enjoy real-time messaging, smart replies, and secure

@@ -9,7 +9,7 @@ export default function Loading() {
         {[0, 1, 2].map((i) => (
           <motion.span
             key={i}
-            className="h-3 w-3 rounded-full bg-light_text_primary dark:bg-text-primary"
+            className="h-3 w-3 rounded-full bg-foreground"
             animate={{
               y: [0, -6, 0],
             }}

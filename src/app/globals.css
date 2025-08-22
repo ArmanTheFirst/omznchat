@@ -2,38 +2,111 @@
 @tailwind components;
 @tailwind utilities;
 
-html,
-body {
-  scroll-behavior: smooth;
-  overflow-x: hidden;
-  overscroll-behavior-y: none;
+@layer base {
+  :root {
+    --radius: 0.5rem;
+
+    /* Light theme colors */
+    --color-background: 0 0% 100%;
+    --color-foreground: 222.2 84% 4.9%;
+    --color-card: 0 0% 100%;
+    --color-card-foreground: 222.2 84% 4.9%;
+    --color-popover: 0 0% 100%;
+    --color-popover-foreground: 222.2 84% 4.9%;
+    --color-muted: 210 40% 96.1%;
+    --color-muted-foreground: 215.4 16.3% 46.9%;
+    --color-accent: 210 40% 96.1%;
+    --color-accent-foreground: 222.2 47.4% 11.2%;
+    --color-border: 214.3 31.8% 91.4%;
+    --color-input: 214.3 31.8% 91.4%;
+    --color-ring: 221.2 83.2% 53.3%;
+    --color-destructive: 0 84.2% 60.2%;
+    --color-destructive-foreground: 210 40% 98%;
+    --color-success: 142.1 76.2% 36.3%;
+    --color-success-foreground: 210 40% 98%;
+    --color-warning: 38 92% 50%;
+    --color-warning-foreground: 210 40% 98%;
+    --color-navbar: 0 0% 100%;
+    --color-navbar-foreground: 222.2 84% 4.9%;
+    --color-footer: 240 10% 98%;
+    --color-footer-foreground: 222.2 84% 4.9%;
+  }
+
+  .dark {
+    --color-background: 222.2 84% 4.9%;
+    --color-foreground: 210 40% 98%;
+    --color-card: 222.2 84% 4.9%;
+    --color-card-foreground: 210 40% 98%;
+    --color-popover: 222.2 84% 4.9%;
+    --color-popover-foreground: 210 40% 98%;
+    --color-muted: 217.2 32.6% 17.5%;
+    --color-muted-foreground: 215 20.2% 65.1%;
+    --color-accent: 217.2 32.6% 17.5%;
+    --color-accent-foreground: 210 40% 98%;
+    --color-border: 217.2 32.6% 17.5%;
+    --color-input: 217.2 32.6% 17.5%;
+    --color-ring: 224.3 76.3% 48%;
+    --color-destructive: 0 62.8% 30.6%;
+    --color-destructive-foreground: 210 40% 98%;
+    --color-success: 142.1 70.6% 45.3%;
+    --color-success-foreground: 210 40% 98%;
+    --color-warning: 38 92% 50%;
+    --color-warning-foreground: 210 40% 98%;
+    --color-navbar: 222.2 84% 4.9%;
+    --color-navbar-foreground: 210 40% 98%;
+    --color-footer: 223 47% 11%;
+    --color-footer-foreground: 210 40% 98%;
+  }
 }
 
-body {
-  @apply bg-light_background font-sans text-light_text_primary dark:bg-background dark:text-text-primary;
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground min-h-screen;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  /* Clerk overrides */
+  .cl-internal-h1ijb9,
+  .cl-internal-ve57xi,
+  .cl-internal-phfxlr,
+  .cl-internal-17dpwu0 {
+    width: revert;
+  }
 }
 
-.cl-internal-h1ijb9 {
-  width: revert;
-}
-
-.cl-internal-ve57xi {
-  width: unset;
-}
-
-.cl-internal-phfxlr {
-  width: unset;
-}
-
-.cl-internal-17dpwu0 {
-  width: revert;
-}
-
-html {
-  scroll-padding-top: 5rem;
-}
-
+/* Stream Chat overrides */
 @import "~stream-chat-react/dist/css/v2/index.css";
+
+.dark .str-chat {
+  --str-chat__primary-color: 96 165 250;
+  --str-chat__primary-color-low-emphasis: 30 58 138;
+  --str-chat__primary-color-high-emphasis: 37 99 235;
+  --str-chat__background-color: 15 23 42;
+  --str-chat__background-low-emphasis: 30 41 59;
+  --str-chat__text-color: 248 250 252;
+  --str-chat__text-low-emphasis: 148 163 184;
+  --str-chat__border-color: 51 65 85;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
 
 .str-chat {
   --str-chat__primary-color: theme(colors.blue.500);
@@ -49,4 +122,160 @@ html {
 
 .str-chat__channel-search.str-chat__channel-search--with-results.str-chat__channel-search--inline {
   height: fit-content;
+}
+
+@layer base {
+  :root {
+    /* Light theme (default) */
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --card-border: 214.3 31.8% 91.4%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --success: 142.1 76.2% 36.3%;
+    --success-foreground: 210 40% 98%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    /* Dark theme overrides */
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --card-border: 217.2 32.6% 17.5%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 50.6%;
+    --destructive-foreground: 210 40% 98%;
+    --success: 142.1 70.6% 45.3%;
+    --success-foreground: 210 40% 98%;
+    --warning: 35.3 91.7% 51.8%;
+    --warning-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+  }
+
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* Clerk overrides */
+/* Clerk UserProfile Component Styling */
+.cl-rootBox {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.cl-cardBox {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-shadow: none !important;
+  border: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Navbar styles */
+.cl-navbar {
+  border-bottom: 1px solid rgb(229, 231, 235) !important; /* gray-200 */
+  margin-bottom: 1rem !important;
+  padding-bottom: 0.75rem !important;
+}
+
+/* Active tab */
+.cl-navbarButton.cl-active {
+  color: rgb(59, 130, 246) !important; /* blue-500 */
+  border-bottom: 2px solid rgb(59, 130, 246) !important; /* blue-500 */
+  margin-bottom: -1px !important;
+}
+
+/* Inactive tabs */
+.cl-navbarButton:not(.cl-active) {
+  color: rgb(75, 85, 99) !important; /* gray-600 */
+  border-bottom: 2px solid transparent !important;
+}
+
+/* Hover state */
+.cl-navbarButton:hover {
+  color: rgb(17, 24, 39) !important; /* gray-900 */
+}
+
+/* Dark mode support */
+.dark .cl-navbar {
+  border-bottom-color: rgb(55, 65, 81) !important; /* gray-700 */
+}
+
+.dark .cl-navbarButton:not(.cl-active) {
+  color: rgb(156, 163, 175) !important; /* gray-400 */
+}
+
+.dark .cl-navbarButton:hover {
+  color: rgb(255, 255, 255) !important; /* white */
+}
+
+/* Form elements */
+.cl-formField {
+  margin-bottom: 1rem !important;
+}
+
+.cl-formFieldInput {
+  width: 100% !important;
+  padding: 0.5rem 0.75rem !important;
+  border-radius: 0.375rem !important; /* rounded-md */
+  border: 1px solid rgb(209, 213, 219) !important; /* gray-300 */
+  background-color: white !important;
+}
+
+.dark .cl-formFieldInput {
+  border-color: rgb(55, 65, 81) !important; /* gray-700 */
+  background-color: rgb(31, 41, 55) !important; /* gray-800 */
+  color: white !important;
+}
+
+/* Buttons */
+.cl-formButtonPrimary {
+  background-color: rgb(59, 130, 246) !important; /* blue-500 */
+  color: white !important;
+  border-radius: 0.375rem !important;
+  padding: 0.5rem 1rem !important;
+  width: 100% !important;
+  transition: background-color 0.2s !important;
+}
+
+.cl-formButtonPrimary:hover {
+  background-color: rgb(37, 99, 235) !important; /* blue-600 */
+}
+
+/* Make sure content is properly spaced */
+.cl-profileSection {
+  padding: 1rem 0 !important;
 }
