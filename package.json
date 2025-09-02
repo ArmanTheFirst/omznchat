@@ -33,6 +33,7 @@
     "react-google-recaptcha": "^3.1.0",
     "react-hook-form": "^7.54.2",
     "react-hot-toast": "^2.5.2",
+    "rough-notation": "^0.5.1",
     "sanitize-html": "^2.16.0",
     "simplex-noise": "^4.0.3",
     "stream-chat": "^9.17.0",

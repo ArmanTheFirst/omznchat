@@ -1,102 +1,221 @@
-import ChatButton from "./chatbutton";
-import { motion, useAnimation, useInView, Variants, Transition } from "framer-motion";
+import { motion, useAnimation, useInView, Variants } from "framer-motion";
 import { useEffect, useRef } from "react";
-import { Sparkles, Users, MessageSquare, Zap } from "lucide-react";
+import { MessageSquare, Code2, Zap, GitBranch, Lock, Globe, Hammer } from "lucide-react";
 import { BackgroundBeams } from "./ui/background-beams";
+import Link from "next/link";
+import { Highlighter } from "./magicui/highlighter";
+import { TextGenerateEffect } from "./ui/text-generate-effect";
 
 export default function Hero() {
-  // For entrance animation on text content
   const textRef = useRef(null);
-  const textInView = useInView(textRef, { once: true, margin: "-100px" });
+  const textInView = useInView(textRef, { once: true, margin: "-50px" });
   const textControls = useAnimation();
-  useEffect(
-    function handleTextInView() {
-      if (textInView) {
-        textControls.start("visible");
-      }
-    },
-    [textInView, textControls],
-  );
+  
+  useEffect(() => {
+    if (textInView) {
+      textControls.start("visible");
+    }
+  }, [textInView, textControls]);
 
-  // Variants for staggered text entrance
   const textVariants: Variants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 20 },
     visible: (i = 1) => ({
       opacity: 1,
       y: 0,
       transition: {
-        delay: 0.1 * i,
-        type: "spring" as const,
-        stiffness: 60,
-        damping: 18,
+        delay: 0.05 * i,
+        type: "spring",
+        stiffness: 80,
+        damping: 15,
       },
     }),
   };
 
+  const features = [
+    { text: "smart ai", icon: <Zap className="h-3.5 w-3.5" /> },
+    { text: "open source", icon: <GitBranch className="h-3.5 w-3.5" /> },
+    { text: "privacy first", icon: <Lock className="h-3.5 w-3.5" /> },
+    { text: "real-time", icon: <Globe className="h-3.5 w-3.5" /> },
+    { text: "built in public", icon: <Hammer className="h-3.5 w-3.5" /> },
+  ];
 
   return (
-    <section className="relative flex flex-col items-center justify-center md:pb-24 md:pt-8 lg:pb-32 lg:pt-16 ">
+    <section className="relative flex pt-4 flex-col items-center justify-center overflow-hidden bg-background">
       <BackgroundBeams />
-      <div
-        ref={textRef}
-        className="relative z-10 flex max-w-2xl flex-1 flex-col items-center text-center"
-      >
-        <motion.span
+      
+      <div ref={textRef} className="relative z-10 w-full max-w-4xl px-4 sm:px-6 text-center">
+        {/* Enhanced badge with subtle glow */}
+        <motion.div
           custom={1}
           initial="hidden"
           animate={textControls}
           variants={textVariants}
-          className="mb-4 mt-8 inline-flex items-center gap-2 rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700 dark:bg-blue-900/30 dark:text-blue-300 md:mt-12"
+          className="group relative mb-8 inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-background/80 dark:bg-card/50 px-4 py-1.5 text-sm text-muted-foreground backdrop-blur-sm transition-all duration-300"
+          style={{
+            boxShadow: '0 0 0 1px rgba(59, 130, 246, 0.3), 0 0 15px rgba(59, 130, 246, 0.2)'
+          }}
         >
-          <Sparkles className="h-4 w-4" /> AI Chat SaaS
-        </motion.span>
+          <motion.div 
+            className="absolute inset-0 -z-10 rounded-full"
+            animate={{
+              boxShadow: [
+                '0 0 0 1px rgba(59, 130, 246, 0.3), 0 0 10px rgba(59, 130, 246, 0.2)',
+                '0 0 0 1px rgba(59, 130, 246, 0.5), 0 0 20px rgba(59, 130, 246, 0.4)',
+                '0 0 0 1px rgba(59, 130, 246, 0.3), 0 0 10px rgba(59, 130, 246, 0.2)'
+              ]
+            }}
+            transition={{
+              duration: 3,
+              ease: 'easeInOut',
+              repeat: Infinity,
+              repeatType: 'reverse',
+            }}
+          />
+          <span className="font-medium">👾 open beta: experiment, break stuff, suggest ideas</span>
+        </motion.div>
+
+        {/* Headline */}
         <motion.h1
           custom={2}
           initial="hidden"
           animate={textControls}
           variants={textVariants}
-          className="mb-3 text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl md:text-6xl"
+          className="mb-6 text-5xl font-medium leading-tight tracking-tight text-foreground md:text-6xl lg:text-7xl"
         >
-          Smarter Conversations.{" "}
-          <span className="bg-gradient-to-r from-sky-500 via-blue-500 to-indigo-500 bg-clip-text text-transparent">
-            AI-Powered. Free Forever.
+          <span className="dark:bg-gradient-to-r dark:from-gray-200 dark:to-gray-400 dark:bg-clip-text dark:text-transparent">
+            chat for the{' '}
+            <span className="relative inline-block">
+              <Highlighter 
+                action="highlight"
+                color="#bfdbfe"
+                darkColor="#3b82f6"
+                animationDuration={2000}
+                iterations={2}
+              >
+                <span className="text-foreground dark:text-gray-200">open web,</span>
+              </Highlighter>
+            </span>
           </span>
+          <motion.div 
+            className="mt-4 text-3xl md:text-4xl font-normal"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.5 }}
+          >
+            <TextGenerateEffect 
+              words="built by all of us."
+              className="text-blue-500 dark:text-blue-400"
+            />
+          </motion.div>
         </motion.h1>
-        <motion.p
+
+        {/* Description */}
+        <motion.div
           custom={3}
           initial="hidden"
           animate={textControls}
           variants={textVariants}
-          className="mb-6 max-w-xl text-base font-medium text-muted-foreground sm:text-lg"
+          className="mx-auto mb-12 max-w-2xl text-muted-foreground text-base md:text-lg leading-relaxed"
         >
-          OMZN Chat is the modern AI chat platform for teams, creators, and
-          businesses. Enjoy real-time messaging, smart replies, and secure
-          collaboration—no paywalls, no nonsense.
-        </motion.p>
-        <motion.ul
+          <p className="mb-2">no more black boxes. no closed doors. omzn is a privacy-first, open chat app you can use, fork, and fix. built by dreamers, rebels, and everyone tired of 2010s messaging.</p>
+          
+        </motion.div>
+
+        {/* CTAs with hover effects */}
+        <motion.div
           custom={4}
           initial="hidden"
           animate={textControls}
           variants={textVariants}
-          className="mb-8 flex flex-wrap items-center justify-center gap-2 md:gap-3"
+          className="mb-16 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 w-full max-w-md mx-auto px-4"
         >
-          <li className="flex items-center gap-2 rounded-full bg-white/80 px-3 py-1 text-xs font-medium text-blue-700 shadow-sm ring-1 ring-blue-100 dark:bg-gray-900/80 dark:text-blue-300 dark:ring-blue-900/30">
-            <MessageSquare className="h-4 w-4" /> Smart AI Chat
-          </li>
-          <li className="flex items-center gap-2 rounded-full bg-white/80 px-3 py-1 text-xs font-medium text-indigo-700 shadow-sm ring-1 ring-indigo-100 dark:bg-gray-900/80 dark:text-indigo-300 dark:ring-indigo-900/30">
-            <Zap className="h-4 w-4" /> Real-Time Messaging
-          </li>
-          <li className="flex items-center gap-2 rounded-full bg-white/80 px-3 py-1 text-xs font-medium text-sky-700 shadow-sm ring-1 ring-sky-100 dark:bg-gray-900/80 dark:text-sky-300 dark:ring-sky-900/30">
-            <Users className="h-4 w-4" /> Built for Teams
-          </li>
-        </motion.ul>
+          <motion.div 
+            className="w-full sm:w-auto"
+            whileHover={{ y: -2 }} 
+            whileTap={{ scale: 0.98 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ 
+              opacity: 1, 
+              y: 0,
+              transition: { 
+                delay: 0.3,
+                type: 'spring',
+                stiffness: 100,
+                damping: 10
+              } 
+            }}
+          >
+            <Link
+              href="/chat"
+              className="group relative flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-blue-600 px-8 py-3.5 text-sm font-medium text-white shadow-lg shadow-indigo-600/20 transition-all duration-300 hover:shadow-xl hover:shadow-indigo-600/30 hover:from-indigo-700 hover:to-blue-700 dark:from-indigo-500 dark:to-blue-500 dark:hover:from-indigo-600 dark:hover:to-blue-600 sm:px-10"
+            >
+              <MessageSquare className="h-4 w-4 transition-transform group-hover:scale-110" />
+              <span className="relative z-10">try it now</span>
+              <span className="absolute inset-0 rounded-full bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            </Link>
+          </motion.div>
+          
+          <motion.div className="w-full sm:w-auto" whileHover={{ y: -2 }} whileTap={{ scale: 0.98 }}>
+            <Link
+              href="/contribute"
+              className="group relative flex w-full items-center justify-center gap-2 rounded-full border border-gray-200 bg-white px-8 py-3.5 text-sm font-medium text-gray-700 shadow-sm transition-all duration-300 hover:shadow-md hover:bg-white/90 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700/90 sm:px-10"
+            >
+              <Code2 className="h-4 w-4 transition-transform group-hover:scale-110" />
+              <span className="relative z-10">contribute</span>
+              <span className="absolute inset-0 rounded-full bg-gray-200/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 dark:bg-gray-700/30" />
+            </Link>
+          </motion.div>
+        </motion.div>
+
+        {/* Animated divider */}
+        <motion.div 
+          className="relative my-8 flex items-center justify-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ 
+            opacity: 1, 
+            y: 0,
+            transition: { 
+              delay: 0.2,
+              duration: 0.5 
+            } 
+          }}
+          viewport={{ once: true }}
+        >
+          <div className="h-px w-16 bg-gradient-to-r from-transparent via-gray-300 to-transparent dark:via-gray-600" />
+          <span className="mx-4 text-sm text-muted-foreground">OUR PILLARS</span>
+          <div className="h-px w-16 bg-gradient-to-r from-transparent via-gray-300 to-transparent dark:via-gray-600" />
+        </motion.div>
+
+        {/* Features with hover effects */}
         <motion.div
           custom={5}
           initial="hidden"
           animate={textControls}
           variants={textVariants}
+          className="flex flex-wrap justify-center gap-2 sm:gap-4 text-sm"
         >
-          <ChatButton label="Start Free – No Card Needed" />
+          {features.map((feature, i) => (
+            <motion.div
+              key={i}
+              whileHover={{ y: -2 }}
+              className="group/feature flex items-center gap-1.5 rounded-full border border-gray-200 bg-white/70 px-4 py-2 text-sm text-gray-700 backdrop-blur-sm transition-all hover:bg-white hover:shadow-md hover:shadow-blue-100 dark:border-gray-700 dark:bg-gray-800/60 dark:text-gray-200 dark:hover:bg-gray-700/80 dark:hover:shadow-blue-900/20"
+            >
+              <motion.span 
+                animate={{ 
+                  scale: [1, 1.2, 1],
+                  transition: { 
+                    duration: 2, 
+                    repeat: Infinity,
+                    repeatType: 'reverse',
+                    ease: 'easeInOut'
+                  } 
+                }}
+              >
+                {feature.icon}
+              </motion.span>
+              <span>{feature.text}</span>
+            </motion.div>
+          ))}
         </motion.div>
       </div>
     </section>

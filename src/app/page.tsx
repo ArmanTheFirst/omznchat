@@ -1,5 +1,6 @@
 import Footer from "@/components/footer";
 import Landing from "@/components/landing";
+import { SiteHeader } from "@/components/site-header";
 import Head from "next/head";
 
 export default function Home() {
@@ -20,8 +21,9 @@ export default function Home() {
         <meta property="og:url" content={siteUrl} />
         <link rel="canonical" href={siteUrl} />
       </Head>
-      <div>
-        <main>
+      <div className="min-h-screen flex flex-col">
+        <SiteHeader />
+        <main className="flex-1 pt-10">
           <Landing />
         </main>
         <Footer />

@@ -1,44 +1,96 @@
-import ChatButton from "./chatbutton";
 import { motion } from "framer-motion";
+import { LampContainer } from "./ui/lamp";
+import { Discord, GitHub, Twitter } from "./icons/icons";
 
 export default function FinalCTA() {
   return (
-    <section className="px-2 py-14 sm:px-4 md:px-0 md:py-24">
-      <div className="container mx-auto px-2 sm:px-4">
-        <div className="mx-auto max-w-3xl rounded-2xl bg-blue-50 px-4 py-12 text-center dark:bg-blue-900/20 sm:px-10 md:px-16 md:py-16">
+    <section id="community" className="relative w-full overflow-hidden sm:px-16">
+          <div className="relative">
+            <LampContainer>
+              <motion.div
+                initial={{ opacity: 0.5, y: 100 }}
+                whileInView={{ opacity: 1, y: -30 }}
+                transition={{
+                  delay: 0.3,
+                  duration: 0.8,
+                  ease: "easeInOut",
+                }}
+                viewport={{ once: true }}
+                className="text-center"
+              >
+                <h2 className="bg-gradient-to-br -mt-24 sm:-mt-0 from-foreground to-foreground/70 bg-clip-text text-4xl font-semibold tracking-tight text-transparent md:text-5xl">
+                  become a part of this project
+                </h2>
+              </motion.div>
+            </LampContainer>
+          </div>
+          <div className="relative z-10 -mt-72 px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
             viewport={{ once: true }}
+            className="max-w-2xl mx-auto text-center"
           >
-            <span className="mb-4 inline-block rounded-full bg-blue-100 px-4 py-1 text-xs font-semibold text-blue-800 dark:bg-blue-800/30 dark:text-blue-300 sm:text-sm">
-              Ready to experience AI-powered messaging?
-            </span>
-
-            <h2 className="mb-5 text-2xl font-bold leading-tight sm:text-3xl md:text-4xl lg:text-5xl">
-              Start Your AI Chat Journey – Free Forever
-            </h2>
-
-            <p className="mx-auto mb-8 max-w-xl text-base text-gray-600 dark:text-gray-300 sm:text-lg">
-              Join OMZN Chat for unlimited AI messaging, real-time team chat,
-              and smart features—no paywalls, no nonsense. Get started in
-              seconds and boost your productivity today.
+            <p className="text-muted-foreground font-medium text-lg mb-8">
+              hang out with contributors, share ideas, or just watch omzn grow in the open. everyone's invited.
             </p>
-
-            <motion.div
+            
+            <div className="flex flex-wrap justify-center gap-4">
+              <motion.a
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                href="https://discord.gg/omzn"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-6 py-3 rounded-full bg-[#5865F2] text-white hover:bg-[#4752c4] transition-colors text-sm font-medium"
+              >
+                <Discord className="h-4 w-4 text-inherit" />
+                Join Discord
+              </motion.a>
+              
+              <motion.a
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                href="https://twitter.com/omznchat"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-6 py-3 rounded-full bg-foreground text-background hover:bg-foreground/90 transition-colors text-sm font-medium"
+              >
+                <Twitter className="h-4 w-4 text-inherit" />
+                Follow on X
+              </motion.a>
+              
+              <motion.a
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                href="https://github.com/omznchat/omzn"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-6 py-3 rounded-full border border-border hover:bg-accent/50 transition-colors text-sm font-medium"
+              >
+                <GitHub className="h-4 w-4 text-inherit" />
+                Contribute
+              </motion.a>
+            </div>
+            
+            <motion.div 
+              className="mt-8 text-base text-muted-foreground"
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, duration: 0.4 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
             >
-              <ChatButton
-                label="Start Free – No Card Needed"
-                className="m-auto"
-              />
+              <a 
+                href="#" 
+                className="hover:text-foreground transition-colors border-b border-dotted border-muted-foreground/30 hover:border-foreground"
+              >
+                see our roadmap →
+              </a>
             </motion.div>
           </motion.div>
         </div>
-      </div>
-    </section>
+       
+        </section>
   );
 }

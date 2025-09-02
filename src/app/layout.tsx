@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import "./globals.css";
-import ConditionalNavbar from "@/components/conditional-navbar";
 import { ThemeProvider } from "next-themes";
 import ClerkThemeWrapper from "./(root)/(routes)/(auth)/_components/ClerkThemeWrapper";
 import { Toaster } from "react-hot-toast";
@@ -79,11 +78,10 @@ export default function RootLayout({
           content="COOATcOSNOycv3-CKEIw7_1sYeNRSUU7pDku3Nfyj94"
         />
       </head>
-      <body className={outfit.className}>
+      <body className={`${outfit.className} overflow-x-hidden`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <ClerkThemeWrapper>
-            <ConditionalNavbar />
-            <main>{children}</main>
+            <main className="w-screen overflow-x-hidden">{children}</main>
             <Toaster />
           </ClerkThemeWrapper>
         </ThemeProvider>
