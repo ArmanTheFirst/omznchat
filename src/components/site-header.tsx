@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useUser } from "@clerk/nextjs"
 import { motion } from 'framer-motion'
+import ThemeToggle from "@/app/(root)/(routes)/dashboard/_components/ThemeToggle"
 
 export function SiteHeader() {
   const pathname = usePathname()
@@ -66,8 +67,8 @@ export function SiteHeader() {
 
         </nav>
 
-        {/* CTA Button */}
-        <div className="flex items-center">
+        <div className="flex items-center gap-3">
+          {/* CTA Button */}
           <Link
             href="/chat"
             className="group relative flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-700 to-blue-600 px-4 py-2 text-sm font-medium text-white shadow-lg shadow-blue-600/20 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/40 hover:from-blue-800 hover:to-blue-700 dark:from-blue-600 dark:to-blue-500 dark:hover:from-blue-700 dark:hover:to-blue-600"
@@ -75,6 +76,13 @@ export function SiteHeader() {
             <span className="relative z-10">{isSignedIn ? `hey ${user?.firstName?.toLowerCase() || 'there'} 👋` : 'get started'}</span>
             <span className="absolute inset-0 rounded-full bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           </Link>
+          
+          {/* Theme Toggle - Subtle version */}
+          <ThemeToggle 
+            variant="ghost"
+            className="h-8 w-8"
+            iconSize={16}
+          />
         </div>
       </div>
     </header>
