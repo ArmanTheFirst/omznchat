@@ -40,15 +40,15 @@ export function Highlighter({
   multiline = false,
   isView = true,
 }: HighlighterProps) {
+  // Use theme-appropriate color
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
-  // Ensure we're in the browser and component is mounted
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  // Use darkColor if in dark mode and darkColor is provided
+  // Determine the effective color based on the current theme
   const effectiveColor = mounted && theme === 'dark' ? (darkColor || color) : color;
 
   const elementRef = useRef<HTMLSpanElement>(null);
@@ -66,6 +66,7 @@ export function Highlighter({
     const element = elementRef.current;
     if (!element) return;
 
+    // Create annotation with the current effective color
     const annotation = annotate(element, {
       type: action,
       color: effectiveColor,
@@ -76,9 +77,33 @@ export function Highlighter({
       animationDuration,
     });
 
+    // Show the annotation
     annotation.show();
 
+    // Handle theme changes by recreating the annotation
+    const handleThemeChange = () => {
+      const newColor = theme === 'dark' ? (darkColor || color) : color;
+      if (annotation) {
+        annotation.remove();
+        const newAnnotation = annotate(element, {
+          type: action,
+          color: newColor,
+          strokeWidth,
+          padding,
+          multiline,
+          iterations: iterations === Infinity ? 0 : iterations,
+          animationDuration,
+        });
+        newAnnotation.show();
+      }
+    };
+
+    // Add theme change listener
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    mediaQuery.addEventListener('change', handleThemeChange);
+
     return () => {
+      mediaQuery.removeEventListener('change', handleThemeChange);
       if (element) {
         annotate(element, { type: action }).remove();
       }
@@ -86,16 +111,26 @@ export function Highlighter({
   }, [
     shouldShow,
     action,
-    color,
+    effectiveColor,
     strokeWidth,
     animationDuration,
     iterations,
     padding,
     multiline,
+    theme,
+    darkColor,
+    color,
   ]);
 
   return (
-    <span ref={elementRef} className="relative inline-block bg-transparent">
+    <span 
+      ref={elementRef} 
+      className="relative inline-block bg-transparent"
+      style={{
+        '--highlight-color': color,
+        '--highlight-dark-color': darkColor || color,
+      } as React.CSSProperties}
+    >
       {children}
     </span>
   );

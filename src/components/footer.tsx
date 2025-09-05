@@ -9,7 +9,7 @@ export default function Footer() {
     <footer className="border-t border-border bg-background pt-6 pb-12 relative z-10">
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="flex items-center gap-3 mb-4 md:mb-0">
+          <Link href="/" className="flex items-center gap-3 mb-4 md:mb-0">
             <Image 
               src={logo} 
               alt="OMZN" 
@@ -18,7 +18,7 @@ export default function Footer() {
               className="h-8 w-8"
             />
             <span className="text-xl font-semibold text-foreground">omzn</span>
-          </div>
+          </Link>
           <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground">
             <Link href="/privacy" className="hover:text-foreground transition-colors">privacy</Link>
             <Link href="/terms" className="hover:text-foreground transition-colors">terms</Link>

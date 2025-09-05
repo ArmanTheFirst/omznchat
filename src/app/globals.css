@@ -2,6 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Highlighter component styles */
+.rough-annotation > path {
+  transition: fill 0.2s ease-in-out, stroke 0.2s ease-in-out;
+}
+
+/* Light theme by default */
+.rough-annotation > path[fill*="#"] {
+  fill: var(--highlight-color, #bfdbfe) !important;
+}
+
+.rough-annotation > path[stroke*="#"] {
+  stroke: var(--highlight-color, #bfdbfe) !important;
+}
+
+/* Dark theme override */
+.dark .rough-annotation > path[fill*="#"] {
+  fill: var(--highlight-dark-color, #3b82f6) !important;
+}
+
+.dark .rough-annotation > path[stroke*="#"] {
+  stroke: var(--highlight-dark-color, #3b82f6) !important;
+}
+
 /* Prevent horizontal overflow */
 html, body {
   max-width: 100vw;
