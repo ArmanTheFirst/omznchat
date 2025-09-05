@@ -79,7 +79,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`${outfit.className} overflow-x-hidden`}>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <ClerkThemeWrapper>
             <main className="w-screen overflow-x-hidden">{children}</main>
             <Toaster />
