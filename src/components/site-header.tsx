@@ -79,7 +79,7 @@ export function SiteHeader() {
           
           {/* Theme Toggle - Subtle version */}
           <ThemeToggle 
-            variant="ghost"
+            variant="outline"
             className="h-8 w-8"
             iconSize={16}
           />

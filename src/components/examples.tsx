@@ -40,8 +40,8 @@ export default function Examples() {
         </div>
         <TracingBeam className={cn(
           "relative z-10",
-          "[--dot-bg-light:radial-gradient(#d4d4d4_1px,transparent_1px)]",
-          "[--dot-bg-dark:radial-gradient(#404040_1px,transparent_1px)]",
+          "[--dot-bg-light:radial-gradient(hsl(var(--muted))_1px,transparent_1px)]",
+          "[--dot-bg-dark:radial-gradient(hsl(var(--muted-foreground)/0.3)_1px,transparent_1px)]",
           "bg-[length:20px_20px] bg-[position:0_0] [background-image:var(--dot-bg-light)] dark:[background-image:var(--dot-bg-dark)]"
         )}>
           <div className="space-y-12">
@@ -74,7 +74,7 @@ export default function Examples() {
                     <div className={`hidden sm:flex ${isEven ? 'justify-start pl-[15%]' : 'justify-end pr-[15%]'} py-4`}>
                       <div className={`hover:opacity-70 transition-opacity duration-300 ${isEven ? 'scale-x-[-1]' : ''}`}>
                         <ConnectingArrow
-                          color="#3b82f6"
+                          color="hsl(var(--primary))"
                           width={100}
                           height={100}
                         />

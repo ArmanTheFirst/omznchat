@@ -1,107 +1,62 @@
-import Footer from "@/components/footer";
 import Link from "next/link";
+import { StaticPageLayout } from "@/components/static-page-layout";
 
 export default function TermsOfUse() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-blue-50 pt-20 dark:from-gray-900 dark:to-gray-950">
-      <div className="mx-auto max-w-3xl px-4 py-16">
-        <div className="mb-12 text-center">
-          <h1 className="relative mb-4 inline-block text-4xl font-extrabold tracking-tight md:text-5xl">
-            Terms of Use
-            <span className="absolute -bottom-2 left-1/2 block h-1 w-2/3 -translate-x-1/2 rounded-full bg-blue-500/60" />
+    <StaticPageLayout
+      title="Terms of Service"
+      description="By using OMZN, you agree to be awesome and follow these simple terms."
+    >
+      <div className="mx-auto max-w-3xl px-6 py-16 sm:px-8">
+        <div className="mb-16 text-center">
+          <h1 className="mb-6 text-4xl font-bold tracking-tight text-foreground md:text-5xl">
+            terms of service
           </h1>
-          <h2 className="mb-2 text-xl font-medium text-gray-600 dark:text-gray-300">
-            Last updated: 10th Feb 2025
-          </h2>
+          <p className="mx-auto max-w-2xl text-lg leading-relaxed text-muted-foreground">
+            by using omzn, you agree to be awesome:
+          </p>
         </div>
+        
         <div className="space-y-8">
-          <section className="rounded-2xl bg-white p-6 shadow-md dark:bg-gray-900">
-            <h3 className="mb-2 text-2xl font-bold text-blue-600 dark:text-blue-400">
-              1. Introduction
-            </h3>
-            <p className="text-base text-gray-600 dark:text-gray-300">
-              By using OMZN Chat, you agree to these Terms of Use. If you do not
-              agree, please do not use our platform.
-            </p>
-          </section>
-          <section className="rounded-2xl bg-white p-6 shadow-md dark:bg-gray-900">
-            <h3 className="mb-2 text-2xl font-bold text-blue-600 dark:text-blue-400">
-              2. User Responsibilities
-            </h3>
-            <ul className="list-disc space-y-2 px-5 text-base text-gray-600 dark:text-gray-300">
-              <li>You must be at least 13 years old to use OMZN Chat.</li>
-              <li>
-                You are responsible for any content you share on the platform.
+          <div className="space-y-6">
+            <ul className="space-y-4 text-lg leading-relaxed text-foreground">
+              <li className="flex items-start">
+                <span className="mr-2">•</span>
+                <span>don't spam or harass—treat others like real humans</span>
               </li>
-              <li>
-                Do not use OMZN Chat for illegal, abusive, or harmful
-                activities.
+              <li className="flex items-start">
+                <span className="mr-2">•</span>
+                <span>don't break the law (no illegal content or usage)</span>
+              </li>
+              <li className="flex items-start">
+                <span className="mr-2">•</span>
+                <span>don't try to hack or exploit the service</span>
               </li>
             </ul>
-          </section>
-          <section className="rounded-2xl bg-white p-6 shadow-md dark:bg-gray-900">
-            <h3 className="mb-2 text-2xl font-bold text-blue-600 dark:text-blue-400">
-              3. Acceptable Use
-            </h3>
-            <ul className="list-disc space-y-2 px-5 text-base text-gray-600 dark:text-gray-300">
-              <li>No harassment, hate speech, or spam.</li>
-              <li>No impersonation or misleading information.</li>
-              <li>No attempting to hack or disrupt the service.</li>
-            </ul>
-          </section>
-          <section className="rounded-2xl bg-white p-6 shadow-md dark:bg-gray-900">
-            <h3 className="mb-2 text-2xl font-bold text-blue-600 dark:text-blue-400">
-              4. Intellectual Property
-            </h3>
-            <p className="text-base text-gray-600 dark:text-gray-300">
-              All content on OMZN Chat (excluding user messages) is owned by us.
-              You may not copy or distribute our materials without permission.
+            
+            <p className="text-lg leading-relaxed text-foreground">
+              we can block/suspend accounts for abuse or security reasons. features may change (it's open source and evolving!).
             </p>
-          </section>
-          <section className="rounded-2xl bg-white p-6 shadow-md dark:bg-gray-900">
-            <h3 className="mb-2 text-2xl font-bold text-blue-600 dark:text-blue-400">
-              5. Termination of Service
-            </h3>
-            <p className="text-base text-gray-600 dark:text-gray-300">
-              We reserve the right to suspend or terminate accounts that violate
-              these terms.
+            
+            <p className="text-lg leading-relaxed text-foreground">
+              your data belongs to you—delete it anytime.
             </p>
-          </section>
-          <section className="rounded-2xl bg-white p-6 shadow-md dark:bg-gray-900">
-            <h3 className="mb-2 text-2xl font-bold text-blue-600 dark:text-blue-400">
-              6. Limitation of Liability
-            </h3>
-            <p className="text-base text-gray-600 dark:text-gray-300">
-              OMZN Chat is provided &quot;as is.&quot; We are not responsible
-              for damages resulting from the use of our platform.
-            </p>
-          </section>
-          <section className="rounded-2xl bg-white p-6 shadow-md dark:bg-gray-900">
-            <h3 className="mb-2 text-2xl font-bold text-blue-600 dark:text-blue-400">
-              7. Changes to These Terms
-            </h3>
-            <p className="text-base text-gray-600 dark:text-gray-300">
-              We may update these terms periodically. Continued use of OMZN Chat
-              means you accept the changes.
-            </p>
-          </section>
-          <section className="rounded-2xl bg-white p-6 shadow-md dark:bg-gray-900">
-            <p className="text-base text-gray-600 dark:text-gray-300">
-              📩 Questions? Contact us at{" "}
-              <Link
-                href={`mailto:${process.env.OMZN_MAIL}`}
-                className="text-blue-600 underline-offset-2 hover:underline dark:text-blue-400"
+            
+            <p className="text-lg leading-relaxed text-foreground">
+              for detailed rules, see our{' '}
+              <Link 
+                href="https://github.com/omzn/omzn" 
+                className="text-primary underline-offset-4 hover:underline"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                {process.env.OMZN_MAIL}
-              </Link>
+                github
+              </Link>{' '}
+              or ask in our community. using omzn = you accept these terms.
             </p>
-          </section>
+          </div>
         </div>
-        <p className="mt-12 text-center text-lg text-gray-600 dark:text-gray-300">
-          Thank you for using OMZN Chat and respecting our terms.
-        </p>
       </div>
-      <Footer />
-    </div>
+    </StaticPageLayout>
   );
 }

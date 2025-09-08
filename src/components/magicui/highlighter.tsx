@@ -60,6 +60,8 @@ export function Highlighter({
   // If isView is false, always show. If isView is true, wait for inView
   const shouldShow = !isView || isInView;
 
+  const annotationRef = useRef<any>(null);
+
   useEffect(() => {
     if (!shouldShow) return;
 
@@ -77,35 +79,16 @@ export function Highlighter({
       animationDuration,
     });
 
+    // Store reference to annotation
+    annotationRef.current = annotation;
+
     // Show the annotation
     annotation.show();
 
-    // Handle theme changes by recreating the annotation
-    const handleThemeChange = () => {
-      const newColor = theme === 'dark' ? (darkColor || color) : color;
-      if (annotation) {
-        annotation.remove();
-        const newAnnotation = annotate(element, {
-          type: action,
-          color: newColor,
-          strokeWidth,
-          padding,
-          multiline,
-          iterations: iterations === Infinity ? 0 : iterations,
-          animationDuration,
-        });
-        newAnnotation.show();
-      }
-    };
-
-    // Add theme change listener
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    mediaQuery.addEventListener('change', handleThemeChange);
-
     return () => {
-      mediaQuery.removeEventListener('change', handleThemeChange);
       if (element) {
-        annotate(element, { type: action }).remove();
+        annotation.remove();
+        annotationRef.current = null;
       }
     };
   }, [
@@ -117,10 +100,26 @@ export function Highlighter({
     iterations,
     padding,
     multiline,
-    theme,
-    darkColor,
-    color,
   ]);
+
+  // Handle theme changes by updating the SVG color directly
+  useEffect(() => {
+    if (!shouldShow || !mounted || !annotationRef.current) return;
+
+    const newColor = theme === 'dark' ? (darkColor || color) : color;
+    
+    // Find and update the SVG stroke color directly
+    const element = elementRef.current;
+    if (element) {
+      const svgElements = element.querySelectorAll('svg');
+      svgElements.forEach(svg => {
+        const paths = svg.querySelectorAll('path, line, polyline, polygon, circle, ellipse, rect');
+        paths.forEach(path => {
+          path.setAttribute('stroke', newColor);
+        });
+      });
+    }
+  }, [theme, mounted, shouldShow, darkColor, color]);
 
   return (
     <span 
@@ -135,3 +134,5 @@ export function Highlighter({
     </span>
   );
 }
+
+

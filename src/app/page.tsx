@@ -21,7 +21,7 @@ export default function Home() {
         <meta property="og:url" content={siteUrl} />
         <link rel="canonical" href={siteUrl} />
       </Head>
-      <div className="min-h-screen flex flex-col">
+      <div className="min-h-screen flex flex-col bg-background">
         <SiteHeader />
         <main className="flex-1 pt-10">
           <Landing />

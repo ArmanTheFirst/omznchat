@@ -53,7 +53,7 @@ const FeatureCard = ({
         <div className="border-0.75 relative flex h-full flex-col justify-between gap-4 overflow-hidden rounded-xl p-4 md:p-6 dark:shadow-[0px_0px_27px_0px_#2D2D2D]">
           <div className="relative flex flex-1 flex-col justify-between gap-3">
             <div className="flex items-center justify-between">
-              <div className="rounded-lg border border-gray-200 p-1.5 sm:p-2 dark:border-gray-700">
+              <div className="rounded-lg border border-border p-1.5 sm:p-2">
                 {icon}
               </div>
               {isWishlist && (
@@ -61,7 +61,7 @@ const FeatureCard = ({
                   on wishlist
                 </span>
               )}
-            </div>
+            </div> 
             <div className="space-y-2 sm:space-y-2">
               <h3 className="text-lg font-semibold text-foreground md:text-xl">
                 {title}
@@ -89,25 +89,25 @@ const currentFeatures: FeatureItem[] = [
   {
     title: "real-time chat that just works",
     description: "snappy messages—what you type, they see. nothing lost in space.",
-    icon: <MessageSquare className="h-4 w-4 text-blue-600 dark:text-blue-400" />,
+    icon: <MessageSquare className="h-4 w-4 text-primary" />,
     area: "[grid-area:1/1/2/3] md:[grid-area:1/1/2/7] lg:[grid-area:1/1/2/5] xl:[grid-area:1/1/2/5]"
   },
   {
     title: "simple, safe sign-in",
     description: "sign in with your favorite account—no password headaches, no drama.",
-    icon: <Lock className="h-4 w-4 text-blue-600 dark:text-blue-400" />,
+    icon: <User className="h-4 w-4 text-primary" />,
     area: "[grid-area:1/3/2/5] md:[grid-area:1/7/2/13] lg:[grid-area:2/1/3/5] xl:[grid-area:2/1/3/5]"
   },
   {
     title: "notifications—if you want them",
     description: "turn on push in your browser (or pwa) and get pinged for new messages. no pressure, zero spam.",
-    icon: <Bell className="h-4 w-4 text-blue-600 dark:text-blue-400" />,
+    icon: <Users className="h-4 w-4 text-primary" />,
     area: "[grid-area:2/1/3/5] md:[grid-area:2/1/3/7] lg:[grid-area:1/5/3/8] xl:[grid-area:1/5/3/8]"
   },
   {
     title: "dashboard for your chats",
     description: "see all chats and settings on one clean dashboard route. control in one place.",
-    icon: <Code2 className="h-4 w-4 text-blue-600 dark:text-blue-400" />,
+    icon: <Code2 className="h-4 w-4 text-primary" />,
     area: "[grid-area:3/1/4/3] md:[grid-area:2/7/3/13] lg:[grid-area:1/8/2/13] xl:[grid-area:1/8/2/13]"
   }
 ];
@@ -116,49 +116,49 @@ const wishlistFeatures: FeatureItem[] = [
   {
     title: "modern, beautiful chat ui",
     description: "more color, more polish, more omzn. coming soon: a chat page that finally feels alive.",
-    icon: <Palette className="h-4 w-4 text-blue-600 dark:text-blue-400" />,
+    icon: <Palette className="h-4 w-4 text-primary" />,
     area: "[grid-area:3/3/4/5] md:[grid-area:3/1/4/13] lg:[grid-area:2/8/3/13] xl:[grid-area:2/8/3/13]",
     isWishlist: true,
   },
   {
     title: "pin anything, find anything",
     description: "star messages, pin media, and search your entire chat history—because lost info is so last decade.",
-    icon: <Pin className="h-4 w-4 text-blue-600 dark:text-blue-400" />,
+    icon: <Zap className="h-4 w-4 text-primary" />,
     area: "[grid-area:4/1/5/3] md:[grid-area:4/1/5/7] lg:[grid-area:3/1/4/5] xl:[grid-area:3/1/4/5]",
     isWishlist: true,
   },
   {
     title: "ai for chat gossip",
     description: "get instant summaries and highlights of what you missed, or ask ai for the inside scoop on your own chats.",
-    icon: <Sparkles className="h-4 w-4 text-blue-600 dark:text-blue-400" />,
+    icon: <Sparkles className="h-4 w-4 text-primary" />,
     area: "[grid-area:4/3/5/5] md:[grid-area:4/7/5/13] lg:[grid-area:3/5/4/9] xl:[grid-area:3/5/4/9]",
     isWishlist: true,
   },
   {
     title: "ai writing buddy",
     description: "stuck on what to say? ai drafts replies, rewrites your rambles, or helps with translations right alongside your chat.",
-    icon: <PenLine className="h-4 w-4 text-blue-600 dark:text-blue-400" />,
+    icon: <PenLine className="h-4 w-4 text-primary" />,
     area: "[grid-area:5/1/6/5] md:[grid-area:5/1/6/13] lg:[grid-area:3/9/4/13] xl:[grid-area:3/9/4/13]",
     isWishlist: true,
   },
   {
     title: "remind me, but nicer",
     description: "auto-reminders for birthdays, deadlines, or just when someone needs a nudge—zero nagging, promise.",
-    icon: <Clock className="h-4 w-4 text-blue-600 dark:text-blue-400" />,
+    icon: <Clock className="h-4 w-4 text-primary" />,
     area: "[grid-area:6/1/7/3] md:[grid-area:6/1/7/7] lg:[grid-area:4/1/5/7] xl:[grid-area:4/1/5/7]",
     isWishlist: true,
   },
   {
     title: "ai auto-mode",
     description: "set up smart replies, handling chats while you sleep—or have ai organize meetings and nudge friends.",
-    icon: <Moon className="h-4 w-4 text-blue-600 dark:text-blue-400" />,
+    icon: <Moon className="h-4 w-4 text-primary" />,
     area: "[grid-area:6/3/7/5] md:[grid-area:6/7/7/13] lg:[grid-area:4/7/5/10] xl:[grid-area:4/7/5/10]",
     isWishlist: true,
   },
   {
     title: "voice & call support",
     description: "send voice notes, start a call, or get summaries of what was said—all in chat, no plugins needed.",
-    icon: <PhoneCall className="h-4 w-4 text-blue-600 dark:text-blue-400" />,
+    icon: <PhoneCall className="h-4 w-4 text-primary" />,
     area: "[grid-area:7/1/8/5] md:[grid-area:7/1/8/13] lg:[grid-area:4/10/5/13] xl:[grid-area:4/10/5/13]",
     isWishlist: true,
   }

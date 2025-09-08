@@ -50,18 +50,18 @@ export default function Hero() {
           initial="hidden"
           animate={textControls}
           variants={textVariants}
-          className="group relative mb-8 inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-background/80 dark:bg-card/50 px-4 py-1.5 text-sm text-muted-foreground backdrop-blur-sm transition-all duration-300"
+          className="group relative mb-8 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-background/80 dark:bg-card/50 px-4 py-1.5 text-sm text-muted-foreground backdrop-blur-sm transition-all duration-300"
           style={{
-            boxShadow: '0 0 0 1px rgba(59, 130, 246, 0.3), 0 0 15px rgba(59, 130, 246, 0.2)'
+            boxShadow: '0 0 0 1px hsl(var(--primary) / 0.3), 0 0 15px hsl(var(--primary) / 0.2)'
           }}
         >
           <motion.div 
             className="absolute inset-0 -z-10 rounded-full"
             animate={{
               boxShadow: [
-                '0 0 0 1px rgba(59, 130, 246, 0.3), 0 0 10px rgba(59, 130, 246, 0.2)',
-                '0 0 0 1px rgba(59, 130, 246, 0.5), 0 0 20px rgba(59, 130, 246, 0.4)',
-                '0 0 0 1px rgba(59, 130, 246, 0.3), 0 0 10px rgba(59, 130, 246, 0.2)'
+                '0 0 0 1px hsl(var(--primary) / 0.3), 0 0 10px hsl(var(--primary) / 0.2)',
+                '0 0 0 1px hsl(var(--primary) / 0.5), 0 0 20px hsl(var(--primary) / 0.4)',
+                '0 0 0 1px hsl(var(--primary) / 0.3), 0 0 10px hsl(var(--primary) / 0.2)'
               ]
             }}
             transition={{
@@ -104,7 +104,7 @@ export default function Hero() {
           >
             <TextGenerateEffect 
               words="built by all of us."
-              className="text-blue-500 dark:text-blue-400"
+              className="text-primary dark:text-primary"
             />
           </motion.div>
         </motion.h1>
@@ -181,9 +181,9 @@ export default function Hero() {
           }}
           viewport={{ once: true }}
         >
-          <div className="h-px w-16 bg-gradient-to-r from-transparent via-gray-300 to-transparent dark:via-gray-600" />
+          <div className="h-px w-16 bg-gradient-to-r from-transparent via-border to-transparent dark:via-border" />
           <span className="mx-4 text-sm text-muted-foreground">OUR PILLARS</span>
-          <div className="h-px w-16 bg-gradient-to-r from-transparent via-gray-300 to-transparent dark:via-gray-600" />
+          <div className="h-px w-16 bg-gradient-to-r from-transparent via-border to-transparent dark:via-border" />
         </motion.div>
 
         {/* Features with hover effects */}
@@ -198,7 +198,7 @@ export default function Hero() {
             <motion.div
               key={i}
               whileHover={{ y: -2 }}
-              className="group/feature flex items-center gap-1.5 rounded-full border border-gray-200 bg-white/70 px-4 py-2 text-sm text-gray-700 backdrop-blur-sm transition-all hover:bg-white hover:shadow-md hover:shadow-blue-100 dark:border-gray-700 dark:bg-gray-800/60 dark:text-gray-200 dark:hover:bg-gray-700/80 dark:hover:shadow-blue-900/20"
+              className="group/feature flex items-center gap-1.5 rounded-full border border-border bg-background/70 px-4 py-2 text-sm text-foreground backdrop-blur-sm transition-all hover:bg-background hover:shadow-md hover:shadow-primary/20 dark:border-border dark:bg-card/60 dark:text-foreground dark:hover:bg-card/80 dark:hover:shadow-primary/20"
             >
               <motion.span 
                 animate={{ 

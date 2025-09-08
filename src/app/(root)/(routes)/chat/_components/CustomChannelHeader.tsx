@@ -16,7 +16,7 @@ export default function CustomChannelHeader(props: ChannelHeaderProps) {
   } = useChannelStateContext();
 
   return (
-    <div className="flex items-center justify-between gap-3 bg-white dark:bg-[#17191c]">
+    <div className="flex items-center justify-between gap-3 bg-white dark:bg-[#020817]">
       <ChannelHeader {...props} />
       {user && channelId && (
         <ChannelNotificationToggleButton user={user} channelId={channelId} />

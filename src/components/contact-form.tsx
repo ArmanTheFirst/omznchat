@@ -103,7 +103,7 @@ export default function ContactForm() {
       toast.error(
         error instanceof Error
           ? error.message
-          : "Failed to send your message. Please try again.",
+          : "failed to send your message. please try again.",
         {
           duration: 5000,
           position: "bottom-center",
@@ -128,25 +128,25 @@ export default function ContactForm() {
             htmlFor="name"
             className="text-sm font-medium text-gray-700 dark:text-gray-200"
           >
-            Full Name
+            full Name
           </label>
           <input
             type="text"
-            placeholder="John Doe"
+            placeholder="john doe"
             className="w-full rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-gray-900 placeholder-gray-400 transition-colors focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 dark:border-gray-700 dark:bg-gray-800 dark:text-white dark:placeholder-gray-500"
             {...register("name", {
-              required: "Name is required",
+              required: "name is required",
               minLength: {
                 value: 2,
-                message: "Name must be at least 2 characters",
+                message: "name must be at least 2 characters",
               },
               maxLength: {
                 value: 100,
-                message: "Name must be less than 100 characters",
+                message: "name must be less than 100 characters",
               },
               pattern: {
                 value: /^[a-zA-Z0-9\s\-']+$/,
-                message: "Name contains invalid characters",
+                message: "name contains invalid characters",
               },
             })}
             disabled={isLoading}
@@ -161,25 +161,25 @@ export default function ContactForm() {
             htmlFor="email"
             className="text-sm font-medium text-gray-700 dark:text-gray-200"
           >
-            Email Address
+            email Address
           </label>
           <input
             type="email"
             placeholder="john@example.com"
             className="w-full rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-gray-900 placeholder-gray-400 transition-colors focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 dark:border-gray-700 dark:bg-gray-800 dark:text-white dark:placeholder-gray-500"
             {...register("email", {
-              required: "Email is required",
+              required: "email is required",
               pattern: {
                 value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                 message: "Invalid email address",
               },
               minLength: {
                 value: 3,
-                message: "Email is too short",
+                message: "email is too short",
               },
               maxLength: {
                 value: 254,
-                message: "Email is too long",
+                message: "email is too long",
               },
             })}
             disabled={isLoading}
@@ -194,21 +194,21 @@ export default function ContactForm() {
             htmlFor="message"
             className="text-sm font-medium text-gray-700 dark:text-gray-200"
           >
-            Message
+            message
           </label>
           <textarea
             rows={4}
-            placeholder="How can we help you? Is something not working?"
+            placeholder="how can we help you? is something not working?"
             className="w-full rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-gray-900 placeholder-gray-400 transition-colors focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 dark:border-gray-700 dark:bg-gray-800 dark:text-white dark:placeholder-gray-500"
             {...register("message", {
-              required: "Message is required",
+              required: "message is required",
               minLength: {
                 value: 10,
-                message: "Message must be at least 10 characters",
+                message: "message must be at least 10 characters",
               },
               maxLength: {
                 value: 1000,
-                message: "Message must be less than 1000 characters",
+                message: "message must be less than 1000 characters",
               },
             })}
             disabled={isLoading}
@@ -260,7 +260,7 @@ export default function ContactForm() {
           ) : (
             <>
               <Send className="h-4 w-4" />
-              Send Message
+              send message
             </>
           )}
         </button>

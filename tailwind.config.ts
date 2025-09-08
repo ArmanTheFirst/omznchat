@@ -1,61 +1,6 @@
 import type { Config } from "tailwindcss";
 import daisyui from "daisyui";
 
-// Define your color variables
-const lightColors = {
-  primary: "hsl(222.2 47.4% 11.2%)",
-  background: "hsl(0 0% 100%)",
-  foreground: "hsl(222.2 47.4% 11.2%)",
-  card: "hsl(0 0% 100%)",
-  'card-foreground': "hsl(222.2 47.4% 11.2%)",
-  popover: "hsl(0 0% 100%)",
-  'popover-foreground': "hsl(222.2 47.4% 11.2%)",
-  muted: "hsl(210 40% 96.1%)",
-  'muted-foreground': "hsl(215.4 16.3% 46.9%)",
-  accent: "hsl(210 40% 96.1%)",
-  'accent-foreground': "hsl(222.2 47.4% 11.2%)",
-  border: "hsl(214.3 31.8% 91.4%)",
-  input: "hsl(214.3 31.8% 91.4%)",
-  ring: "hsl(222.2 47.4% 11.2%)",
-  destructive: "hsl(0 84.2% 60.2%)",
-  'destructive-foreground': "hsl(210 40% 98%)",
-  success: "hsl(142.1 76.2% 36.3%)",
-  'success-foreground': "hsl(210 40% 98%)",
-  warning: "hsl(38 92% 50%)",
-  'warning-foreground': "hsl(210 40% 98%)",
-  navbar: "hsl(0 0% 100%)",
-  'navbar-foreground': "hsl(222.2 47.4% 11.2%)",
-  footer: "hsl(0 0% 98%)",
-  'footer-foreground': "hsl(222.2 47.4% 11.2%)",
-};
-
-const darkColors = {
-  primary: "hsl(210 40% 98%)",
-  background: "hsl(222.2 47.4% 11.2%)",
-  foreground: "hsl(210 40% 98%)",
-  card: "hsl(222.2 47.4% 11.2%)",
-  'card-foreground': "hsl(210 40% 98%)",
-  popover: "hsl(222.2 47.4% 11.2%)",
-  'popover-foreground': "hsl(210 40% 98%)",
-  muted: "hsl(217.2 32.6% 17.5%)",
-  'muted-foreground': "hsl(215 20.2% 65.1%)",
-  accent: "hsl(217.2 32.6% 17.5%)",
-  'accent-foreground': "hsl(210 40% 98%)",
-  border: "hsl(217.2 32.6% 17.5%)",
-  input: "hsl(217.2 32.6% 17.5%)",
-  ring: "hsl(212.7 26.8% 83.9%)",
-  destructive: "hsl(0 62.8% 30.6%)",
-  'destructive-foreground': "hsl(210 40% 98%)",
-  success: "hsl(142.1 70.6% 45.3%)",
-  'success-foreground': "hsl(210 40% 98%)",
-  warning: "hsl(38 92% 50%)",
-  'warning-foreground': "hsl(210 40% 98%)",
-  navbar: "hsl(222.2 47.4% 11.2%)",
-  'navbar-foreground': "hsl(210 40% 98%)",
-  footer: "hsl(222.2 47.4% 15%)",
-  'footer-foreground': "hsl(210 40% 98%)",
-};
-
 const config: Config = {
   darkMode: ["class"],
   content: [
@@ -74,39 +19,76 @@ const config: Config = {
     extend: {
       colors: {
         // Base colors
-        background: 'hsl(var(--color-background))',
-        foreground: 'hsl(var(--color-foreground))',
-        card: 'hsl(var(--color-card))',
-        'card-foreground': 'hsl(var(--color-card-foreground))',
-        popover: 'hsl(var(--color-popover))',
-        'popover-foreground': 'hsl(var(--color-popover-foreground))',
+        background: 'hsl(var(--background))',
+        foreground: 'hsl(var(--foreground))',
+        card: 'hsl(var(--card))',
+        'card-foreground': 'hsl(var(--card-foreground))',
+        popover: 'hsl(var(--popover))',
+        'popover-foreground': 'hsl(var(--popover-foreground))',
         
         // Text colors
-        muted: 'hsl(var(--color-muted))',
-        'muted-foreground': 'hsl(var(--color-muted-foreground))',
+        muted: 'hsl(var(--muted))',
+        'muted-foreground': 'hsl(var(--muted-foreground))',
         
         // Accent colors
-        accent: 'hsl(var(--color-accent))',
-        'accent-foreground': 'hsl(var(--color-accent-foreground))',
+        accent: 'hsl(var(--accent))',
+        'accent-foreground': 'hsl(var(--accent-foreground))',
         
         // UI elements
-        border: 'hsl(var(--color-border))',
-        input: 'hsl(var(--color-input))',
-        ring: 'hsl(var(--color-ring))',
+        border: 'hsl(var(--border))',
+        input: 'hsl(var(--input))',
+        ring: 'hsl(var(--ring))',
         
         // Status colors
-        destructive: 'hsl(var(--color-destructive))',
-        'destructive-foreground': 'hsl(var(--color-destructive-foreground))',
-        success: 'hsl(var(--color-success))',
-        'success-foreground': 'hsl(var(--color-success-foreground))',
-        warning: 'hsl(var(--color-warning))',
-        'warning-foreground': 'hsl(var(--color-warning-foreground))',
+        destructive: 'hsl(var(--destructive))',
+        'destructive-foreground': 'hsl(var(--destructive-foreground))',
+        success: 'hsl(var(--success))',
+        'success-foreground': 'hsl(var(--success-foreground))',
+        warning: 'hsl(var(--warning))',
+        'warning-foreground': 'hsl(var(--warning-foreground))',
+        
+        // Primary brand colors
+        primary: 'hsl(var(--primary))',
+        'primary-foreground': 'hsl(var(--primary-foreground))',
+        
+        // Secondary brand colors
+        secondary: 'hsl(var(--secondary))',
+        'secondary-foreground': 'hsl(var(--secondary-foreground))',
         
         // Special UI elements
-        navbar: 'hsl(var(--color-navbar))',
-        'navbar-foreground': 'hsl(var(--color-navbar-foreground))',
-        footer: 'hsl(var(--color-footer))',
-        'footer-foreground': 'hsl(var(--color-footer-foreground))',
+        navbar: 'hsl(var(--navbar))',
+        'navbar-foreground': 'hsl(var(--navbar-foreground))',
+        footer: 'hsl(var(--footer))',
+        'footer-foreground': 'hsl(var(--footer-foreground))',
+        
+        // Highlight colors for hero component
+        'highlight-light': 'hsl(var(--highlight-light))',
+        'highlight-dark': 'hsl(var(--highlight-dark))',
+        
+        // Blue variants for gradients and accents
+        'blue-primary': 'hsl(var(--blue-primary))',
+        'blue-secondary': 'hsl(var(--blue-secondary))',
+        'blue-tertiary': 'hsl(var(--blue-tertiary))',
+        
+        // Indigo variants for gradients
+        'indigo-primary': 'hsl(var(--indigo-primary))',
+        'indigo-secondary': 'hsl(var(--indigo-secondary))',
+        'indigo-tertiary': 'hsl(var(--indigo-tertiary))',
+        
+        // Gray variants
+        'gray-100': 'hsl(var(--gray-100))',
+        'gray-200': 'hsl(var(--gray-200))',
+        'gray-300': 'hsl(var(--gray-300))',
+        'gray-400': 'hsl(var(--gray-400))',
+        'gray-500': 'hsl(var(--gray-500))',
+        'gray-600': 'hsl(var(--gray-600))',
+        'gray-700': 'hsl(var(--gray-700))',
+        'gray-800': 'hsl(var(--gray-800))',
+        'gray-900': 'hsl(var(--gray-900))',
+        
+        // Gradient text colors
+        'gradient-from': 'hsl(var(--gradient-from))',
+        'gradient-to': 'hsl(var(--gradient-to))',
       },
       borderRadius: {
         lg: 'var(--radius)',
@@ -130,48 +112,6 @@ const config: Config = {
     },
   },
   plugins: [daisyui, require("tailwindcss-animate")],
-  daisyui: {
-    themes: [
-      {
-        light: {
-          ...lightColors,
-          "--color-primary-focus": lightColors.primary,
-          "--color-secondary": lightColors.muted,
-          "--color-accent": lightColors.accent,
-          "--color-neutral": lightColors.border,
-          "--color-base-100": lightColors.background,
-          "--color-base-200": lightColors.card,
-          "--color-base-300": lightColors.border,
-          "--color-info": "#3B82F6",
-          "--color-success": lightColors.success,
-          "--color-warning": lightColors.warning,
-          "--color-error": lightColors.destructive,
-        },
-      },
-      {
-        dark: {
-          ...darkColors,
-          "--color-primary-focus": darkColors.primary,
-          "--color-secondary": darkColors.muted,
-          "--color-accent": darkColors.accent,
-          "--color-neutral": darkColors.border,
-          "--color-base-100": darkColors.background,
-          "--color-base-200": darkColors.card,
-          "--color-base-300": darkColors.border,
-          "--color-info": "#60A5FA",
-          "--color-success": darkColors.success,
-          "--color-warning": darkColors.warning,
-          "--color-error": darkColors.destructive,
-        },
-      },
-    ],
-    darkTheme: "dark",
-    base: true,
-    styled: true,
-    utils: true,
-    prefix: "",
-    logs: true,
-  },
 };
 
 export default config;

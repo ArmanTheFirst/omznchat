@@ -19,7 +19,7 @@ export default function MenuBar({ onUserMenuClick }: MenuBarProps) {
   const { theme } = useTheme();
 
   return (
-    <div className="flex items-center justify-between gap-3 border-e border-e-[#DBDDE1] bg-white p-3 dark:border-e-gray-800 dark:bg-[#17191c]">
+    <div className="flex items-center justify-between gap-3 border-e border-e-[#DBDDE1] bg-white p-3 dark:border-e-gray-800 dark:bg-[#020817]">
       <UserButton
         appearance={{ baseTheme: theme === "dark" ? dark : undefined }}
       />
