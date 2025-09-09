@@ -1,6 +1,7 @@
 import { Mail } from "lucide-react";
 import Link from "next/link";
 import { StaticPageLayout } from "@/components/static-page-layout";
+import { env } from "@/env";
 
 export default function PrivacyPolicy() {
   return (
@@ -39,7 +40,7 @@ export default function PrivacyPolicy() {
                 className="group mt-2 inline-flex items-center gap-2 text-primary transition-colors hover:text-primary/80"
               >
                 <Mail className="h-5 w-5" />
-                <span>omznchat@protonmail.com</span>
+                <span>{env.OMZN_MAIL}</span>
                 <span className="block h-px w-full max-w-0 bg-primary transition-all duration-300 group-hover:max-w-full" />
               </Link>
             </div>

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { StaticPageLayout } from "@/components/static-page-layout";
+import { env } from "@/env";
 
 export default function TermsOfUse() {
   return (
@@ -45,7 +46,7 @@ export default function TermsOfUse() {
             <p className="text-lg leading-relaxed text-foreground">
               for detailed rules, see our{' '}
               <Link 
-                href="https://github.com/omzn/omzn" 
+                href={env.NEXT_PUBLIC_GITHUB_REPO_URL}
                 className="text-primary underline-offset-4 hover:underline"
                 target="_blank"
                 rel="noopener noreferrer"

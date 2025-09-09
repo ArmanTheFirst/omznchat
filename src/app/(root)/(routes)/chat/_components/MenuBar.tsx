@@ -1,8 +1,7 @@
 import { UserButton } from "@clerk/nextjs";
-import { BellOff, BellRing, Moon, Sun, Users } from "lucide-react";
-import { useTheme } from "next-themes";
-import { dark } from "@clerk/themes";
+import { BellOff, BellRing, LayoutDashboard, Moon, Sun, Users, Home, DotIcon } from "lucide-react";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import {
   getCurrentPushSubscription,
   registerPushNotifications,
@@ -10,45 +9,34 @@ import {
 } from "@/notifications/pushService";
 import { LoadingIndicator } from "stream-chat-react";
 import DisappearingMessage from "@/components/chat/DisappearingMessage";
+import ThemeToggle from "../../dashboard/_components/ThemeToggle";
 
 interface MenuBarProps {
   onUserMenuClick: () => void;
 }
 
 export default function MenuBar({ onUserMenuClick }: MenuBarProps) {
-  const { theme } = useTheme();
 
   return (
     <div className="flex items-center justify-between gap-3 border-e border-e-[#DBDDE1] bg-white p-3 dark:border-e-gray-800 dark:bg-[#020817]">
       <UserButton
-        appearance={{ baseTheme: theme === "dark" ? dark : undefined }}
-      />
-      <div className="flex gap-6">
+        userProfileUrl="/dashboard"
+        afterSignOutUrl="/"
+      >
+      </UserButton> 
+      <div className="flex items-center gap-6">
         <PushSubscriptionToggleButton />
+        <Link href="/dashboard" title="Go to Dashboard">
+          <LayoutDashboard className="h-5 w-5 cursor-pointer" />
+        </Link>
         <span title="Show users">
           <Users className="cursor-pointer" onClick={onUserMenuClick} />
         </span>
-        <ThemeToggleButton />
+        <div className="flex-shrink-0">
+          <ThemeToggle />
+        </div>
       </div>
     </div>
-  );
-}
-
-function ThemeToggleButton() {
-  const { theme, setTheme } = useTheme();
-
-  if (theme === "dark") {
-    return (
-      <span title="Enable light theme">
-        <Moon className="cursor-pointer" onClick={() => setTheme("light")} />
-      </span>
-    );
-  }
-
-  return (
-    <span title="Enable dark theme">
-      <Sun className="cursor-pointer" onClick={() => setTheme("dark")} />
-    </span>
   );
 }
 

@@ -5,6 +5,7 @@ import { BackgroundBeams } from "./ui/background-beams";
 import Link from "next/link";
 import { Highlighter } from "./magicui/highlighter";
 import { TextGenerateEffect } from "./ui/text-generate-effect";
+import { env } from "@/env";
 
 export default function Hero() {
   const textRef = useRef(null);
@@ -40,7 +41,7 @@ export default function Hero() {
   ];
 
   return (
-    <section className="relative flex pt-4 flex-col items-center justify-center overflow-hidden bg-background">
+    <section className="relative flex h-screen flex-col items-center justify-center overflow-hidden bg-background px-4 sm:px-16">
       <BackgroundBeams />
       
       <div ref={textRef} className="relative z-10 w-full max-w-4xl px-4 sm:px-6 text-center">
@@ -157,7 +158,8 @@ export default function Hero() {
           
           <motion.div className="w-full sm:w-auto" whileHover={{ y: -2 }} whileTap={{ scale: 0.98 }}>
             <Link
-              href="/contribute"
+              href={env.NEXT_PUBLIC_GITHUB_REPO_URL}
+              target="_blank"
               className="group relative flex w-full items-center justify-center gap-2 rounded-full border border-gray-200 bg-white px-8 py-3.5 text-sm font-medium text-gray-700 shadow-sm transition-all duration-300 hover:shadow-md hover:bg-white/90 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700/90 sm:px-10"
             >
               <Code2 className="h-4 w-4 transition-transform group-hover:scale-110" />

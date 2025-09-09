@@ -1,5 +1,7 @@
 import { StaticPageLayout } from "@/components/static-page-layout";
 import ContactForm from "@/components/contact-form";
+import { env } from "@/env";
+
 
 export default function Contact() {
   return (
@@ -38,29 +40,30 @@ export default function Contact() {
               <div className="space-y-4 rounded-xl border bg-card p-6 shadow-sm">
                 <h3 className="text-lg font-medium text-foreground">email</h3>
                 <p className="text-muted-foreground">
-                  for general inquiries
+                  For general inquiries
                 </p>
-                <a 
-                  href={`mailto:${process.env.OMZN_MAIL}`}
-                  className="text-primary hover:underline"
-                >
-                  {process.env.OMZN_MAIL}
-                </a>
+                <div className="truncate">
+                  <a href={`mailto:${env.OMZN_MAIL}`} className="text-primary hover:underline">
+                    {env.OMZN_MAIL}
+                  </a>
+                </div>
               </div>
-              
+
               <div className="space-y-4 rounded-xl border bg-card p-6 shadow-sm">
                 <h3 className="text-lg font-medium text-foreground">github</h3>
                 <p className="text-muted-foreground">
-                  for issues and contributions
+                  For issues and contributions
                 </p>
-                <a 
-                  href="https://github.com/omzn/omzn"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary hover:underline"
-                >
-                  github.com/omzn/omzn
-                </a>
+                <div className="w-full overflow-hidden">
+                  <a
+                    href={env.NEXT_PUBLIC_GITHUB_REPO_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="break-words text-primary hover:underline"
+                  >
+                    {env.NEXT_PUBLIC_GITHUB_REPO_URL}
+                  </a>
+                </div>
               </div>
             </div>
             

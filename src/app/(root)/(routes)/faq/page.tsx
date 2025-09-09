@@ -1,4 +1,5 @@
 import { StaticPageLayout } from "@/components/static-page-layout";
+import { env } from "@/env";
 
 export default function FAQ() {
   const faqs = [
@@ -24,7 +25,7 @@ export default function FAQ() {
     },
     {
       question: "can i self-host or extend omzn?",
-      answer: "absolutely—full source is on <a href=\"https://github.com/ArmanTheFirst/omznchat\" target=\"_blank\" rel=\"noopener noreferrer\" className=\"text-primary hover:opacity-80\">github</a>.",
+      answer: `absolutely—full source is on <a href="${env.NEXT_PUBLIC_GITHUB_REPO_URL}" target="_blank" rel="noopener noreferrer" className="text-primary hover:opacity-80">github</a>.`,
       isHtml: true
     },
     {

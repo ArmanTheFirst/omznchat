@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { LampContainer } from "./ui/lamp";
 import { Discord, GitHub, Twitter } from "./icons/icons";
+import { env } from "@/env";
+import Link from "next/link";
 
 export default function FinalCTA() {
   return (
@@ -40,7 +42,7 @@ export default function FinalCTA() {
               <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                href="https://discord.gg/omzn"
+                href={env.NEXT_PUBLIC_DISCORD_INVITE}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-6 py-3 rounded-full bg-[#5865F2] text-white hover:bg-[#4752c4] transition-colors text-sm font-medium"
@@ -52,7 +54,7 @@ export default function FinalCTA() {
               <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                href="https://twitter.com/omznchat"
+                href={env.NEXT_PUBLIC_X_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-6 py-3 rounded-full bg-foreground text-background hover:bg-foreground/90 transition-colors text-sm font-medium"
@@ -64,7 +66,7 @@ export default function FinalCTA() {
               <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                href="https://github.com/omznchat/omzn"
+                href={env.NEXT_PUBLIC_GITHUB_REPO_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-6 py-3 rounded-full border border-border hover:bg-accent/50 transition-colors text-sm font-medium"
@@ -81,12 +83,12 @@ export default function FinalCTA() {
               transition={{ delay: 0.6, duration: 0.4 }}
               viewport={{ once: true }}
             >
-              <a 
-                href="#" 
+              <Link 
+                href="/roadmap" 
                 className="hover:text-foreground transition-colors border-b border-dotted border-muted-foreground/30 hover:border-foreground"
               >
                 see our roadmap →
-              </a>
+              </Link>
             </motion.div>
           </motion.div>
         </div>

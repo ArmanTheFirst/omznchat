@@ -1,4 +1,5 @@
 import { StaticPageLayout } from "@/components/static-page-layout";
+import { env } from "@/env";
 
 export default function About() {
   return (
@@ -26,7 +27,7 @@ export default function About() {
           </p>
           
           <p className="text-lg leading-relaxed text-foreground">
-            want to help? <a href="https://github.com/ArmanTheFirst/omznchat" target="_blank" rel="noopener noreferrer" className="text-primary hover:opacity-80">jump in on github</a> or <a href="https://discord.gg/your-discord-link" target="_blank" rel="noopener noreferrer" className="text-primary hover:opacity-80">join our discord</a>.
+            want to help? <a href={env.NEXT_PUBLIC_GITHUB_REPO_URL} target="_blank" rel="noopener noreferrer" className="text-primary hover:opacity-80">jump in on github</a> or <a href={env.NEXT_PUBLIC_DISCORD_INVITE} target="_blank" rel="noopener noreferrer" className="text-primary hover:opacity-80">join our discord</a>.
           </p>
           
           <p className="text-lg font-medium leading-relaxed text-foreground">

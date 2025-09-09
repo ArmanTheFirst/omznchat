@@ -53,10 +53,44 @@ export default function ClerkThemeWrapper({
 }) {
   const { theme } = useTheme();
 
+  const isDark = theme === 'dark';
+
+  const appearance = {
+    baseTheme: isDark ? shadesOfPurple : undefined,
+    variables: {
+      fontSize: "14px",
+      colorPrimary: "hsl(217, 91%, 60%)",
+      colorText: isDark ? "#f3f4f6" : "#1f2937",
+      colorTextSecondary: isDark ? "#9ca3af" : "#4b5563",
+      colorBackground: isDark ? "#1f2937" : "#ffffff",
+      colorInputBackground: isDark ? "#111827" : "#f9fafb",
+      colorInputText: isDark ? "#f9fafb" : "#111827",
+    },
+    elements: {
+      card: "shadow-lg dark:shadow-lg dark:shadow-gray-900/20 border border-solid border-border dark:border-gray-700 p-0 w-full bg-card/50 dark:bg-card/80 backdrop-blur-sm overflow-hidden",
+      headerTitle: 'text-2xl font-bold text-foreground',
+      headerSubtitle: 'text-muted-foreground',
+      form: 'px-6 pb-6',
+      formField: 'text-sm',
+      formFieldLabel: 'text-muted-foreground font-medium text-sm mb-1.5',
+      formFieldInput: 'bg-background border-input text-foreground placeholder:text-muted-foreground/60 focus:border-primary focus:ring-primary/50 text-sm py-2',
+      formFieldInputGroup: 'text-sm',
+      socialButtonsRoot: 'px-3',
+      socialButtons: 'px-3',
+      socialButtonsBlockButton: 'border-border bg-background hover:bg-accent text-foreground',
+      socialButtonsBlockButtonText: 'text-muted-foreground',
+      dividerLine: 'bg-border',
+      dividerText: 'text-muted-foreground',
+      formButtonPrimary: "bg-indigo-600 hover:bg-indigo-700 text-sm font-medium text-white py-2 mt-2",
+      footerActionText: isDark ? 'text-gray-400' : 'text-gray-600',
+      footerActionLink: "text-indigo-400 hover:text-indigo-300 font-medium",
+      formFieldAction: "text-indigo-400 hover:text-indigo-300",
+      identityPreviewEditButton: "text-indigo-400 hover:text-indigo-300"
+    }
+  };
+
   return (
-    <ClerkProvider
-      appearance={theme === "dark" ? { baseTheme: shadesOfPurple } : undefined}
-    >
+    <ClerkProvider appearance={appearance}>
       <AuthToasts />
       {children}
     </ClerkProvider>

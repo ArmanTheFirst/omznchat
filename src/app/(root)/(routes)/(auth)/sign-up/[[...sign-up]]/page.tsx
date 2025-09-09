@@ -1,57 +1,78 @@
 "use client";
 
-import { SignUp } from "@clerk/nextjs";
+import { SignUp, ClerkLoading, ClerkLoaded } from "@clerk/nextjs";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import { useEffect, useState } from "react";
+import { BackgroundLines } from "@/components/ui/background-lines";
 
 export default function SignUpPage() {
-  const { theme } = useTheme();
-  const isDark = theme === 'dark';
+  const [mounted, setMounted] = useState(false);
+  const { resolvedTheme } = useTheme();
+  const isDark = resolvedTheme === 'dark';
+
+  // Prevent hydration mismatch by only rendering after mount
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return (
+      <div className="relative w-full min-h-[100dvh] bg-background">
+        <BackgroundLines className="absolute inset-0 hidden md:block" svgOptions={{}}>
+          <></>
+        </BackgroundLines>
+        <div className="relative z-10 flex min-h-[100dvh] w-full items-center justify-center p-4">
+          <div className="w-full max-w-xl rounded-lg border border-border bg-card shadow-lg dark:border-gray-700 dark:bg-card/80 dark:shadow-gray-900/20">
+            <div className="p-6">
+              <div className="h-8 w-24 mb-6 bg-muted rounded"></div>
+              <div className="space-y-4">
+                <div className="h-4 w-3/4 bg-muted rounded"></div>
+                <div className="h-10 bg-muted rounded"></div>
+                <div className="h-10 bg-muted rounded"></div>
+                <div className="h-10 bg-primary rounded"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <div className="flex min-h-dvh w-full items-center justify-center bg-gray-50 p-4 dark:bg-gray-900">
-      <div className="relative w-full max-w-md rounded-lg bg-white p-8 shadow-md dark:bg-gray-800">
-        <Link 
-          href="/" 
-          className="mb-4 inline-flex items-center text-sm font-medium text-indigo-600 hover:text-indigo-800 dark:text-indigo-400 dark:hover:text-indigo-300"
-        >
-          <ArrowLeft className="mr-1 h-4 w-4" />
-          Back to Home
-        </Link>
-        <SignUp
-          appearance={{
-            baseTheme: isDark ? undefined : undefined, // Use default dark theme if dark mode
-            variables: {
-              fontSize: "14px",
-              colorPrimary: "#4f46e5",
-              colorText: isDark ? "#f3f4f6" : "#1f2937",
-              colorTextSecondary: isDark ? "#9ca3af" : "#4b5563",
-              colorBackground: isDark ? "#1f2937" : "#ffffff",
-              colorInputBackground: isDark ? "#111827" : "#f9fafb",
-              colorInputText: isDark ? "#f9fafb" : "#111827",
-            },
-            elements: {
-              card: "shadow-none p-0 w-full",
-              headerTitle: `text-2xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`,
-              headerSubtitle: isDark ? 'text-gray-300' : 'text-gray-600',
-              socialButtonsBlockButton: isDark 
-                ? "border-gray-600 hover:bg-gray-700 text-gray-300" 
-                : "border-gray-300 hover:bg-gray-50 text-gray-700",
-              dividerLine: isDark ? 'bg-gray-700' : 'bg-gray-200',
-              dividerText: isDark ? 'text-gray-400' : 'text-gray-500',
-              formFieldLabel: isDark ? 'text-gray-300 font-medium' : 'text-gray-700 font-medium',
-              formFieldInput: isDark 
-                ? 'bg-gray-700 border-gray-600 text-white focus:border-indigo-500 focus:ring-indigo-500' 
-                : 'border-gray-300 focus:border-indigo-500 focus:ring-indigo-500',
-              formButtonPrimary: "bg-indigo-600 hover:bg-indigo-700 text-sm font-medium text-white",
-              footerActionText: isDark ? 'text-gray-400' : 'text-gray-600',
-              footerActionLink: "text-indigo-400 hover:text-indigo-300 font-medium",
-              formFieldAction: "text-indigo-400 hover:text-indigo-300",
-              identityPreviewEditButton: "text-indigo-400 hover:text-indigo-300"
-            },
-          }}
-        />
+    <div className="relative w-full min-h-[100dvh] bg-background">
+      <BackgroundLines className="absolute inset-0 hidden md:block" svgOptions={{}}>
+        <></>
+      </BackgroundLines>
+      <div className="relative z-10 flex min-h-[100dvh] w-full items-center justify-center p-4">
+        <div className="w-full max-w-xl rounded-lg border border-border bg-card shadow-lg dark:border-gray-700 dark:bg-card/80 dark:shadow-gray-900/20 overflow-hidden">
+          <div className="px-6 pt-6 pb-6">
+            <Link 
+              href="/" 
+              className="inline-flex items-center text-sm font-medium text-primary hover:text-primary/80 transition-colors"
+            >
+              <ArrowLeft className="mr-1 h-4 w-4" />
+              Back to Home
+            </Link>
+          </div>
+          
+          <ClerkLoading>
+            <div className="px-6 pb-6 space-y-4">
+              <div className="h-10 w-3/4 animate-pulse rounded-md bg-gray-200 dark:bg-gray-700" />
+              <div className="h-10 w-full animate-pulse rounded-md bg-gray-200 dark:bg-gray-700" />
+              <div className="h-10 w-full animate-pulse rounded-md bg-gray-200 dark:bg-gray-700" />
+              <div className="h-10 w-full animate-pulse rounded-md bg-gray-200 dark:bg-gray-700" />
+              <div className="h-10 w-1/2 animate-pulse rounded-md bg-gray-200 dark:bg-gray-700" />
+            </div>
+          </ClerkLoading>
+          
+          <ClerkLoaded>
+            <div className="px-6 pb-6 [&_.cl-card]:border-none [&_.cl-card]:shadow-none">
+              <SignUp />
+            </div>
+          </ClerkLoaded>
+        </div>
       </div>
     </div>
   );

@@ -7,11 +7,13 @@ import FinalCTA from "./final-cta";
 
 export default function Landing() {
   return (
-    <div className="px-25 relative min-h-screen w-full space-y-32 pt-16 sm:px-16 pb-24 md:pb-32">
+    <div className="relative w-full">
       <Hero />
-      <HowItWorks />
-      <Features />
-      <FinalCTA />
+      <div className="space-y-32 px-4 sm:px-16 py-24 md:py-32">
+        <HowItWorks />
+        <Features />
+        <FinalCTA />
+      </div>
     </div>
   );
 }
