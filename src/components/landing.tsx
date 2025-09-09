@@ -8,7 +8,10 @@ import FinalCTA from "./final-cta";
 export default function Landing() {
   return (
     <div className="relative w-full">
-      <Hero />
+      <div className="h-16" /> {/* Spacer for fixed header */}
+      <div className="h-[calc(100vh-4rem)]">
+        <Hero />
+      </div>
       <div className="space-y-32 px-4 sm:px-16 py-24 md:py-32">
         <HowItWorks />
         <Features />

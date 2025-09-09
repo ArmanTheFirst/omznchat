@@ -41,7 +41,9 @@ export default function Hero() {
   ];
 
   return (
-    <section className="relative flex h-screen flex-col items-center justify-center overflow-hidden bg-background px-4 sm:px-16">
+    <section className="relative flex min-h-[calc(100dvh-4rem)] flex-col items-center justify-center overflow-hidden bg-background px-4 sm:px-16 pt-[max(env(safe-area-inset-top,1rem),1rem)] sm:pt-0">
+      {/* This div ensures content is always visible below the header */}
+      <div className="h-16 w-full absolute top-0 left-0 pointer-events-none" />
       <BackgroundBeams />
       
       <div ref={textRef} className="relative z-10 w-full max-w-4xl px-4 sm:px-6 text-center">
