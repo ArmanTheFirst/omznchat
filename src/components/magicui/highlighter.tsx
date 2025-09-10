@@ -40,16 +40,16 @@ export function Highlighter({
   multiline = false,
   isView = true,
 }: HighlighterProps) {
-  // Use theme-appropriate color
-  const { theme } = useTheme();
+  const { theme, systemTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  // Determine the effective color based on the current theme
-  const effectiveColor = mounted && theme === 'dark' ? (darkColor || color) : color;
+  // Determine the effective theme and color
+  const currentTheme = theme === 'system' ? systemTheme : theme;
+  const effectiveColor = (mounted && currentTheme === 'dark' && darkColor) ? darkColor : color;
 
   const elementRef = useRef<HTMLSpanElement>(null);
   const isInView = useInView(elementRef, {
@@ -106,7 +106,8 @@ export function Highlighter({
   useEffect(() => {
     if (!shouldShow || !mounted || !annotationRef.current) return;
 
-    const newColor = theme === 'dark' ? (darkColor || color) : color;
+    const currentTheme = theme === 'system' ? systemTheme : theme;
+    const newColor = (currentTheme === 'dark' && darkColor) ? darkColor : color;
     
     // Find and update the SVG stroke color directly
     const element = elementRef.current;
