@@ -5,7 +5,7 @@ import { StreamChat } from "stream-chat";
 
 export default function useInitializeChatClient() {
   const { user } = useUser();
-  const [chatClient, setChatCient] = useState<StreamChat | null>(null);
+  const [chatClient, setChatClient] = useState<StreamChat | null>(null);
 
   useEffect(() => {
     if (!user?.id) return;
@@ -30,10 +30,10 @@ export default function useInitializeChatClient() {
         }
       )
       .catch((error) => console.error("Failed to connect user", error))
-      .then(() => setChatCient(client));
+      .then(() => setChatClient(client));
 
     return () => {
-      setChatCient(null);
+      setChatClient(null);
       client
         .disconnectUser()
         .catch((error) => console.error("Failed to disconnect user", error))

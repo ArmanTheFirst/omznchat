@@ -1,18 +1,31 @@
 "use client";
 
-import { SignIn, ClerkLoading, ClerkLoaded } from "@clerk/nextjs";
+import { SignIn, ClerkLoading, ClerkLoaded, useUser } from "@clerk/nextjs";
 import { useTheme } from "next-themes";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, CheckCircle2, Loader2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { BackgroundLines } from "@/components/ui/background-lines";
+import { useRouter } from "next/navigation";
 
 export default function SignInPage() {
   const [mounted, setMounted] = useState(false);
+  const [isAuthComplete, setIsAuthComplete] = useState(false);
   const { resolvedTheme } = useTheme();
+  const { isSignedIn } = useUser();
+  const router = useRouter();
   const isDark = resolvedTheme === 'dark';
 
-  // Prevent hydration mismatch by only rendering after mount
+  useEffect(() => {
+    if (isSignedIn) {
+      setIsAuthComplete(true);
+      const timer = setTimeout(() => {
+        router.push('/chat');
+      }, 1500);
+      return () => clearTimeout(timer);
+    }
+  }, [isSignedIn, router]);
+
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -63,8 +76,25 @@ export default function SignInPage() {
         </ClerkLoading>
         
         <ClerkLoaded>
-          <SignIn
-          />
+          {isAuthComplete ? (
+            <div className="p-6 flex flex-col items-center justify-center space-y-4 min-h-[400px]">
+              <div className="relative">
+                <div className="absolute inset-0 bg-primary/10 rounded-full animate-ping opacity-75"></div>
+                <CheckCircle2 className="h-12 w-12 text-green-500 relative z-10" />
+              </div>
+              <h2 className="text-2xl font-bold text-center">Authentication Successful!</h2>
+              <p className="text-muted-foreground text-center">Taking you to your chat...</p>
+              <Loader2 className="h-8 w-8 animate-spin text-primary mt-4" />
+            </div>
+          ) : (
+            <div className="px-6 pb-6 [&_.cl-card]:border-none [&_.cl-card]:shadow-none">
+              <SignIn 
+                afterSignInUrl="/chat"
+                afterSignUpUrl="/sign-up"
+                signUpFallbackRedirectUrl="/sign-up"
+              />
+            </div>
+          )}
         </ClerkLoaded>
       </div>
     </div>
