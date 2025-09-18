@@ -19,19 +19,24 @@ export default function MenuBar({ onUserMenuClick }: MenuBarProps) {
 
   return (
     <div className="flex items-center justify-between gap-3 border-e border-e-[#DBDDE1] bg-white p-3 dark:border-e-gray-800 dark:bg-[#020817]">
-      <UserButton
-        userProfileUrl="/dashboard"
-        afterSignOutUrl="/"
-      >
-      </UserButton> 
+      <div className="rounded-full p-1.5 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+        <UserButton
+          userProfileUrl="/dashboard"
+          afterSignOutUrl="/"
+        />
+      </div>
       <div className="flex items-center gap-6">
         <PushSubscriptionToggleButton />
-        <Link href="/dashboard" title="Go to Dashboard">
-          <LayoutDashboard className="h-5 w-5 cursor-pointer" />
+        <Link href="/dashboard" title="Go to Dashboard" className="p-1.5 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+          <LayoutDashboard className="h-5 w-5" />
         </Link>
-        <span title="Show users">
-          <Users className="cursor-pointer" onClick={onUserMenuClick} />
-        </span>
+        <button 
+          onClick={onUserMenuClick} 
+          title="Show users"
+          className="p-1.5 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+        >
+          <Users className="h-5 w-5" />
+        </button>
         <div className="flex-shrink-0">
           <ThemeToggle />
         </div>
@@ -99,17 +104,25 @@ function PushSubscriptionToggleButton() {
       )}
       {hasActivePushSubscription ? (
         <span title="Disable push notifications on this device">
-          <BellOff
+          <button
             onClick={() => setPushNotificationsEnabled(false)}
-            className={`cursor-pointer ${loading ? "opacity-10" : ""}`}
-          />
+            disabled={loading}
+            className={`p-1.5 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors ${loading ? "opacity-10" : ""}`}
+            title="Disable push notifications on this device"
+          >
+            <BellOff className="h-5 w-5" />
+          </button>
         </span>
       ) : (
         <span title="Enable push notifications on this device">
-          <BellRing
+          <button
             onClick={() => setPushNotificationsEnabled(true)}
-            className={`cursor-pointer ${loading ? "opacity-10" : ""}`}
-          />
+            disabled={loading}
+            className={`p-1.5 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors ${loading ? "opacity-10" : ""}`}
+            title="Enable push notifications on this device"
+          >
+            <BellRing className="h-5 w-5" />
+          </button>
         </span>
       )}
     </div>
