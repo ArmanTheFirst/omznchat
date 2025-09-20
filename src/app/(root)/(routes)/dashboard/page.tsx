@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import { UserProfile } from "@clerk/nextjs";
 import { currentUser } from "@clerk/nextjs/server";
 import {
@@ -24,6 +25,11 @@ import ThemeToggle from "./_components/ThemeToggle";
 import LanguageSelector from "./_components/LanguageSelector";
 import ChatButton from "@/components/chatbutton";
 import DashboardWrapper from "./_components/dashboard-wrapper";
+
+export const metadata: Metadata = {
+  title: 'Dashboard',
+  description: 'Your OMZN dashboard - manage your account and preferences',
+};
 
 export default async function Dashboard() {
   const user = await currentUser();
@@ -57,7 +63,7 @@ export default async function Dashboard() {
 
   return (
     <DashboardWrapper>
-      <div className="min-h-screen bg-gradient-to-b from-white to-blue-50/30 px-4 py-8 dark:from-gray-900 dark:to-gray-950">
+      <div className="min-h-screen bg-background px-4 py-8">
         <div className="mx-auto max-w-7xl">
           <Header username={user!.username as string} />
           <div className="mt-8 space-y-8">

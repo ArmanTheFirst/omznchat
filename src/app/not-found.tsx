@@ -1,6 +1,6 @@
 "use client";
 
-import { StaticPageLayout } from "@/components/static-page-layout";
+import StaticPageLayout from "@/components/static-page-layout";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Search, Home } from "lucide-react";

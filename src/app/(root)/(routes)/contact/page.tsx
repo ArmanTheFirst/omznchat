@@ -1,17 +1,24 @@
-import { StaticPageLayout } from "@/components/static-page-layout";
+import { Metadata } from "next";
+import StaticPageLayout from "@/components/static-page-layout";
 import ContactForm from "@/components/contact-form";
 import { env } from "@/env";
 
+export const metadata: Metadata = {
+  title: 'Contact Us',
+  description: 'Have questions or feedback? We\'d love to hear from you.',
+  openGraph: {
+    title: 'Contact OMZN',
+    description: 'Get in touch with our team. We\'re here to help with any questions or feedback.',
+    type: 'website',
+  },
+};
 
 export default function Contact() {
   return (
-    <StaticPageLayout
-      title="Contact Us"
-      description="Have questions or feedback? We'd love to hear from you."
-    >
+    <StaticPageLayout>
       <div className="mx-auto max-w-3xl px-6 py-16 sm:px-8">
         <div className="mb-16 text-center">
-          <h1 className="mb-6 text-4xl font-bold tracking-tight text-foreground md:text-5xl">
+          <h1 className="mb-6 text-4xl font-medium tracking-tight text-foreground md:text-5xl">
             contact us
           </h1>
           <p className="mx-auto max-w-2xl text-lg leading-relaxed text-muted-foreground">

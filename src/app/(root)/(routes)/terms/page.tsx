@@ -1,16 +1,19 @@
+import { Metadata } from "next";
 import Link from "next/link";
-import { StaticPageLayout } from "@/components/static-page-layout";
+import StaticPageLayout from "@/components/static-page-layout";
 import { env } from "@/env";
+
+export const metadata: Metadata = {
+  title: 'Terms of Service',
+  description: 'By using OMZN, you agree to be awesome and follow these simple terms.'
+};
 
 export default function TermsOfUse() {
   return (
-    <StaticPageLayout
-      title="Terms of Service"
-      description="By using OMZN, you agree to be awesome and follow these simple terms."
-    >
+    <StaticPageLayout>
       <div className="mx-auto max-w-3xl px-6 py-16 sm:px-8">
         <div className="mb-16 text-center">
-          <h1 className="mb-6 text-4xl font-bold tracking-tight text-foreground md:text-5xl">
+          <h1 className="mb-6 text-4xl font-medium tracking-tight text-foreground md:text-5xl">
             terms of service
           </h1>
           <p className="mx-auto max-w-2xl text-lg leading-relaxed text-muted-foreground">

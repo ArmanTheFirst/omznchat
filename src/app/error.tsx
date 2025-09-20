@@ -1,6 +1,6 @@
 "use client";
 
-import { StaticPageLayout } from "@/components/static-page-layout";
+import StaticPageLayout from "@/components/static-page-layout";
 import Link from "next/link";
 import { useEffect } from "react";
 import { motion } from "framer-motion";

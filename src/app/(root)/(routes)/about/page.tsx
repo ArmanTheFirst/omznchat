@@ -1,15 +1,23 @@
-import { StaticPageLayout } from "@/components/static-page-layout";
+import { Metadata } from "next";
+import StaticPageLayout from "@/components/static-page-layout";
 import { env } from "@/env";
+
+export const metadata: Metadata = {
+  title: 'About OMZN',
+  description: 'An open, human-first chat platform built for 2025',
+  openGraph: {
+    title: 'About OMZN',
+    description: 'Learn more about our mission to create a better chat experience for everyone.',
+    type: 'website',
+  },
+};
 
 export default function About() {
   return (
-    <StaticPageLayout
-      title="About OMZN"
-      description="An open, human-first chat platform built for 2025"
-    >
+    <StaticPageLayout>
       <div className="mx-auto max-w-3xl px-6 py-16 sm:px-8">
         <div className="mb-16 text-center">
-          <h1 className="mb-6 text-4xl font-bold tracking-tight text-foreground md:text-5xl">
+          <h1 className="mb-6 text-4xl font-medium tracking-tight text-foreground md:text-5xl">
             about omzn
           </h1>
           <p className="mx-auto max-w-2xl text-lg leading-relaxed text-muted-foreground">

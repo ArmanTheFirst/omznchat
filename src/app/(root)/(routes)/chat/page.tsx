@@ -1,11 +1,11 @@
 "use client";
 
+import { useCallback, useEffect, useState } from "react";
 import { useUser } from "@clerk/nextjs";
 import { Chat, LoadingIndicator, Streami18n } from "stream-chat-react";
 import ChatSidebar from "./_components/ChatSidebar";
 import useInitializeChatClient from "./useInitializeChatClient";
 import ChatChannel from "./_components/ChatChannel";
-import { useCallback, useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import useWindowSize from "@/hooks/useWindowSize";
 import { mdBreakpoint } from "@/utils/tailwind";
@@ -21,6 +21,9 @@ import { useSearchParams } from 'next/navigation';
 const i18Instance = new Streami18n({ language: "en" });
 
 export default function ChatPage() {
+  useEffect(() => {
+    document.title = 'Chat | OMZN';
+  }, []);
   const searchParams = useSearchParams();
   const channelId = searchParams?.get('channelId') || undefined;
   const chatClient = useInitializeChatClient();

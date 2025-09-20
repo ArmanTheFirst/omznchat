@@ -1,5 +1,16 @@
-import { StaticPageLayout } from "@/components/static-page-layout";
+import { Metadata } from "next";
 import { env } from "@/env";
+import StaticPageLayout from "@/components/static-page-layout";
+
+export const metadata: Metadata = {
+  title: 'Frequently Asked Questions',
+  description: 'Find answers to common questions about OMZN Chat.',
+  openGraph: {
+    title: 'FAQ - OMZN Chat',
+    description: 'Get answers to frequently asked questions about OMZN Chat and how to get the most out of our platform.',
+    type: 'website',
+  },
+};
 
 export default function FAQ() {
   const faqs = [
@@ -36,13 +47,10 @@ export default function FAQ() {
   ];
 
   return (
-    <StaticPageLayout
-      title="Frequently Asked Questions"
-      description="Find answers to common questions about OMZN"
-    >
+    <StaticPageLayout>
       <div className="mx-auto max-w-3xl px-6 py-16 sm:px-8">
         <div className="mb-16 text-center">
-          <h1 className="mb-6 text-4xl font-bold tracking-tight text-foreground md:text-5xl">
+          <h1 className="mb-6 text-4xl font-medium tracking-tight text-foreground md:text-5xl">
             frequently asked questions
           </h1>
           <p className="mx-auto max-w-2xl text-lg leading-relaxed text-muted-foreground">

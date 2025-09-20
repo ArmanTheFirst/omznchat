@@ -20,6 +20,7 @@ export default function Footer() {
             <span className="text-xl font-semibold text-foreground">omzn</span>
           </Link>
           <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground">
+            <Link href="/roadmap" className="hover:text-foreground transition-colors hover:underline">roadmap</Link>
             <Link href="/privacy" className="hover:text-foreground transition-colors hover:underline">privacy</Link>
             <Link href="/terms" className="hover:text-foreground transition-colors hover:underline">terms</Link>
             <Link href="/about" className="hover:text-foreground transition-colors hover:underline">about</Link>

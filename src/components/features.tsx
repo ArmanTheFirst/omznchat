@@ -18,7 +18,8 @@ import {
   Moon,
   PenLine,
   Pin,
-  Clock
+  Clock,
+  Glasses
 } from 'lucide-react';
 import { GlowingEffect } from '@/components/ui/glowing-effect';
 
@@ -114,9 +115,9 @@ const currentFeatures: FeatureItem[] = [
 
 const wishlistFeatures: FeatureItem[] = [
   {
-    title: "modern, beautiful chat ui",
-    description: "more color, more polish, more omzn. coming soon: a chat page that finally feels alive.",
-    icon: <Palette className="h-4 w-4 text-primary" />,
+    title: "incognito chat",
+    description: "anonymously participate in direct/group chats to honestly share our thoughts",
+    icon: <Glasses className="h-4 w-4 text-primary" />,
     area: "[grid-area:3/3/4/5] md:[grid-area:3/1/4/13] lg:[grid-area:2/8/3/13] xl:[grid-area:2/8/3/13]",
     isWishlist: true,
   },

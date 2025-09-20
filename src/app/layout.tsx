@@ -8,7 +8,10 @@ import { Toaster } from "react-hot-toast";
 const outfit = Outfit({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "OMZN Chat",
+  title: {
+    default: 'OMZN Chat',
+    template: '%s | OMZN Chat',
+  },
   description: "A smarter way to communicate",
   icons: {
     icon: [
