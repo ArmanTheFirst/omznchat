@@ -15,16 +15,56 @@ function AuthToasts() {
     if (isSignedIn && user) {
       wasSignedIn.current = true;
       if (!sessionStorage.getItem("welcomeToastShown")) {
-        toast.success(`Welcome back, ${user.firstName || "there"}! 👋`, {
-          duration: 4000,
-          position: "bottom-center",
-          style: {
-            background: "#10B981",
-            color: "#fff",
-            borderRadius: "8px",
-            padding: "16px",
-          },
-        });
+        // Combined welcome and development warning toast
+        toast(
+          <div className="space-y-2">
+            <div className="flex items-center">
+              <svg 
+                className="h-5 w-5 text-white mr-2" 
+                fill="none" 
+                viewBox="0 0 24 24" 
+                stroke="currentColor"
+              >
+                <path 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                  strokeWidth={2} 
+                  d="M5 13l4 4L19 7" 
+                />
+              </svg>
+              <span className="font-medium">Welcome back, {user.firstName || "there"}! 👋</span>
+            </div>
+            <div className="flex items-start text-sm">
+              <svg 
+                className="h-4 w-4 text-yellow-500 mr-2 mt-0.5 flex-shrink-0" 
+                fill="none" 
+                viewBox="0 0 24 24" 
+                stroke="currentColor"
+              >
+                <path 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                  strokeWidth={2} 
+                  d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" 
+                />
+              </svg>
+              <span>This is a development environment. Data may be reset.</span>
+            </div>
+          </div>,
+          {
+            duration: 6000,
+            position: "bottom-center",
+            style: {
+              background: "#10B981",
+              color: "#fff",
+              borderRadius: "8px",
+              padding: "16px",
+              borderLeft: "4px solid #059669",
+            },
+            icon: null,
+          }
+        );
+
         sessionStorage.setItem("welcomeToastShown", "true");
       }
     } else if (!isSignedIn && wasSignedIn.current) {
