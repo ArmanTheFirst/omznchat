@@ -20,13 +20,13 @@ export default function FinalCTA() {
                 viewport={{ once: true }}
                 className="text-center"
               >
-                <h2 className="bg-gradient-to-br -mt-24 sm:-mt-0 from-foreground to-foreground/70 bg-clip-text text-4xl font-semibold tracking-tight text-transparent md:text-5xl">
+                <h2 className="bg-gradient-to-br -mt-0 lg:-mt-24 from-foreground to-foreground/70 bg-clip-text text-4xl font-semibold tracking-tight text-transparent md:text-5xl">
                   become a part of this project
                 </h2>
               </motion.div>
             </LampContainer>
           </div>
-          <div className="relative z-10 -mt-72 px-4">
+          <div className="relative z-10 -mt-56 sm:-mt-72 md:-mt-80 px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

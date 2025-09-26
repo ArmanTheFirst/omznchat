@@ -120,7 +120,7 @@ export default function Hero() {
           variants={textVariants}
           className="mx-auto mb-12 max-w-2xl text-muted-foreground text-base md:text-lg leading-relaxed"
         >
-          <p className="mb-2">no more black boxes. no closed doors. omzn is a privacy-first, open chat app you can use, fork, and fix. built by dreamers, rebels, and everyone tired of 2010s messaging.</p>
+          <p className="mb-2">no more hidden work. no closed doors. omzn is a privacy-first, open chat app you can use, fork, and fix. built by dreamers, rebels, and everyone tired of 2010s messaging.</p>
           
         </motion.div>
 

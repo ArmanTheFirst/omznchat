@@ -11,7 +11,7 @@ interface StaticPageLayoutProps {
 export function generateMetadata({ title, description }: { title?: string, description?: string }): Metadata {
   return {
     title: title || 'OMZN Chat',
-    description: description || 'A smarter way to communicate',
+    description: description || 'Future of chat',
   };
 }
 

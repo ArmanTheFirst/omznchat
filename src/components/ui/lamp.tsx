@@ -32,7 +32,7 @@ export function LampContainer({
   return (
     <div
       className={cn(
-        "relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-white dark:bg-slate-950 w-full md:max-w-[90vw] lg:max-w-[85vw] xl:max-w-[80vw] 2xl:max-w-[75vw] mx-auto rounded-md z-0 transition-colors duration-200",
+        "relative flex flex-col items-center justify-center overflow-hidden bg-white dark:bg-slate-950 w-full md:max-w-[90vw] lg:max-w-[85vw] xl:max-w-[80vw] 2xl:max-w-[75vw] mx-auto rounded-md z-0 transition-colors duration-200 h-[32rem] sm:h-[36rem] md:h-[40rem] lg:h-[44rem] xl:h-[48rem] 2xl:h-[52rem]",
         className
       )}
     >
@@ -69,7 +69,7 @@ export function LampContainer({
           <div className="absolute w-32 h-[100%] right-0 bg-white dark:bg-slate-950 bottom-0 z-20 [mask-image:linear-gradient(to_left,white,transparent)]" />
           <div className="absolute w-[100%] right-0 bg-white dark:bg-slate-950 h-40 bottom-0 z-20 [mask-image:linear-gradient(to_top,white,transparent)]" />
         </motion.div>
-        <div className="absolute top-1/2 h-48 w-[85vw] sm:w-[90vw] md:w-[140%] lg:w-[160%] xl:w-[180%] 2xl:w-[200%] translate-y-12 scale-x-100 bg-white dark:bg-slate-950 blur-2xl"></div>
+        <div className="absolute top-1/2 h-32 sm:h-36 md:h-40 lg:h-44 xl:h-48 2xl:h-52 w-[85vw] sm:w-[90vw] md:w-[140%] lg:w-[160%] xl:w-[180%] 2xl:w-[200%] translate-y-8 sm:translate-y-10 md:translate-y-12 scale-x-100 bg-white dark:bg-slate-950 blur-2xl"></div>
         <div className="absolute top-1/2 z-50 h-48 w-full bg-transparent opacity-10 backdrop-blur-md"></div>
         <div className="absolute inset-auto z-50 h-36 w-[8rem] sm:w-[16rem] md:w-[28rem] lg:w-[36rem] xl:w-[44rem] 2xl:w-[52rem] -translate-y-1/2 rounded-full bg-cyan-300 dark:bg-cyan-500 opacity-30 dark:opacity-50 blur-3xl"></div>
         <motion.div
@@ -96,7 +96,7 @@ export function LampContainer({
         <div className="absolute inset-auto z-40 h-44 w-full -translate-y-[12.5rem] bg-white dark:bg-slate-950"></div>
       </div>
 
-      <div className="relative z-50 flex -translate-y-80 flex-col items-center px-5">
+      <div className="relative z-50 flex -translate-y-64 sm:-translate-y-72 md:-translate-y-80 flex-col items-center px-5 w-full">
         {children}
       </div>
     </div>

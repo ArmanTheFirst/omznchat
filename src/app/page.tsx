@@ -6,25 +6,25 @@ import { redirect } from "next/navigation";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: 'OMZN Chat – AI-Powered Chat Platform',
-  description: 'OMZN Chat is a next-generation AI chat SaaS for smarter, seamless, and secure conversations. Try OMZN Chat for free.',
+  title: 'omzn chat | future of chat',
+  description: 'omzn chat is an ambitious project, by/for the community',
   openGraph: {
-    title: 'OMZN Chat – AI-Powered Chat Platform',
-    description: 'Experience the next generation of AI-powered chat with OMZN. Smart, intuitive, and always learning.',
-    images: [{
-      url: 'https://omznchat.vercel.app/android-chrome-512x512.png',
+    title: 'omzn chat | future of chat',
+    description: 'omzn chat is an ambitious project, by/for the community',
+    images: [{  
+      url: 'https://omznchat.vercel.app/logo.png',
       width: 512,
       height: 512,
-      alt: 'OMZN Chat',
+      alt: 'omzn chat',
     }],
-    siteName: 'OMZN Chat',
+    siteName: 'omzn chat',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'OMZN Chat – AI-Powered Chat Platform',
-    description: 'Experience the next generation of AI-powered chat with OMZN. Smart, intuitive, and always learning.',
-    images: ['https://omznchat.vercel.app/android-chrome-512x512.png'],
+    title: 'omzn chat | future of chat',
+    description: 'omzn chat is an ambitious project, by/for the community',
+    images: ['https://omznchat.vercel.app/logo.png'],
   },
 };
 
