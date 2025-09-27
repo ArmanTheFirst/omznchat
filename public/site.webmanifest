@@ -1,7 +1,8 @@
 {
   "name": "OMZN Chat",
   "short_name": "OMZN",
-  "background_color": "#ffffff",
+  "background_color": "#010610",
+  "start_url": "/chat",
   "theme_color": "#ffffff",
   "description": "The future of chat",
   "categories": ["social", "productivity", "utilities"],
