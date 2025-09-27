@@ -8,94 +8,127 @@
 // @ts-ignore - self is available in service worker context
 const sw = /** @type {ServiceWorkerGlobalScope} */ (self);
 
-// Keep track of the last notification time and content
-let lastNotification = {
-  time: 0,
-  title: '',
-  body: '',
-  channelId: ''
+// Track processed messages with timestamps
+const processedMessages = new Map();
+const MESSAGE_TTL = 5 * 60 * 1000; // 5 minutes TTL for processed messages
+
+// Clean up old message entries
+const cleanupOldMessages = () => {
+    const now = Date.now();
+    for (const [id, timestamp] of processedMessages.entries()) {
+        if (now - timestamp > MESSAGE_TTL) {
+            processedMessages.delete(id);
+        }
+    }
 };
 
-// Time window in milliseconds to consider notifications as duplicates
-const DUPLICATE_WINDOW = 2000;
+// Generate a unique ID for messages
+function getMessageId(message) {
+    if (message.id) return `msg_${message.id}`;
+    const str = `${message.channelId}_${message.title}_${message.body || ''}_${message.created_at || Date.now()}`;
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+        const char = str.charCodeAt(i);
+        hash = ((hash << 5) - hash) + char;
+        hash = hash & hash; // Convert to 32bit integer
+    }
+    return `hash_${hash}`;
+}
 
 /**
  * Handles incoming push events
  */
 sw.addEventListener('push', (event) => {
-  if (!event.data) {
-    console.warn('Push event received without data');
-    return;
-  }
-
-  try {
-    const message = event.data.json();
-    const { title, body, icon, image, channelId } = message || {};
-
-    if (!title || !channelId) {
-      console.warn('Push message missing required fields:', { title, channelId });
-      return;
+    if (!event.data) {
+        console.warn('Push event received without data');
+        return;
     }
 
-    console.log('Received push message', { title, channelId });
-
     const handlePushEvent = async () => {
-      try {
-        const now = Date.now();
-        const isDuplicate = (
-          lastNotification.title === title &&
-          lastNotification.body === body &&
-          lastNotification.channelId === channelId &&
-          (now - lastNotification.time) < DUPLICATE_WINDOW
-        );
+        try {
+            // Parse the message
+            const message = event.data?.json();
+            if (!message) {
+                console.warn('Failed to parse push message');
+                return;
+            }
 
-        if (isDuplicate) {
-          console.log('Duplicate notification detected, skipping');
-          return;
+            const { title, body, channelId, icon, image } = message;
+            
+            // Validate required fields
+            if (!title || !channelId) {
+                console.warn('Push message missing required fields:', { title, channelId });
+                return;
+            }
+
+            // Generate a unique ID for this message
+            const messageId = getMessageId(message);
+            const now = Date.now();
+            
+            // Clean up old messages and check for duplicates
+            cleanupOldMessages();
+            if (processedMessages.has(messageId)) {
+                console.log('Duplicate message detected, ignoring:', messageId);
+                return;
+            }
+            
+            // Mark as processed
+            processedMessages.set(messageId, now);
+            console.log('Processing push message:', { messageId, title, channelId });
+
+            // Check if app is in foreground
+            const windowClients = await sw.clients.matchAll({
+                type: 'window',
+                includeUncontrolled: true
+            });
+
+            const isAppInForeground = windowClients.some(client => client.focused);
+            if (isAppInForeground) {
+                console.log('App is in foreground, not showing notification');
+                return;
+            }
+
+            // Use a consistent tag for the same channel to replace old notifications
+            const tag = `message-${channelId}`;
+            
+            const notificationOptions = {
+                body: body || '',
+                icon: icon || '/logo.png',
+                image: image,
+                badge: '/logo.png',
+                actions: [{ 
+                    title: 'Open chat', 
+                    action: 'open_chat' 
+                }],
+                tag,
+                renotify: true,
+                data: { 
+                    channelId,
+                    messageId,
+                    timestamp: now
+                },
+                timestamp: now,
+                requireInteraction: false,
+                silent: false
+            };
+
+            console.log('Showing notification:', { title, tag, channelId });
+            
+            // Show the notification
+            await sw.registration.showNotification(title, notificationOptions);
+            
+        } catch (error) {
+            console.error('Error in push event handler:', error);
         }
-
-        // Update last notification info
-        lastNotification = { title, body: body || '', channelId, time: now };
-
-        const windowClients = await sw.clients.matchAll({
-          type: 'window',
-          includeUncontrolled: true
-        });
-
-        // Check if any window is focused
-        const appInForeground = windowClients.some(client => client.focused);
-
-        if (appInForeground) {
-          console.log('App is in foreground, not showing notification');
-          return;
-        }
-
-        // Use a consistent tag for the same channel to replace old notifications
-        const tag = `message-${channelId}`;
-        
-        const notificationOptions = {
-          body: body || '',
-          icon: icon || '/logo.png',
-          image: image,
-          badge: '/logo.png',
-          actions: [{ title: 'Open chat', action: 'open_chat' }],
-          tag,
-          renotify: true,
-          data: { channelId },
-          timestamp: now
-        };
-
-        // Show the notification
-        await sw.registration.showNotification(title, notificationOptions);
-      } catch (error) {
-        console.error('Error handling push event:', error);
-      }
     };
 
-    event.waitUntil(handlePushEvent());
-  } catch (error) {
-    console.error('Error parsing push event data:', error);
-  }
+    // Ensure the waitUntil is called with the promise
+    if (event && typeof event.waitUntil === 'function') {
+        event.waitUntil(handlePushEvent());
+    } else {
+        console.warn('Push event missing waitUntil method, running handler directly');
+        handlePushEvent().catch(console.error);
+    }
 });
 
 /**

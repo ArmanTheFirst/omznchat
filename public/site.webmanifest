@@ -1,6 +1,14 @@
 {
   "name": "OMZN Chat",
   "short_name": "OMZN",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#ffffff",
+  "theme_color": "#3b82f6",
+  "description": "The future of chat",
+  "categories": ["social", "productivity", "utilities"],
+  "prefer_related_applications": false,
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
@@ -12,8 +20,5 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ],
-  "theme_color": "#1D4ED8",
-  "background_color": "#ffffff",
-  "display": "standalone"
+  ]
 }
