@@ -3,6 +3,18 @@ import { clerkClient } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 import { Webhook } from "svix";
 import { deletePushSubscriptionFromServer } from "@/notifications/pushService";
+import { PushSubscription as WebPushSubscription } from 'web-push';
+
+// Define the shape of the subscription we store in Clerk's metadata
+interface StoredPushSubscription {
+  endpoint: string;
+  keys: {
+    p256dh: string;
+    auth: string;
+  };
+  expirationTime: number | null;
+  sessionId: string;
+}
 
 interface ClerkWebhookEvent {
   type: string;
@@ -51,12 +63,15 @@ export async function POST(req: Request) {
         // Get the user's current data
         const client = await clerkClient();
         const user = await client.users.getUser(userId);
-        const privateMetadata = user.privateMetadata as any;
-        const pushSubscriptions = privateMetadata?.pushSubscriptions || [];
+        const privateMetadata = user.privateMetadata as { subscriptions?: StoredPushSubscription[] };
+        const subscriptions = privateMetadata?.subscriptions || [];
+        
+        console.log(`Found ${subscriptions.length} push subscriptions for user ${userId}`);
+        console.log('Current subscriptions:', JSON.stringify(subscriptions, null, 2));
 
         // Find subscriptions associated with this session
-        const subscriptionsToRemove = pushSubscriptions.filter(
-          (sub: any) => sub.sessionId === sessionId
+        const subscriptionsToRemove = subscriptions.filter(
+          (sub) => sub.sessionId === sessionId
         );
 
         if (subscriptionsToRemove.length > 0) {
@@ -64,12 +79,28 @@ export async function POST(req: Request) {
           
           // Delete each subscription from the push service
           await Promise.all(
-            subscriptionsToRemove.map(async (sub: any) => {
+            subscriptionsToRemove.map(async (sub) => {
               try {
-                if (sub.subscription) {
-                  await deletePushSubscriptionFromServer(sub.subscription);
-                  console.log(`Successfully deleted push subscription for session ${sessionId}`);
-                }
+                // Create a minimal WebPushSubscription object that matches the web-push library's expectations
+                // We need to cast it to any to avoid type errors with the web-push library
+                const subscription: any = {
+                  endpoint: sub.endpoint,
+                  keys: {
+                    p256dh: sub.keys.p256dh,
+                    auth: sub.keys.auth
+                  },
+                  expirationTime: sub.expirationTime,
+                  // Add the required methods as no-ops since we don't need them for deletion
+                  getKey: () => new Uint8Array(0),
+                  toJSON: () => ({
+                    endpoint: sub.endpoint,
+                    keys: sub.keys,
+                    expirationTime: sub.expirationTime
+                  }),
+                  unsubscribe: async () => true
+                };
+                await deletePushSubscriptionFromServer(subscription as PushSubscription);
+                console.log(`Successfully deleted push subscription for session ${sessionId}`);
               } catch (error) {
                 console.error(`Error deleting push subscription for session ${sessionId}:`, error);
                 // Continue with other subscriptions even if one fails
@@ -78,15 +109,15 @@ export async function POST(req: Request) {
           );
 
           // Update user's metadata to remove the cleaned up subscriptions
-          const updatedSubscriptions = pushSubscriptions.filter(
-            (sub: any) => sub.sessionId !== sessionId
+          const updatedSubscriptions = subscriptions.filter(
+            (sub) => sub.sessionId !== sessionId
           );
 
-          if (updatedSubscriptions.length !== pushSubscriptions.length) {
+          if (updatedSubscriptions.length !== subscriptions.length) {
             await client.users.updateUser(userId, {
               privateMetadata: {
                 ...privateMetadata,
-                pushSubscriptions: updatedSubscriptions,
+                subscriptions: updatedSubscriptions,
               },
             });
             console.log(`Updated user metadata with ${updatedSubscriptions.length} remaining subscriptions`);
