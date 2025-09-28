@@ -42,11 +42,7 @@ const CustomMessageInput = () => {
                 form.requestSubmit();
               }
             }
-          },
-          style: {
-            resize: 'none',
-            lineHeight: '1.5',
-          },
+          }
         }}
         minRows={1}
         maxRows={5}
