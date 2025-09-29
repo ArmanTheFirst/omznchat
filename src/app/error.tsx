@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { AlertCircle, RefreshCw, Home } from "lucide-react";
+import { GitHub } from "@/components/icons/icons";
 
 export default function Error({
   error,
@@ -53,29 +54,52 @@ export default function Error({
             )}
           </div>
 
-          <div className="flex flex-wrap justify-center gap-4">
-            <motion.button
-              whileHover={{ scale: 1.02 }}
+          <div className="flex flex-wrap justify-center gap-4 px-4">
+            <motion.div 
+              whileHover={{ scale: 1.02 }} 
               whileTap={{ scale: 0.98 }}
-              onClick={() => reset()}
-              className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              className="w-full sm:w-auto"
             >
-              <RefreshCw className="h-4 w-4" />
-              try again
-            </motion.button>
+              <button
+                onClick={() => reset()}
+                className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              >
+                <RefreshCw className="h-4 w-4" />
+                Try again
+              </button>
+            </motion.div>
 
-            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+            <motion.div 
+              whileHover={{ scale: 1.02 }} 
+              whileTap={{ scale: 0.98 }}
+              className="w-full sm:w-auto"
+            >
               <Link
                 href="/"
-                className="inline-flex items-center justify-center gap-2 rounded-md border border-input bg-background px-6 py-3 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-md border border-input bg-background px-6 py-3 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               >
                 <Home className="h-4 w-4" />
-                back to home
+                Back to home
+              </Link>
+            </motion.div>
+
+            <motion.div 
+              whileHover={{ scale: 1.02 }} 
+              whileTap={{ scale: 0.98 }}
+              className="w-full sm:w-auto"
+            >
+              <Link
+                href={`${process.env.NEXT_PUBLIC_GITHUB_REPO_URL}/issues/new?title=Error%20Report&body=Please%20describe%20what%20happened%20and%20how%20to%20reproduce%20the%20issue...`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-md border border-input bg-background px-6 py-3 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              >
+                <GitHub className="h-4 w-4" />
+                Report an issue
               </Link>
             </motion.div>
           </div>
         </motion.div>
       </div>
     </StaticPageLayout>
-  );
-}
+  )}
