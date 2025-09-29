@@ -22,7 +22,7 @@ export function SiteHeader() {
         {/* Logo */}
         <Link 
           href="/" 
-          className="group flex items-center space-x-2 transition-transform duration-300 hover:scale-105"
+          className="group flex items-center space-x-3 transition-transform duration-300 hover:scale-105"
         >
           <motion.div
             whileHover={{ rotate: 10 }}
@@ -31,12 +31,12 @@ export function SiteHeader() {
             <Image 
               src="/logo.png" 
               alt="OMZN" 
-              className="transition-transform duration-300 group-hover:-rotate-12" 
+              className="transition-transform duration-300 group-hover:-rotate-12 ml-4" 
               width={6}
               height={6}
             />
           </motion.div>
-          <span className="text-2xl font-semibold text-foreground group-hover:text-primary-light transition-colors">omzn</span>
+          <span className="text-lg font-semibold text-foreground group-hover:text-primary-light transition-colors ml-2">omzn</span>
         </Link>
 
         {/* Navigation */}

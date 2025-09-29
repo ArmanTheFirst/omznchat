@@ -13,9 +13,8 @@ export default function Footer() {
             <Image 
               src={logo} 
               alt="OMZN" 
-              width={32} 
-              height={32} 
-              className="h-8 w-8"
+              width={6} 
+              height={6} 
             />
             <span className="text-xl font-semibold text-foreground">omzn</span>
           </Link>
