@@ -21,15 +21,19 @@ import { useSearchParams } from 'next/navigation';
 const i18Instance = new Streami18n({ language: "en" });
 
 export default function ChatPage() {
+  const [mounted, setMounted] = useState(false);
+  const { theme } = useTheme();
+  
   useEffect(() => {
     document.title = 'Chat | OMZN';
+    setMounted(true);
   }, []);
+  
   const searchParams = useSearchParams();
   const channelId = searchParams?.get('channelId') || undefined;
   const chatClient = useInitializeChatClient();
   const { user } = useUser();
-  const { theme } = useTheme();
-
+  
   const [chatSidebarOpen, setChatSidebarOpen] = useState(false);
 
   const windowSize = useWindowSize();
@@ -74,7 +78,7 @@ export default function ChatPage() {
     setChatSidebarOpen(false);
   }, []);
 
-  if (!chatClient || !user) {
+  if (!mounted || !chatClient || !user) {
     return (
       <div className="flex h-dvh items-center justify-center bg-gray-100 dark:bg-black">
         <LoadingIndicator size={40} />
@@ -87,6 +91,7 @@ export default function ChatPage() {
     {/* xl:px-20 xl:py-8 */}
       <div className="m-auto flex h-full min-w-[350px] max-w-[1600px] flex-col shadow-sm">
         <Chat
+          key={`chat-${theme}`}
           client={chatClient}
           i18nInstance={i18Instance}
           theme={
