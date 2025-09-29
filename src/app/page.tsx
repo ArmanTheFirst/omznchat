@@ -1,8 +1,6 @@
 import Footer from "@/components/footer";
 import Landing from "@/components/landing";
 import { SiteHeader } from "@/components/site-header";
-import { auth } from "@clerk/nextjs/server";
-import { redirect } from "next/navigation";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

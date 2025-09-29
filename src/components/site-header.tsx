@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation'
 import { useUser } from "@clerk/nextjs"
 import { motion } from 'framer-motion'
 import ThemeToggle from "@/app/(root)/(routes)/dashboard/_components/ThemeToggle"
+import Image from 'next/image'
 
 export function SiteHeader() {
   const pathname = usePathname()
@@ -27,12 +28,12 @@ export function SiteHeader() {
             whileHover={{ rotate: 10 }}
             transition={{ type: 'spring', stiffness: 300, damping: 10 }}
           >
-            <img 
+            <Image 
               src="/logo.png" 
               alt="OMZN" 
-              className="h-8 w-8 transition-transform duration-300 group-hover:-rotate-12" 
-              width={32}
-              height={32}
+              className="transition-transform duration-300 group-hover:-rotate-12" 
+              width={6}
+              height={6}
             />
           </motion.div>
           <span className="text-2xl font-semibold text-foreground group-hover:text-primary-light transition-colors">omzn</span>
