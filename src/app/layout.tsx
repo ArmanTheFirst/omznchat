@@ -61,6 +61,7 @@ export default function RootLayout({
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={ogImage} />
         <meta name="twitter:site" content={twitterHandle} />
+        <meta name="apple-mobile-web-app-title" content="OMZN" />
         <link rel="canonical" href={siteUrl} />
         <script
           type="application/ld+json"
