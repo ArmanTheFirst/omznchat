@@ -168,6 +168,8 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 For questions or feedback, please open an issue on GitHub.
 
-**Contact:** omznchat@protonmail.com
+**Email:** omznchat@protonmail.com
+
+**Discord:** https://discord.gg/wnAW2AjJhm
 
 **Remember:** This is a pre-alpha project. Expect bugs, breaking changes, and incomplete features. We appreciate your patience and contributions as we build omznchat together!
