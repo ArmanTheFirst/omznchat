@@ -18,7 +18,7 @@ This application is under heavy development. Many core features are still being 
 - 💬 Real-time chat that just works — snappy messages, nothing lost in space
 - 🔒 Simple, safe sign-in — use your favorite account, no password headaches
 - 🛎️ Optional notifications — browser or PWA push, no pressure, zero spam
-- 🧭 Unified dashboard — all chats and settings on one clean dashboard route
+- 🧭 Unified dashboard mockup — all chats and settings on one clean dashboard route
 
 ### Planned / Wishlist:
 - 🕵️‍♂️ Incognito chat — participate anonymously in direct/group conversations
