@@ -104,33 +104,118 @@ git commit -m "style: format code with Prettier"
 - npm, yarn, pnpm, or bun package manager
 - Git
 
-### Environment Configuration
+### Setup Guide
 
-1. **Copy environment template:**
-   ```bash
-   cp .env .env.local
-   ```
+#### 1. Clone the repository
 
-2. **Configure environment variables** in `.env.local`:
-   - Never commit `.env.local` or sensitive credentials
-   - Use placeholder values in `.env` for documentation
-   - Document required variables in README.md
+```bash
+git clone https://github.com/ArmanTheFirst/omznchat.git
+cd omznchat
+```
 
-3. **Install dependencies:**
-   ```bash
-   npm install
-   # or
-   yarn install
-   # or
-   pnpm install
-   # or
-   bun install
-   ```
+#### 2. Install dependencies
 
-4. **Run development server:**
-   ```bash
-   npm run dev
-   ```
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+```
+
+#### 3. Create `.env.local` file
+
+Create a `.env.local` file in the root directory. This file will contain all the required environment variables for the project.
+
+#### 4. Get API keys and configure environment variables
+
+You'll need to sign up for the following third-party services and obtain API keys:
+
+**Required Services:**
+
+1. **[Clerk](https://clerk.com/)** - Authentication service
+   - Sign up for a free account
+   - Create a new application
+   - Get your keys from the API Keys section:
+     - `CLERK_SECRET_KEY` (Server-side)
+     - `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` (Client-side)
+     - `CLERK_WEBHOOK_SECRET` (for webhook endpoints)
+
+2. **[Stream](https://getstream.io/)** - Real-time chat infrastructure
+   - Sign up for a free account
+   - Create a new app
+   - Get your credentials:
+     - `STREAM_SECRET` (Server-side)
+     - `NEXT_PUBLIC_STREAM_KEY` (Client-side)
+
+3. **[Google reCAPTCHA](https://www.google.com/recaptcha/)** - Spam prevention
+   - Register a new site (v2 or v3)
+   - Get your keys:
+     - `RECAPTCHA_SECRET_KEY` (Server-side)
+     - `NEXT_PUBLIC_RECAPTCHA_SITE_KEY` (Client-side)
+
+4. **Email Configuration** - For sending notifications
+   - Use your email provider's SMTP settings
+   - Configure:
+     - `SENDER_MAIL` - Email address to send from
+     - `SENDER_PASSWORD` - Email account password or app-specific password
+     - `RECEIVER_MAIL` - Email address to receive notifications
+     - `OMZN_MAIL` - Project's main email address
+
+5. **Web Push Notifications** - For browser push notifications
+   - Generate VAPID keys using `npx web-push generate-vapid-keys`
+   - Configure:
+     - `WEB_PUSH_PRIVATE_KEY` (Server-side)
+     - `NEXT_PUBLIC_WEB_PUSH_PUBLIC_KEY` (Client-side)
+
+**Additional Configuration:**
+- `NEXT_PUBLIC_GITHUB_REPO_URL` - GitHub repository URL
+- `NEXT_PUBLIC_HOSTING_URL` - Your local or deployment URL (e.g., `http://localhost:3000`)
+- `NEXT_PUBLIC_DISCORD_INVITE` - Discord invite link (if applicable)
+- `NEXT_PUBLIC_X_URL` - X/Twitter URL (if applicable)
+
+#### 5. Populate `.env.local`
+
+Your `.env.local` file should look like this:
+
+```env
+# Server-side keys
+CLERK_SECRET_KEY=your_clerk_secret_key
+STREAM_SECRET=your_stream_secret
+CLERK_WEBHOOK_SECRET=your_webhook_secret
+RECAPTCHA_SECRET_KEY=your_recaptcha_secret
+SENDER_MAIL=your_sender_email@example.com
+SENDER_PASSWORD=your_email_password
+RECEIVER_MAIL=receiver@example.com
+OMZN_MAIL=omzn@example.com
+WEB_PUSH_PRIVATE_KEY=your_private_vapid_key
+
+# Client-side keys (prefixed with NEXT_PUBLIC_)
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
+NEXT_PUBLIC_RECAPTCHA_SITE_KEY=your_recaptcha_site_key
+NEXT_PUBLIC_STREAM_KEY=your_stream_public_key
+NEXT_PUBLIC_WEB_PUSH_PUBLIC_KEY=your_public_vapid_key
+NEXT_PUBLIC_GITHUB_REPO_URL=https://github.com/ArmanTheFirst/omznchat
+NEXT_PUBLIC_HOSTING_URL=http://localhost:3000
+NEXT_PUBLIC_DISCORD_INVITE=https://discord.gg/your-invite
+NEXT_PUBLIC_X_URL=https://x.com/your-handle
+```
+
+**⚠️ IMPORTANT:** Never commit your `.env.local` file! It's already in `.gitignore`.
+
+#### 6. Run the development server
+
+```bash
+npm run dev
+```
+
+The app should now be running at `http://localhost:3000`.
+
+### Troubleshooting
+
+- **Missing environment variables**: Check the console for error messages indicating which variables are missing
+- **Invalid API keys**: Verify that you've copied the correct keys from each service
+- **Port already in use**: Change the port by running `PORT=3001 npm run dev`
 
 ## 📋 Development Guidelines
 
