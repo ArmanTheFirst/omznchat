@@ -1,176 +1,125 @@
 # omznchat
 
 > ⚠️ **IMPORTANT DEVELOPMENT NOTICE**
-> 
-> This project is currently in **early active development** and is **NOT production-ready**. Features are incomplete, APIs may change without notice, and significant bugs are expected. Use at your own risk.
+>
+> This project is currently in **early active development** and is **NOT production-ready**. Features are incomplete, APIs may change without notice, and significant bugs are expected. Use at your own risk. When we switch to production, our third party providers (Clerk, Stream) may erase existing user data.
 
 ## 📋 Project Description
 
-**omznchat** is a modern, real-time chat application built with Next.js, designed to provide a seamless messaging experience with a focus on performance and user experience. The project leverages cutting-edge web technologies to deliver a responsive, feature-rich platform for communication.
+**omznchat** wants to be a futuristic, redefined, modern, real-time chat platform built with Next.js, designed to provide a seamless messaging experience with a focus on performance and user experience. The project plans to leverage cutting-edge web technologies to deliver a responsive, feature-rich platform for communication.
 
 ### Current Status: Pre-Alpha
 
 This application is under heavy development. Many core features are still being implemented, and the codebase is subject to frequent, breaking changes.
 
-## ✨ Main Features
+## ✨ Features
 
-### Implemented
-- 🎨 Modern UI with Dark/Light mode support
-- 📱 Mobile-optimized responsive design
-- 💬 Core chat functionality baseline
-- 🎯 Dashboard mock interface
-- ⚡ Next.js 15+ with App Router
-- 🎭 TypeScript for type safety
-- 🎨 Tailwind CSS for styling
-- 🧩 shadcn/ui component library
+### Currently Available:
+- 💬 Real-time chat that just works — snappy messages, nothing lost in space
+- 🔒 Simple, safe sign-in — use your favorite account, no password headaches
+- 🛎️ Optional notifications — browser or PWA push, no pressure, zero spam
+- 🧭 Unified dashboard — all chats and settings on one clean dashboard route
 
-### In Progress / Planned
-- 🔐 User authentication and authorization
-- 💾 Persistent message storage
-- 🔄 Real-time message synchronization
-- 👥 User presence and status indicators
-- 📎 File sharing and media support
-- 🔍 Message search functionality
-- 🔔 Push notifications
-- 🌐 Multi-language support
+### Planned / Wishlist:
+- 🕵️‍♂️ Incognito chat — participate anonymously in direct/group conversations
+- 📌 Pin anything, find anything — star messages, pin media, full-chat search
+- ✨ AI for chat gossip — summarize missed convos, ask explicit chat questions
+- ✍️ AI writing buddy — smart suggestions matching your style
+- ⏰ Remind me, but nicer — auto-reminders for events and nudges
+- 🤖 Agent mode — AI workflows speak for you
+- 📞 Voice & call support — messages, calls, and AI-assisted calls
 
-For a detailed roadmap and feature tracking, see [Issues](https://github.com/ArmanTheFirst/omznchat/issues).
+## 🗺️ Roadmap
+
+### Done
+- Initial setup: basic chat, dashboard demo
+- Our website: static info pages
+
+### In Progress:
+- Open sourcing: public GitHub repo & collaboration
+- Establishing public community: invite users/developers
+- Shipping small features: steady UX improvement
+
+### Planned:
+- Commercial launch: switch to prod, own domain
+- Modern, beautiful UI
+- AI and fun: build flagship features
+- Expand to an app: full iOS/Android/PWA
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 
-- Node.js 18+ 
+- Node.js 18+
 - npm, yarn, pnpm, or bun package manager
 
 ### Installation
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/ArmanTheFirst/omznchat.git
+```
+
+2. Navigate to the project directory:
+
+```bash
 cd omznchat
 ```
 
-2. Install dependencies:
+3. Install dependencies:
+
 ```bash
 npm install
 # or
 yarn install
 # or
 pnpm install
-# or
-bun install
 ```
 
-3. Set up environment variables:
-```bash
-cp .env .env.local
-# Edit .env.local with your configuration
-```
+4. Set up environment variables:
 
-4. Run the development server:
+Create a `.env.local` file in the root directory and add necessary environment variables (refer to `.env.example` if available).
+
+5. Run the development server:
+
 ```bash
 npm run dev
 # or
 yarn dev
 # or
 pnpm dev
-# or
-bun dev
 ```
 
-5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the application.
+6. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-### Development Notes
+## 🛠️ Tech Stack
 
-- The page auto-updates as you edit files
-- TypeScript strict mode is enabled
-- ESLint and Prettier are configured for code quality
+- **Framework:** Next.js 15+ (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS
+- **UI Components:** shadcn/ui
+- **Authentication:** Clerk
+- **Real-time:** Stream Chat
 
 ## 🤝 Contributing
 
-We welcome contributions! However, please note that this project is in early development, so expect significant changes to the codebase.
+We welcome contributions! However, please note that this project is in early development, so expect frequent changes.
 
-### How to Contribute
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-1. **Check existing issues** - Browse [Issues](https://github.com/ArmanTheFirst/omznchat/issues) to find tasks or report new bugs
-2. **Read CONTRIBUTING.md** - Review our [Contributing Guidelines](./CONTRIBUTING.md) for detailed instructions
-3. **Fork the repository** - Create your own fork to work on
-4. **Create a feature branch** - Use descriptive branch names (e.g., `feature/add-notifications`)
-5. **Make your changes** - Follow the code style and conventions
-6. **Test thoroughly** - Ensure your changes don't break existing functionality
-7. **Submit a Pull Request** - Provide a clear description of your changes
+## 📝 License
 
-### Development Guidelines
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-- Write clean, maintainable TypeScript code
-- Follow the existing code style (enforced by ESLint/Prettier)
-- Add comments for complex logic
-- Update documentation for new features
-- Write meaningful commit messages
+## 📧 Contact
 
-## 🔒 Security
-
-### Reporting Security Issues
-
-**DO NOT** create public GitHub issues for security vulnerabilities.
-
-If you discover a security vulnerability, please report it privately:
-
-- 📧 Email: [Create an issue](https://github.com/ArmanTheFirst/omznchat/issues/new) with "SECURITY" in the title (mark as private if possible)
-- 🔐 Or use GitHub's private vulnerability reporting feature
-
-We take security seriously and will respond promptly to legitimate reports.
-
-### Security Considerations for Developers
-
-⚠️ **This project is NOT audited for security and should NOT be used with sensitive data or in production environments at this time.**
-
-- Never commit sensitive credentials or API keys
-- Use environment variables for configuration
-- Follow OWASP best practices
-- Keep dependencies updated
-
-## ⚠️ Disclaimer
-
-**USE AT YOUR OWN RISK**
-
-This software is provided "as is" without warranty of any kind. The developers assume no liability for:
-
-- Data loss or corruption
-- Security vulnerabilities
-- Service interruptions
-- Any damages arising from use of this software
-
-This is an experimental project not intended for production use. Do not use it to handle sensitive or critical data.
-
-## 📚 Learn More
-
-### Next.js Resources
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial
-- [Next.js GitHub repository](https://github.com/vercel/next.js)
-
-### Project Resources
-
-- [Issues & Roadmap](https://github.com/ArmanTheFirst/omznchat/issues)
-- [Pull Requests](https://github.com/ArmanTheFirst/omznchat/pulls)
-- [Contributing Guidelines](./CONTRIBUTING.md)
-- [License](./LICENSE)
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- Built with [Next.js](https://nextjs.org/)
-- UI components from [shadcn/ui](https://ui.shadcn.com/)
-- Styled with [Tailwind CSS](https://tailwindcss.com/)
-- Fonts by [Vercel](https://vercel.com/font)
+For questions or feedback, please open an issue on GitHub.
 
 ---
 
-**Last Updated:** October 2, 2025  
-**Project Status:** 🔴 Pre-Alpha - Not Production Ready
+**Remember:** This is a pre-alpha project. Expect bugs, breaking changes, and incomplete features. We appreciate your patience and contributions as we build omznchat together!
