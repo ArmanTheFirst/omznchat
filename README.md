@@ -15,12 +15,14 @@ This application is under heavy development. Many core features are still being 
 ## ✨ Features
 
 ### Currently Available:
+
 - 💬 Real-time chat that just works — snappy messages, nothing lost in space
 - 🔒 Simple, safe sign-in — use your favorite account, no password headaches
 - 🛎️ Optional notifications — browser or PWA push, no pressure, zero spam
 - 🧭 Unified dashboard mockup — all chats and settings on one clean dashboard route
 
 ### Planned / Wishlist:
+
 - 🕵️‍♂️ Incognito chat — participate anonymously in direct/group conversations
 - 📌 Pin anything, find anything — star messages, pin media, full-chat search
 - ✨ AI for chat gossip — summarize missed convos, ask explicit chat questions
@@ -32,15 +34,18 @@ This application is under heavy development. Many core features are still being 
 ## 🗺️ Roadmap
 
 ### Done
+
 - Initial setup: basic chat, dashboard demo
 - Our website: static info pages
 
 ### In Progress:
+
 - Open sourcing: public GitHub repo & collaboration
 - Establishing public community: invite users/developers
 - Shipping small features: steady UX improvement
 
 ### Planned:
+
 - Commercial launch: switch to prod, own domain
 - Modern, beautiful UI
 - AI and fun: build flagship features
@@ -101,6 +106,40 @@ pnpm dev
 - **UI Components:** shadcn/ui
 - **Authentication:** Clerk
 - **Real-time:** Stream Chat
+
+## 🔧 Environment Variables
+
+To test and develop omznchat locally, you need API keys/accounts for:
+- Clerk (authentication)
+- Stream (realtime chat)
+- reCAPTCHA (spam prevention)
+- Email (sender/receiver for notifications)
+- Web push (browser notifications)
+
+### .env schema
+
+**Server-side:**
+- `CLERK_SECRET_KEY`
+- `STREAM_SECRET`
+- `CLERK_WEBHOOK_SECRET`
+- `RECAPTCHA_SECRET_KEY`
+- `SENDER_MAIL`
+- `SENDER_PASSWORD`
+- `RECEIVER_MAIL`
+- `OMZN_MAIL`
+- `WEB_PUSH_PRIVATE_KEY`
+
+**Client-side:**
+- `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY`
+- `NEXT_PUBLIC_RECAPTCHA_SITE_KEY`
+- `NEXT_PUBLIC_STREAM_KEY`
+- `NEXT_PUBLIC_WEB_PUSH_PUBLIC_KEY`
+- `NEXT_PUBLIC_GITHUB_REPO_URL`
+- `NEXT_PUBLIC_HOSTING_URL`
+- `NEXT_PUBLIC_DISCORD_INVITE`
+- `NEXT_PUBLIC_X_URL`
+
+To get keys: Sign up for [Clerk](https://clerk.com/), [Stream](https://getstream.io/), [Google reCAPTCHA](https://www.google.com/recaptcha/), and set up sender mail for notifications. Detailed setup instructions available in CONTRIBUTING.md.
 
 ## 🤝 Contributing
 
