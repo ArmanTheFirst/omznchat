@@ -1,12 +1,18 @@
 # omznchat
 
+## 🚗 The Vision: From Manual to Autonomous Communication
+
+**Think about cars.** For over a century, we've been manually driving—hands on the wheel, eyes on the road, navigating every turn ourselves. But now, the vision of self-driving cars is becoming reality, promising to fundamentally transform transportation by handling the driving for us while we focus on what truly matters.
+
+**Chat is at that same inflection point.** Today, we're still "manually driving" our conversations—typing every message, managing every thread, remembering every follow-up. But we envision a future where intelligent agents can handle communication on our behalf, allowing us to focus on the essential human connections and creative work that truly require our attention. omznchat is built with this ambitious vision at its core: to completely redefine the chat experience and pioneer the transition from manual messaging to agent-assisted communication.
+
 > ⚠️ **IMPORTANT DEVELOPMENT NOTICE**
 >
 > This project is currently in **early active development** and is **NOT production-ready**. Features are incomplete, APIs may change without notice, and significant bugs are expected. Use at your own risk. When we switch to production, our third party providers (Clerk, Stream) may erase existing user data.
 
 ## 📋 Project Description
 
-**omznchat** wants to be a futuristic, redefined, modern, real-time chat platform built with Next.js, designed to provide a seamless messaging experience with a focus on performance and user experience. The project plans to leverage cutting-edge web technologies to deliver a responsive, feature-rich platform for communication.
+**omznchat** is a futuristic, redefined, modern, real-time chat platform built with Next.js, designed to provide a seamless messaging experience with a focus on performance and user experience. The project leverages cutting-edge web technologies to deliver a responsive, feature-rich platform for communication—with the ultimate goal of enabling agent-driven conversations that free humans to focus on what matters most.
 
 ### Current Status: Pre-Alpha
 
@@ -110,6 +116,7 @@ pnpm dev
 ## 🔧 Environment Variables
 
 To test and develop omznchat locally, you need API keys/accounts for:
+
 - Clerk (authentication)
 - Stream (realtime chat)
 - reCAPTCHA (spam prevention)
@@ -119,6 +126,7 @@ To test and develop omznchat locally, you need API keys/accounts for:
 ### .env schema
 
 **Server-side:**
+
 - `CLERK_SECRET_KEY`
 - `STREAM_SECRET`
 - `CLERK_WEBHOOK_SECRET`
@@ -130,6 +138,7 @@ To test and develop omznchat locally, you need API keys/accounts for:
 - `WEB_PUSH_PRIVATE_KEY`
 
 **Client-side:**
+
 - `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY`
 - `NEXT_PUBLIC_RECAPTCHA_SITE_KEY`
 - `NEXT_PUBLIC_STREAM_KEY`
@@ -158,7 +167,5 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## 📧 Contact
 
 For questions or feedback, please open an issue on GitHub.
-
----
 
 **Remember:** This is a pre-alpha project. Expect bugs, breaking changes, and incomplete features. We appreciate your patience and contributions as we build omznchat together!
