@@ -42,7 +42,7 @@ export default function RootLayout({
   const siteName = "OMZN Chat";
   const description =
     "an ambitious project with a vision to redefine the future of chat (like car moving to self-driving)";
-  const ogImage = siteUrl + "/logo.png";
+  const ogImage = siteUrl + "/web-app-manifest-192x192.png";
   const twitterHandle = "@OMZNChat";
 
   return (
