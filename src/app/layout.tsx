@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     default: 'OMZN Chat',
     template: '%s | OMZN Chat',
   },
-  description: "A smarter way to communicate",
+  description: "the future of chat",
   icons: {
     icon: [
       { url: "/favicon.ico" },
@@ -41,8 +41,8 @@ export default function RootLayout({
   const siteUrl = "https://omznchat.vercel.app";
   const siteName = "OMZN Chat";
   const description =
-    "A smarter way to communicate. AI-powered chat platform for seamless, secure, and engaging conversations.";
-  const ogImage = siteUrl + "/android-chrome-512x512.png";
+    "an ambitious project with a vision to redefine the future of chat (like car moving to self-driving)";
+  const ogImage = siteUrl + "/logo.png";
   const twitterHandle = "@OMZNChat";
 
   return (
