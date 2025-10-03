@@ -49,6 +49,27 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                // Check for saved theme preference
+                const savedTheme = localStorage.getItem('theme');
+                const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                
+                // Apply theme class immediately to prevent flash
+                if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+                  document.documentElement.classList.add('dark');
+                } else {
+                  document.documentElement.classList.remove('dark');
+                }
+                
+                // Add a class to the html element once the theme is set
+                document.documentElement.classList.add('theme-loaded');
+              })();
+            `,
+          }}
+        />
         <meta name="description" content={description} />
         <meta property="og:type" content="website" />
         <meta property="og:title" content={siteName} />
@@ -82,8 +103,15 @@ export default function RootLayout({
           content="COOATcOSNOycv3-CKEIw7_1sYeNRSUU7pDku3Nfyj94"
         />
       </head>
-      <body className={`${outfit.className} overflow-x-hidden`}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+      <body className={`${outfit.className} overflow-x-hidden bg-background text-foreground transition-colors duration-200`}>
+        <ThemeProvider 
+          attribute="class" 
+          defaultTheme="system" 
+          enableSystem
+          enableColorScheme
+          disableTransitionOnChange
+          storageKey="omznchat-theme"
+        >
           <ClerkThemeWrapper>
             <main className="w-screen overflow-x-hidden bg-background">{children}</main>
             <Toaster />

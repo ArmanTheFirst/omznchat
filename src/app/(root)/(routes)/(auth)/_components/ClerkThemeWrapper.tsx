@@ -3,7 +3,7 @@
 import { ClerkProvider, useAuth, useUser } from "@clerk/nextjs";
 import { shadesOfPurple } from "@clerk/themes";
 import { useTheme } from "next-themes";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
 
 function AuthToasts() {
@@ -91,9 +91,16 @@ export default function ClerkThemeWrapper({
 }: {
   children: React.ReactNode;
 }) {
-  const { theme } = useTheme();
+  const { theme, systemTheme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
-  const isDark = theme === 'dark';
+  // Ensure we only render the UI after theme is resolved to prevent flash
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Use resolvedTheme which is always either 'light' or 'dark'
+  const isDark = resolvedTheme === 'dark';
 
   const appearance = {
     baseTheme: isDark ? shadesOfPurple : undefined,
@@ -128,6 +135,17 @@ export default function ClerkThemeWrapper({
       identityPreviewEditButton: "text-indigo-400 hover:text-indigo-300"
     }
   };
+
+  // Don't render until we know the theme to prevent flash of incorrect theme
+  if (!mounted) {
+    return (
+      <div style={{ visibility: 'hidden' }}>
+        <ClerkProvider appearance={appearance}>
+          {children}
+        </ClerkProvider>
+      </div>
+    );
+  }
 
   return (
     <ClerkProvider appearance={appearance}>
