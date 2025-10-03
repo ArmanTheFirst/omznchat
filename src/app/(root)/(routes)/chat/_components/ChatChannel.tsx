@@ -53,7 +53,6 @@ const CustomMessageInput = () => {
 
 export default function ChatChannel({
   show,
-  hideChannelOnThread,
 }: ChatChannelProps) {
   return (
     <div className={`h-full w-full ${show ? "block" : "hidden"}`}>

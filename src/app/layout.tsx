@@ -98,23 +98,22 @@ export default function RootLayout({
             }),
           }}
         />
-        <meta
+        <meta 
           name="google-site-verification"
           content="COOATcOSNOycv3-CKEIw7_1sYeNRSUU7pDku3Nfyj94"
         />
       </head>
       <body className={`${outfit.className} overflow-x-hidden bg-background text-foreground transition-colors duration-200`}>
-        <ThemeProvider 
-          attribute="class" 
-          defaultTheme="system" 
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
           enableSystem
           enableColorScheme
-          disableTransitionOnChange
           storageKey="omznchat-theme"
         >
           <ClerkThemeWrapper>
             <main className="w-screen overflow-x-hidden bg-background">{children}</main>
-            <Toaster />
+            <Toaster position="bottom-right" />
           </ClerkThemeWrapper>
         </ThemeProvider>
       </body>

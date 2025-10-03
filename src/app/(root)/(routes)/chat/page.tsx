@@ -21,14 +21,19 @@ import { useSearchParams } from 'next/navigation';
 const i18Instance = new Streami18n({ language: "en" });
 
 function ChatContent() {
-  const { theme } = useTheme();
+  const { resolvedTheme } = useTheme();
   const searchParams = useSearchParams();
   const channelId = searchParams?.get('channelId') || undefined;
   const [chatSidebarOpen, setChatSidebarOpen] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
   const windowSize = useWindowSize();
   const isLargeScreen = windowSize.width >= mdBreakpoint;
   const chatClient = useInitializeChatClient();
   const { user } = useUser();
+  
+  const handleSidebarOnClose = useCallback(() => {
+    setChatSidebarOpen(false);
+  }, []);
 
   // Handle sidebar state based on window size
   useEffect(() => {
@@ -53,42 +58,56 @@ function ChatContent() {
     setupPushNotifications();
   }, []);
 
-  // Clean up URL if channelId is present
+  // Handle URL cleanup
   useEffect(() => {
     if (channelId) {
       history.replaceState(null, "", "/chat");
     }
   }, [channelId]);
 
-  // Apply theme to body
+  // Initialize mounted state and set initial theme
   useEffect(() => {
-    if (theme) {
-      document.body.classList.toggle('dark', theme === 'dark');
-      document.body.classList.toggle('light', theme === 'light');
-    }
-  }, [theme]);
-
-  const handleSidebarOnClose = useCallback(() => {
-    setChatSidebarOpen(false);
-  }, []);
-
-  if (!chatClient || !user) {
+    setIsMounted(true);
+    
+    // Set initial theme
+    const isDarkMode = resolvedTheme === 'dark' || 
+                      (resolvedTheme === 'system' && 
+                       window.matchMedia('(prefers-color-scheme: dark)').matches);
+    
+    document.documentElement.classList.toggle('dark', isDarkMode);
+    document.documentElement.style.colorScheme = isDarkMode ? 'dark' : 'light';
+    
+    // Cleanup function
+    return () => {
+      // Reset styles if needed
+      document.documentElement.style.colorScheme = '';
+    };
+  }, [resolvedTheme]);
+  
+  // Show loading state until everything is ready
+  if (!isMounted || !chatClient || !user) {
     return (
-      <div className="flex h-dvh items-center justify-center bg-gray-100 dark:bg-black">
+      <div className="flex h-dvh items-center justify-center bg-background">
         <LoadingIndicator size={40} />
       </div>
     );
   }
 
   return (
-    <div className="h-dvh bg-gray-100 text-black dark:bg-black dark:text-white transition-colors duration-300"> 
-      <div className="m-auto flex h-full min-w-[350px] max-w-[1600px] flex-col shadow-sm">
+    <div className="h-dvh bg-background text-foreground transition-colors duration-300"> 
+      <div className="m-auto flex h-full min-w-[350px] max-w-[1600px] flex-col">
         <Chat
+          key={`chat-${resolvedTheme}`}
           client={chatClient}
           i18nInstance={i18Instance}
-          theme={theme === "dark" ? "str-chat__theme-dark" : "str-chat__theme-light"}
+          theme={resolvedTheme === 'dark' || 
+                 (resolvedTheme === 'system' && 
+                  typeof window !== 'undefined' && 
+                  window.matchMedia('(prefers-color-scheme: dark)').matches) 
+                ? "str-chat__theme-dark" 
+                : "str-chat__theme-light"}
         >
-          <div className="flex justify-center border-b border-b-[#DBDDE1] p-3 md:hidden">
+          <div className="flex justify-center border-b border-border p-3 md:hidden">
             <button onClick={() => setChatSidebarOpen(!chatSidebarOpen)}>
               {!chatSidebarOpen ? (
                 <span className="flex items-center gap-1">
