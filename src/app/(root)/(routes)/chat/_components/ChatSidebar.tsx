@@ -46,36 +46,42 @@ export default function ChatSidebar({
         show ? "flex" : "hidden"
       }`}
     >
-      {usersMenuOpen && (
-        <UsersMenu
-          loggedInUser={user}
-          onClose={() => setUsersMenuOpen(false)}
-          onChannelSelected={() => {
-            setUsersMenuOpen(false);
-            onClose();
-          }}
-        />
-      )}
-      <MenuBar onUserMenuClick={() => setUsersMenuOpen(true)} />
-      <ChannelList
-        filters={{
-          type: "messaging",
-          members: { $in: [user.id] },
-        }}
-        sort={{ last_message_at: -1 }}
-        options={{ state: true, presence: true, limit: 10 }}
-        customActiveChannel={customActiveChannel}
-        showChannelSearch
-        additionalChannelSearchProps={{
-          searchForChannels: true,
-          searchQueryParams: {
-            channelFilters: {
-              filters: { members: { $in: [user.id] } },
-            },
-          },
-        }}
-        Preview={ChannelPreviewCustom}
-      />
+      <div className="relative h-full w-full overflow-hidden">
+        {usersMenuOpen && (
+          <div className="absolute inset-0 z-10 h-full w-full bg-white dark:bg-[#020817]">
+            <UsersMenu
+              loggedInUser={user}
+              onClose={() => setUsersMenuOpen(false)}
+              onChannelSelected={() => {
+                setUsersMenuOpen(false);
+                onClose();
+              }}
+            />
+          </div>
+        )}
+        <div className={`h-full w-full ${usersMenuOpen ? 'invisible' : 'visible'}`}>
+          <MenuBar onUserMenuClick={() => setUsersMenuOpen(true)} />
+          <ChannelList
+            filters={{
+              type: "messaging",
+              members: { $in: [user.id] },
+            }}
+            sort={{ last_message_at: -1 }}
+            options={{ state: true, presence: true, limit: 10 }}
+            customActiveChannel={customActiveChannel}
+            showChannelSearch
+            additionalChannelSearchProps={{
+              searchForChannels: true,
+              searchQueryParams: {
+                channelFilters: {
+                  filters: { members: { $in: [user.id] } },
+                },
+              },
+            }}
+            Preview={ChannelPreviewCustom}
+          />
+        </div>
+      </div>
     </div>
   );
 }
