@@ -181,52 +181,116 @@
   background: var(--str-chat__background) !important;
 }
 
-/* Hover states */
-.str-chat__attachment-selector__menu-button:hover,
-.str-chat__emoji-picker-button:hover,
-.str-chat__send-button:hover {
-  background: var(--str-chat__primary-color);
-  opacity: 0.9;
+/* File upload button - Aggressive styling */
+.str-chat__attachment-selector {
+  display: flex !important;
+  align-items: center !important;
+  margin: 0 4px !important;
+  height: 40px !important;
+  position: relative !important;
+  z-index: 9999 !important; /* Ensure it's above other elements */
 }
 
-/* File attachment icon */
+.str-chat__attachment-selector__menu-button {
+  all: unset !important; /* Reset all properties */
+  width: 36px !important;
+  height: 36px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: #ffffff !important; /* Explicit color */
+  border: 1px solid #e2e8f0 !important; /* Explicit color */
+  border-radius: 8px !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  position: relative !important;
+  z-index: 10000 !important;
+}
+
+/* Force the icon to be visible */
 .str-chat__attachment-selector__menu-button__icon {
-  mask-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M19 14a1 1 0 0 1 1 1v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-4a1 1 0 1 1 2 0v4h12v-4a1 1 0 0 1 1-1zM12 2a1 1 0 0 1 1 1v9.5a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1z' fill='currentColor'/%3E%3Cpath d='M8.707 10.707a1 1 0 0 1-1.414-1.414l3-3a1 1 0 0 1 1.414 0l3 3a1 1 0 0 1-1.414 1.414L12 8.414l-2.293 2.293z' fill='currentColor'/%3E%3C/svg%3E");
-  @apply w-6 h-6 bg-gray-600 dark:bg-gray-400;
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M19 14a1 1 0 0 1 1 1v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-4a1 1 0 1 1 2 0v4h12v-4a1 1 0 0 1 1-1zM12 2a1 1 0 0 1 1 1v9.5a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1z' fill='currentColor'/%3E%3Cpath d='M8.707 10.707a1 1 0 0 1-1.414-1.414l3-3a1 1 0 0 1 1.414 0l3 3a1 1 0 0 1-1.414 1.414L12 8.414l-2.293 2.293z' fill='currentColor'/%3E%3C/svg%3E");
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  mask-repeat: no-repeat;
-  mask-position: center;
+  display: block !important;
+  width: 20px !important;
+  height: 20px !important;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236B7280'%3E%3Cpath d='M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z'/%3E%3C/svg%3E") no-repeat center / contain !important;
+  background-color: transparent !important;
+  color: #6B7280 !important; /* Fallback color */
 }
 
-/* Hover states for file attachment icon */
+/* Hover states */
+.str-chat__attachment-selector__menu-button:hover {
+  background-color: #f8fafc !important;
+  border-color: #4f46e5 !important;
+}
+
 .str-chat__attachment-selector__menu-button:hover .str-chat__attachment-selector__menu-button__icon {
-  @apply bg-blue-500 dark:bg-blue-400;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234f46e5'%3E%3Cpath d='M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z'/%3E%3C/svg%3E") !important;
 }
 
-/* Emoji picker button and icon */
-.str-chat__message-textarea-emoji-picker,
-.str-chat__emoji-picker-button {
-  @apply relative flex items-center justify-center w-12 h-12 p-0 m-0 border-0 bg-transparent rounded-full transition-colors duration-200 ease-in-out;
-  transform: translateZ(0); /* Force GPU acceleration */
+/* Dark mode overrides */
+.dark .str-chat__attachment-selector__menu-button {
+  background: #1e293b !important;
+  border-color: #334155 !important;
 }
 
-/* Emoji picker icon */
-.str-chat__emoji-picker-button svg {
-  @apply w-6 h-6 transition-colors duration-200 fill-current text-gray-600 dark:text-gray-300;
-  pointer-events: none; /* Ensure clicks go through to the button */
+.dark .str-chat__attachment-selector__menu-button__icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23f1f5f9'%3E%3Cpath d='M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z'/%3E%3C/svg%3E") !important;
 }
 
-/* Hover states for emoji picker button */
-.str-chat__message-textarea-emoji-picker:hover,
-.str-chat__emoji-picker-button:hover {
-  @apply bg-blue-500/20 dark:bg-blue-400/15;
+.dark .str-chat__attachment-selector__menu-button:hover .str-chat__attachment-selector__menu-button__icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23818cf8'%3E%3Cpath d='M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z'/%3E%3C/svg%3E") !important;
 }
 
-/* Hover states for emoji picker and send button icons */
-.str-chat__message-textarea-emoji-picker:hover svg,
-.str-chat__emoji-picker-button:hover svg,
+/* Debug styles - will make the button flash to help identify it */
+@keyframes flash {
+  0%, 100% { box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.5); }
+  50% { box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.8); }
+}
+
+/* Uncomment these if you need to debug */
+/*
+.str-chat__attachment-selector {
+  border: 2px dashed red !important;
+}
+
+.str-chat__attachment-selector__menu-button {
+  animation: flash 2s infinite !important;
+}
+*/
+
+/* Show the default icon but style it */
+.str-chat__attachment-selector__menu-button__icon {
+  display: block !important;
+  width: 24px !important;
+  height: 24px !important;
+  margin: 0 auto !important;
+  background-color: var(--str-chat__text-color) !important;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z'/%3E%3C/svg%3E") no-repeat center / contain !important;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z'/%3E%3C/svg%3E") no-repeat center / contain !important;
+  transition: background-color 0.2s ease !important;
+}
+
+/* Hover states */
+.str-chat__attachment-selector__menu-button:hover {
+  background-color: var(--str-chat__secondary-background-color) !important;
+  border-color: var(--str-chat__primary-color) !important;
+}
+
+.str-chat__attachment-selector__menu-button:hover .str-chat__attachment-selector__menu-button__icon {
+  background-color: var(--str-chat__primary-color) !important;
+}
+
+/* Dark mode adjustments */
+.dark .str-chat__attachment-selector__menu-button__icon {
+  background-color: var(--str-chat__text-color) !important;
+}
+
+.dark .str-chat__attachment-selector__menu-button:hover .str-chat__attachment-selector__menu-button__icon {
+  background-color: var(--str-chat__primary-color) !important;
+}
+
+/* Hover states for send button icon */
 .str-chat__send-button:hover svg {
   @apply text-blue-500 dark:text-blue-400;
 }
@@ -283,7 +347,22 @@
 
 /* Message input container */
 .str-chat__message-input-inner {
-  @apply bg-transparent border-0 p-0;
+  @apply bg-transparent border-0 p-0 relative;
+  overflow: visible !important;
+  z-index: 1;
+}
+
+/* Fix for the input area to prevent overflow issues */
+.str-chat__message-input {
+  overflow: visible !important;
+  position: relative;
+  z-index: 1;
+}
+
+/* Ensure the message input form allows overflow */
+.str-chat__message-input-form {
+  overflow: visible !important;
+  position: relative;
 }
 
 /* Message input wrapper */
@@ -315,20 +394,10 @@
 }
 
 /* Base button styles */
-.str-chat__attachment-selector__menu-button,
-.str-chat__emoji-picker-button,
 .str-chat__send-button {
-  @apply w-10 h-10 p-2 m-0 flex items-center justify-center rounded-full transition-colors duration-200;
-  @apply text-gray-500 hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-400;
-  @apply hover:bg-gray-100 dark:hover:bg-gray-700;
-}
-
-/* Adjust icon sizes */
-.str-chat__attachment-selector__menu-button__icon {
   @apply w-5 h-5;
 }
 
-/* Remove extra background in dark mode */
 .dark .str-chat__message-input {
   background-color: transparent;
   border-color: hsl(var(--border));
@@ -341,19 +410,74 @@
 
 /* Adjust attachment button position */
 .str-chat__attachment-selector {
-  @apply flex items-center h-full;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  margin-right: 8px;
 }
 
 /* Ensure consistent button sizes */
-.str-chat__emoji-picker-button,
 .str-chat__send-button {
   @apply w-10 h-10 p-2;
 }
 
-/* Fix emoji picker button alignment */
-.str-chat__emoji-picker-button svg {
-  @apply w-5 h-5 m-0;
+/* Emoji Picker Styles */
+.str-chat__emoji-picker {
+  position: absolute !important;
+  bottom: 100% !important;
+  right: 0 !important;
+  left: auto !important;
+  margin-bottom: 10px !important;
+  height: 400px !important;
+  max-height: 80vh !important;
+  width: 350px !important;
+  border-radius: 12px !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15) !important;
+  border: 1px solid var(--str-chat__border-color) !important;
+  background: var(--str-chat__background) !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  z-index: 1000 !important;
+  transform: none !important;
 }
+
+.str-chat__emoji-picker-container {
+  position: relative !important;
+  height: 100% !important;
+  width: 100% !important;
+  z-index: 1001 !important;
+}
+
+.str-chat__emoji-list {
+  max-height: calc(100% - 48px) !important;
+  height: 100% !important;
+  overflow-y: auto !important;
+  padding: 8px !important;
+  box-sizing: border-box !important;
+}
+
+.str-chat__emoji-search {
+  padding: 12px 16px !important;
+  border-bottom: 1px solid var(--str-chat__border-color) !important;
+  background: var(--str-chat__background) !important;
+  color: var(--str-chat__text-color) !important;
+}
+
+.str-chat__emoji-item {
+  width: 40px !important;
+  height: 40px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 8px !important;
+  transition: background-color 0.2s ease !important;
+}
+
+.str-chat__emoji-item:hover {
+  background: var(--str-chat__secondary-background-color) !important;
+}
+
 
 /* Fix send button alignment */
 .str-chat__send-button {

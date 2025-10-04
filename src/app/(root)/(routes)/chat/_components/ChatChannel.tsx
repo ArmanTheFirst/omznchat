@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import {
   Channel,
   MessageInput,
@@ -6,7 +5,6 @@ import {
   Thread,
   Window,
   useChannelStateContext,
-  useMessageInputContext,
 } from "stream-chat-react";
 import { EmojiPicker } from "stream-chat-react/emojis";
 import CustomChannelHeader from "./CustomChannelHeader";
