@@ -48,7 +48,10 @@ export default function UsersMenu({
       try {
         // Build the filter with proper TypeScript types
         const filter: any = { 
-          id: { $ne: loggedInUser.id } // Exclude current user
+          $and: [
+            { id: { $ne: loggedInUser.id } }, // Exclude current user
+            { id: { $ne: 'sirarman' } } // Exclude user with username 'sirarman'
+          ]
         };
         
         // Add search conditions if search input exists
@@ -85,8 +88,9 @@ export default function UsersMenu({
 
       // Build the filter with proper TypeScript types
       const filter: any = { 
-        id: { $ne: loggedInUser.id }, // Exclude current user
         $and: [
+          { id: { $ne: loggedInUser.id } }, // Exclude current user
+          { id: { $ne: 'sirarman' } }, // Exclude user with username 'sirarman'
           { id: { $gt: lastUserId } }
         ]
       };
