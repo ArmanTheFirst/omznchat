@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "emoji-mart": "^5.2.1",
     "@clerk/nextjs": "^6.9.6",
     "@clerk/themes": "^2.2.18",
     "@emoji-mart/data": "^1.1.0",
