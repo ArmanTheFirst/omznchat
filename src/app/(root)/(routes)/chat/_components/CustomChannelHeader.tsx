@@ -16,7 +16,7 @@ export default function CustomChannelHeader(props: ChannelHeaderProps) {
   } = useChannelStateContext();
 
   return (
-    <div className="flex items-center justify-between gap-3 bg-white dark:bg-[#17191C] border-b border-b-gray-200 dark:border-b-gray-800">
+    <div className="flex items-center justify-between gap-3 bg-white dark:bg-[#17191C] border-b border-b-gray-200 dark:border-b-gray-800 p-3">
       <ChannelHeader {...props} />
       {user && channelId && (
         <ChannelNotificationToggleButton user={user} channelId={channelId} />
@@ -72,7 +72,7 @@ function ChannelNotificationToggleButton({
         <button 
           onClick={() => setChannelMuted(channelId, true)}
           title="Mute channel notifications"
-          className="p-1.5 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+          className="p-1.5 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-gray-800 dark:text-gray-200"
         >
           <BellOff className="h-5 w-5" />
         </button>
@@ -80,7 +80,7 @@ function ChannelNotificationToggleButton({
         <button 
           onClick={() => setChannelMuted(channelId, false)}
           title="Unmute channel notifications"
-          className="p-1.5 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+          className="p-1.5 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-gray-800 dark:text-gray-200"
         >
           <Bell className="h-5 w-5" />
         </button>

@@ -304,6 +304,108 @@
   @apply text-gray-400 dark:text-gray-600;
 }
 
+/* High-specificity overrides for channel header */
+.str-chat__header-livestream {
+  color: inherit !important;
+}
+
+.str-chat__header-livestream-left {
+  color: inherit !important;
+}
+
+/* Custom Channel Header Overrides */
+.custom-channel-header {
+  color: rgb(15 23 42) !important; /* gray-900 */
+}
+
+.dark .custom-channel-header {
+  color: rgb(243 244 246) !important; /* gray-100 */
+}
+
+.custom-channel-button {
+  color: rgb(55 65 81) !important; /* gray-700 */
+}
+
+.dark .custom-channel-button {
+  color: rgb(209 213 219) !important; /* gray-300 */
+}
+
+/* High-specificity overrides for channel header */
+.str-chat__header-livestream,
+.str-chat__header-livestream *,
+.str-chat__header-livestream-left,
+.str-chat__header-livestream-left * {
+  color: inherit !important;
+}
+
+/* Notification messages */
+.str-chat__custom-notification {
+  color: #1a1a1a !important;
+  background-color: #f0fdf4 !important; /* light green background */
+  border: 1px solid #bbf7d0 !important;
+  padding: 0.75rem 1rem !important;
+  border-radius: 0.5rem !important;
+  margin: 0.5rem !important;
+  font-size: 0.875rem !important;
+  line-height: 1.25rem !important;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
+}
+
+.dark .str-chat__custom-notification {
+  color: #f3f4f6 !important;
+  background-color: #064e3b !important; /* dark green background */
+  border-color: #059669 !important;
+}
+
+/* Notification success variant */
+.notification-success {
+  background-color: #f0fdf4 !important; /* light green */
+  color: #166534 !important; /* dark green text */
+  border-color: #86efac !important;
+}
+
+.dark .notification-success {
+  background-color: #064e3b !important; /* dark green */
+  color: #d1fae5 !important; /* light green text */
+  border-color: #059669 !important;
+}
+
+/* Notification error variant */
+.notification-error {
+  background-color: #fef2f2 !important; /* light red */
+  color: #991b1b !important; /* dark red text */
+  border-color: #fca5a5 !important;
+}
+
+.dark .notification-error {
+  background-color: #7f1d1d !important; /* dark red */
+  color: #fecaca !important; /* light red text */
+  border-color: #ef4444 !important;
+}
+
+/* Force channel header text visibility */
+.str-chat__header-livestream,
+.str-chat__header-livestream *,
+.str-chat__header-livestream-left,
+.str-chat__header-livestream-left *,
+.str-chat__header-livestream-title,
+.str-chat__header-livestream-title *,
+.str-chat__header-livestream-title span,
+.str-chat__header-livestream-title span * {
+  color: #1a1a1a !important;
+}
+
+.dark .str-chat__header-livestream,
+.dark .str-chat__header-livestream *,
+.dark .str-chat__header-livestream-left,
+.dark .str-chat__header-livestream-left *,
+.dark .str-chat__header-livestream-title,
+.dark .str-chat__header-livestream-title *,
+.dark .str-chat__header-livestream-title span,
+.dark .str-chat__header-livestream-title span * {
+  color: #ffffff !important;
+}
+
 /* Light theme specific styles */
 :root .str-chat {
   --str-chat__primary-color: 99 102 241;
@@ -482,6 +584,44 @@
 /* Fix send button alignment */
 .str-chat__send-button {
   @apply m-0;
+}
+
+/* Thread close button styles */
+.str-chat__thread-container .str-chat__thread-header .str-chat__close-thread-button {
+  background: transparent !important;
+  border: none !important;
+  padding: 0.5rem !important;
+  margin: 0 !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 2.5rem !important;
+  height: 2.5rem !important;
+  color: var(--str-chat__text-color) !important;
+}
+
+.str-chat__thread-container .str-chat__thread-header .str-chat__close-thread-button:hover {
+  background: var(--str-chat__secondary-background-color) !important;
+  border-radius: 50% !important;
+}
+
+.str-chat__thread-container .str-chat__thread-header .str-chat__close-thread-button svg {
+  width: 1.25rem !important;
+  height: 1.25rem !important;
+}
+
+.str-chat__thread-container .str-chat__thread-header .str-chat__close-thread-button path {
+  fill: currentColor !important;
+}
+
+/* Dark mode overrides */
+.dark .str-chat__thread-container .str-chat__thread-header .str-chat__close-thread-button {
+  color: #ffffff !important;
+}
+
+.dark .str-chat__thread-container .str-chat__thread-header .str-chat__close-thread-button:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
 }
 
   * {
