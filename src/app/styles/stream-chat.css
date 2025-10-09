@@ -123,6 +123,84 @@
   position: relative;
 }
 
+/* Typing Indicator */
+.str-chat__typing-indicator {
+  padding: 4px 0 12px 0;
+  margin: 0 16px;
+  min-height: 24px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.str-chat__typing-indicator--typing {
+  opacity: 1;
+}
+
+.str-chat__typing-indicator__avatars {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  font-size: 0.8125rem;
+  line-height: 1.2;
+  color: var(--str-chat__text-low-emphasis);
+}
+
+.typing-indicator-name {
+  font-weight: 500;
+  color: var(--str-chat__text-color);
+}
+
+.typing-indicator-text {
+  color: var(--str-chat__text-low-emphasis);
+  white-space: nowrap;
+  margin-left: 4px;
+}
+
+.str-chat__typing-indicator__dots {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  margin-left: 6px;
+  height: 16px;
+}
+
+.str-chat__typing-indicator__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--str-chat__text-low-emphasis);
+  animation: typing-dot-pulse 1.4s infinite ease-in-out both;
+}
+
+.str-chat__typing-indicator__dot:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.str-chat__typing-indicator__dot:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+@keyframes typing-dot-pulse {
+  0%, 80%, 100% { 
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  40% { 
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Adjust spacing when typing indicator is after a message */
+.str-chat__message-simple + .typing-indicator-container {
+  margin-top: -4px;
+  padding-bottom: 16px;
+}
+
 /* Base message bubble styles */
 .str-chat__message-bubble {
   border-radius: 12px !important;
