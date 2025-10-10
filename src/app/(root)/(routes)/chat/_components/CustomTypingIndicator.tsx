@@ -3,8 +3,9 @@
 import { useChannelStateContext, useChatContext, useTypingContext } from 'stream-chat-react';
 import type { TypingIndicatorProps } from 'stream-chat-react';
 
-const CustomTypingIndicator = (props: TypingIndicatorProps) => {
+export const CustomTypingIndicator = (props: TypingIndicatorProps) => {
   const { threadList } = props;
+
   const { channelConfig, thread } = useChannelStateContext();
   const { client } = useChatContext();
   const { typing = {} } = useTypingContext();
@@ -19,34 +20,33 @@ const CustomTypingIndicator = (props: TypingIndicatorProps) => {
       )
     : [];
 
-  const typingInThread = threadList && thread?.id
+  const typingInThread = threadList
     ? Object.values(typing).filter(
         ({ parent_id, user }) =>
-          user?.id !== client.user?.id && parent_id === thread.id,
+          user?.id !== client.user?.id && parent_id === thread?.id,
       )
     : [];
 
   const typingUsers = threadList ? typingInThread : typingInChannel;
-  
+
   if (typingUsers.length === 0) {
     return null;
   }
 
   return (
-    <div className="str-chat__typing-indicator str-chat__typing-indicator--typing">
+    <div className="str-chat__typing-indicator">
       <div className="str-chat__typing-indicator__avatars">
-        {typingUsers.map(({ user }, i: number) => (
+        {(threadList ? typingInThread : typingInChannel).map(({ user }, i) => (
           <div key={`typing-${user?.id || i}`} className="username">
-            <span className="typing-indicator-name">{user?.name || 'Someone'}</span>
-            {i < typingUsers.length - 1 ? ', ' : ''}
+            <div className="typing-indicator-name">{user?.name}</div>
           </div>
         ))}
-        <span className="typing-indicator-text">is typing...</span>
+        <span className="typing-indicator-text">is typing</span>
       </div>
       <div className="str-chat__typing-indicator__dots">
-        <span className="str-chat__typing-indicator__dot" />
-        <span className="str-chat__typing-indicator__dot" />
-        <span className="str-chat__typing-indicator__dot" />
+        <div className="str-chat__typing-indicator__dot" />
+        <div className="str-chat__typing-indicator__dot" />
+        <div className="str-chat__typing-indicator__dot" />
       </div>
     </div>
   );
